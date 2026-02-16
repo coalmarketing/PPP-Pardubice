@@ -1,0 +1,114 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+    <!-- To ensure proper validation, prevent errors, and encourage developers to check, schema's are an opt-in feature. They're very bespoke and requires some customising  -->
+    <!-- Uncomment the code below to enable Structured Data, and test it when you deploy to Netlify - https://developers.google.com/search/docs/appearance/structured-data -->
+    {% include "components/home-schema.njk" %}
+{% endblock %}
+
+{% block body %}
+    <!-- HERO -->
+    <section class="~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
+        <div class="flex flex-col items-center gap-16">
+            <!-- TEXT + CTA -->
+            <div class="container m-auto flex flex-col items-center gap-12">
+                <!-- TOPPER + HEADING -->
+                <div class="flex flex-col items-center gap-4">
+                    <span class="topper text-lg">{{ hero.topper }}</span>
+                    <h1 class="max-w-5xl text-center text-6xl text-slate-800 dark:text-slate-200 font-bold leading-[1.1]! tracking-widest">
+                        <span class="text-primary">P</span>edagogicko-<span class="text-primary">p</span>sychologická <span class="text-primary">p</span>oradna <span class="text-secondary">P</span>ardubice
+                    </h1>
+                </div>
+            </div>
+
+            <!-- IMAGES -->
+            <div class="relative grid grid-cols-3 gap-8 max-w-480">
+                {% for image in hero.images %}
+                    <picture>
+                        <!-- MOBILE IMAGE -->
+                        <source media="(max-width: 600px)" srcset="{% getUrl image.url | avif %}" type="image/avif">
+                        <source media="(max-width: 600px)" srcset="{% getUrl image.url | webp %}" type="image/webp">
+                        <source media="(max-width: 600px)" srcset="{% getUrl image.url | jpeg %}" type="image/jpeg">
+                        <!-- TABLET IMAGE -->
+                        <source media="(max-width: 1024px)" srcset="{% getUrl image.url | avif %}" type="image/avif">
+                        <source media="(max-width: 1024px)" srcset="{% getUrl image.url | webp %}" type="image/webp">
+                        <source media="(max-width: 1024px)" srcset="{% getUrl image.url | jpeg %}" type="image/jpeg">
+                        <!-- DESKTOP IMAGE -->
+                        <source media="(min-width: 1024px)" srcset="{% getUrl image.url | resize({ width: 869, height: 597 }) | avif %}" type="image/avif">
+                        <source media="(min-width: 1024px)" srcset="{% getUrl image.url | resize({ width: 869, height: 597 }) | webp %}" type="image/webp">
+                        <source media="(min-width: 1024px)" srcset="{% getUrl image.url | resize({ width: 869, height: 597 }) | jpeg %}" type="image/jpeg">
+                        <img
+                            class="object-cover"
+                            src="{% getUrl image.url | resize({ width: 869, height: 597 }) | jpeg %}"
+                            alt="{{ image.alt }}"
+                            width="597"
+                            height="398"
+                            loading="eager"
+                            decoding="async"
+                            aria-hidden="true"
+                            draggable="false">
+                    </picture>
+                {% endfor %}
+
+                <!-- TOP AND BOTTOM BACKGROUND MASKS -->
+                <img class="absolute top-0 left-0 h-auto w-full z-10"
+                    src="/assets/svgs/hero/mask-top.svg"
+                    alt="Ilustrace horního oblouku pozadí"
+                    width="1920"
+                    height="36"
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden="true"
+                    draggable="false">
+
+                <img class="absolute bottom-0 left-0 h-auto w-full z-10"
+                    src="/assets/svgs/hero/mask-bottom.svg"
+                    alt="Ilustrace horního oblouku pozadí"
+                    width="1920"
+                    height="36"
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden="true"
+                    draggable="false">
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="~py-16/24 ~px-4/8">
+        <div class="container m-auto flex flex-col gap-16">
+            <!-- HEADING + TEXT -->
+            <div class="flex justify-between items-end">
+                <!-- TOPPER + HEADING -->
+                <div class="flex flex-col items-start gap-4">
+                    <span class="topper">{{ services.topper }}</span>
+                    <h2 class="max-w-lg text-5xl text-black dark:text-white font-bold leading-[1.1]! tracking-wide">
+                        {{ services.heading }}
+                    </h2>
+                </div>
+
+                <!-- TEXT + CTA -->
+                <div class="flex flex-col items-end gap-6">
+                    <a href="{{ services.cta.url }}" class="btn">
+                        <span>
+                            <img src="/assets/svgs/header/calendar_month.svg"
+                                alt="Ikona kalendáře"
+                                width="16"
+                                height="16"
+                                loading="eager"
+                                decoding="async"
+                                aria-hidden="true"
+                                draggable="false">
+                        </span>
+
+                        <span>{{ services.cta.text }}</span>
+                    </a>
+
+                    <p class="max-w-xl font-inter text-right text-lg text-slate-800 dark:text-slate-200">{{ services.text }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include "sections/cta.njk" %}
+{% endblock body %}

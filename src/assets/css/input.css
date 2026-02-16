@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ================== */
+/* === COMPONENTS === */
+/* ================== */
+
+@layer components {
+  .btn {
+    @apply flex items-center gap-3 p-2 pr-5 bg-primary text-white font-bold uppercase rounded-full;
+  }
+
+  .btn {
+    /* ICON */
+    span:first-child {
+      @apply p-1.5 bg-white text-primary rounded-full transition-transform duration-300 ease-in-out;
+    }
+
+    span:nth-child(2) {
+      @apply transition-transform duration-300 ease-in-out;
+    }
+  }
+
+  .btn:hover {
+    /* ICON HOVER EFFECT */
+    span:first-child {
+      @apply scale-0;
+    }
+
+    /* TEXT HOVER EFFECT */
+    span:nth-child(2) {
+      @apply -translate-x-3.5;
+    }
+  }
+
+  .topper {
+    @apply py-1 px-5 bg-secondary-200 text-slate-800 uppercase tracking-wider rounded-full;
+  }
+}
+
+
+/* ============= */
+/* === FONTS === */
+/* ============= */
+
+/* inclusive-sans-regular - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inclusive Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/inclusive-sans-v4-latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inclusive-sans-500 - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inclusive Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/inclusive-sans-v4-latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inclusive-sans-600 - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inclusive Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/inclusive-sans-v4-latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inclusive-sans-700 - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inclusive Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/inclusive-sans-v4-latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* inter-regular - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/inter-v20-latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-500 - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/inter-v20-latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-600 - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/inter-v20-latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-700 - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/inter-v20-latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
