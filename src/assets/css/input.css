@@ -8,8 +8,9 @@
 /* ================== */
 
 @layer components {
+  /* === BUTTONS === */
   .btn {
-    @apply flex items-center gap-3 p-2 pr-5 bg-primary text-white font-bold uppercase rounded-full;
+    @apply flex items-center bg-primary text-white font-bold uppercase rounded-full;
   }
 
   .btn {
@@ -35,8 +36,13 @@
     }
   }
 
+  .btn {
+    @apply gap-3 p-2 pr-5 ~text-sm/base;
+  }
+
+  /* === TOPPER === */
   .topper {
-    @apply py-1 px-5 bg-secondary-200 text-slate-800 uppercase tracking-wider rounded-full;
+    @apply py-1 ~px-4/5 bg-secondary-200 ~text-sm/base text-slate-800 uppercase tracking-wider rounded-full;
   }
 }
 

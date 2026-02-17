@@ -80,4 +80,12 @@ about:
 
   image:
     url: /assets/images/about-us/about-us.jpg
+
+  banner:
+    icon:
+      url: /assets/svgs/about-us/location_on.svg
+      alt: Ikona bodu na mapě
+
+    title: 5 pracovišť
+    text: napříč Pardubickým krajem
 ---
