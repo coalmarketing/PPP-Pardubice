@@ -62,4 +62,22 @@ services:
 
       title: Lékaři
       text: Odborná spolupráce s lékaři při&nbsp;diagnostice, terapii a péči o děti a&nbsp;dospívající.
+
+
+about:
+  topper: O nás
+  heading: Kdo jsme a s čím vám pomáháme
+
+  text: Jsme Pedagogicko-psychologická poradna Pardubice, příspěvková organizace zřizovaná Pardubickým krajem. Poskytujeme psychologickou a speciálně-pedagogickou péči dětem a mladým lidem ve věku přibližně od 3 do 19 let, jejich rodičům a pedagogickým pracovníkům škol a školských zařízení.
+
+  items:
+    - text: Odborná péče pro děti a mladé lidi ve věku 3–19 let, jejich rodiče i školy
+    - text: Zkušený tým psychologů, pedagogů a odborníků v celém regionu
+
+  cta:
+    url: /o-nas
+    text: Více o nás
+
+  image:
+    url: /assets/images/about-us/about-us.jpg
 ---

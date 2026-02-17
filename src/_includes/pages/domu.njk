@@ -147,8 +147,63 @@
     </section>
 
     <!-- ABOUT US -->
-    <section class="~py-16/24 ~px-4/8">
-        <div class="container m-auto"></div>
+    <section class="~py-16/24 ~px-4/8 bg-slate-100">
+        <div class="container m-auto flex items-center gap-24">
+            <!-- IMAGE -->
+            <div class="relative"></div>
+
+            <!-- TEXT + CTA -->
+            <div class="flex flex-col items-start gap-8">
+                <!-- HEADING + TEXT -->
+                <div class="flex flex-col gap-6">
+                    <!-- TOPPER + HEADING -->
+                    <div class="flex flex-col items-start gap-4">
+                        <span class="topper">{{ about.topper }}</span>
+                        <h2 class="max-w-md text-5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
+                            {{ about.heading }}
+                        </h2>
+                    </div>
+
+                    <p class="max-w-2xl font-inter text-lg text-slate-800 dark:text-slate-200">{{ about.text }}</p>
+
+                    <!-- SEPARATOR -->
+                    <div class="h-px bg-slate-300"></div>
+
+                    <!-- ITEMS -->
+                    <ul class="flex flex-col gap-2">
+                        {% for item in about.items %}
+                            <li class="flex items-center gap-3">
+                                <img src="/assets/svgs/about-us/check_circle.svg"
+                                alt="Ikona fajfky v kroužku"
+                                width="24"
+                                height="24"
+                                loading="lazy"
+                                decoding="async"
+                                aria-hidden="true"
+                                draggable="false">
+
+                                <p class="font-inter text-lg text-primary font-medium">{{ item.text }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <a href="{{ about.cta.url }}" class="btn">
+                    <span>
+                        <img src="/assets/svgs/header/calendar_month.svg"
+                            alt="Ikona kalendáře"
+                            width="16"
+                            height="16"
+                            loading="eager"
+                            decoding="async"
+                            aria-hidden="true"
+                            draggable="false">
+                    </span>
+
+                    <span>{{ about.cta.text }}</span>
+                </a>
+            </div>
+        </div>
     </section>
 
     {% include "sections/cta.njk" %}
