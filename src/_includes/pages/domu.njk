@@ -8,14 +8,14 @@
 
 {% block body %}
     <!-- HERO -->
-    <section class="~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
+    <section class="pt-64 ~pb-16/24 ~px-4/8 bg-white dark:bg-slate-950">
         <div class="flex flex-col items-center gap-16">
             <!-- TEXT + CTA -->
             <div class="container m-auto flex flex-col items-center gap-12">
                 <!-- TOPPER + HEADING -->
                 <div class="flex flex-col items-center gap-4">
                     <span class="topper text-lg">{{ hero.topper }}</span>
-                    <h1 class="max-w-5xl text-center text-6xl text-slate-800 dark:text-slate-200 font-bold leading-[1.1]! tracking-widest">
+                    <h1 class="max-w-5xl text-center text-6xl text-slate-800 dark:text-slate-200 font-bold !leading-[1.1] tracking-widest">
                         <span class="text-primary">P</span>edagogicko-<span class="text-primary">p</span>sychologická <span class="text-primary">p</span>oradna <span class="text-secondary">P</span>ardubice
                     </h1>
                 </div>
@@ -82,7 +82,7 @@
                 <!-- TOPPER + HEADING -->
                 <div class="flex flex-col items-start gap-4">
                     <span class="topper">{{ services.topper }}</span>
-                    <h2 class="max-w-lg text-5xl text-black dark:text-white font-bold leading-[1.1]! tracking-wide">
+                    <h2 class="max-w-xl text-5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
                         {{ services.heading }}
                     </h2>
                 </div>
@@ -104,10 +104,51 @@
                         <span>{{ services.cta.text }}</span>
                     </a>
 
-                    <p class="max-w-xl font-inter text-right text-lg text-slate-800 dark:text-slate-200">{{ services.text }}</p>
+                    <p class="max-w-lg font-inter text-right text-lg text-slate-800 dark:text-slate-200">{{ services.text | safe }}</p>
                 </div>
             </div>
+
+            <!-- ITEMS -->
+            <ul class="grid grid-cols-4">
+                {% for item in services.items %}
+                    <li>
+                        <a href="#" class="group relative flex flex-col items-center gap-10 p-12 border-r border-slate-200 z-10 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-transform before:duration-500 before:ease-in-out before:scale-0 hover:before:scale-100">
+                            <!-- ICON -->
+                            <div class="p-4 bg-secondary-200 rounded-full transition-colors duration-300 group-hover:bg-white">
+                                <img src="{{ item.icon.url }}"
+                                    alt="{{ item.icon.alt }}"
+                                    width="48"
+                                    height="48"
+                                    loading="lazy"
+                                    decoding="async"
+                                    aria-hidden="true"
+                                    draggable="false">
+                            </div>
+
+                            <!-- TITLE + TEXT -->
+                            <div class="flex flex-col gap-3">
+                                <h3 class="text-center text-2xl text-black dark:text-white font-semibold transition-colors duration-300 group-hover:text-white">{{ item.title }}</h3>
+                                <p class="font-inter text-center text-slate-800 dark:text-slate-200 transition-colors duration-300 group-hover:text-slate-200">{{ item.text | safe }}</p>
+                            </div>
+
+                            <!-- HOVER DOTS -->
+                            <div class="absolute inset-0 -z-10 transition-[transform,opacity] duration-500 ease-in-out scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100">
+                                <!-- TOP DOTS -->
+                                <div class="before:absolute before:top-0 before:left-0 before:size-5 before:bg-secondary before:-translate-x-1/2 before:-translate-y-1/2 after:absolute after:top-0 after:right-0 after:size-5 after:bg-secondary after:translate-x-1/2 after:-translate-y-1/2"></div>
+
+                                <!-- BOTTOM DOTS -->
+                                <div class="before:absolute before:bottom-0 before:left-0 before:size-5 before:bg-secondary before:-translate-x-1/2 before:translate-y-1/2 after:absolute after:bottom-0 after:right-0 after:size-5 after:bg-secondary after:translate-x-1/2 after:translate-y-1/2"></div>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section class="~py-16/24 ~px-4/8">
+        <div class="container m-auto"></div>
     </section>
 
     {% include "sections/cta.njk" %}
