@@ -58,7 +58,7 @@
 
     <!-- SERVICES -->
     <section class="~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
-        <div class="container m-auto flex flex-col gap-16">
+        <div class="container m-auto flex flex-col ~gap-12/16">
             <!-- HEADING + TEXT -->
             <div class="flex flex-col xl:flex-row justify-between items-start xl:items-end ~gap-4/6">
                 <!-- TOPPER + HEADING -->
@@ -94,7 +94,7 @@
             <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
                 {% for item in services.items %}
                     <li class="group">
-                        <a href="#" class="group relative flex flex-col items-center gap-10 ~p-6/12 border-b md:border-b-0 md:group-odd:border-r xl:group-even:border-r border-slate-200 dark:border-slate-800 z-10 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-transform before:duration-500 before:ease-in-out before:scale-0 hover:before:scale-100">
+                        <a href="#" class="relative flex flex-col items-center gap-10 ~p-6/12 border-b group-last:border-b-0 md:border-b-0 md:group-odd:border-r xl:group-even:border-r border-slate-200 dark:border-slate-800 z-10 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-transform before:duration-500 before:ease-in-out before:scale-0 hover:before:scale-100">
                             <!-- ICON -->
                             <div class="~p-3/4 bg-secondary-200 rounded-full transition-colors duration-300 group-hover:bg-white">
                                 <img class="~size-10/12"
@@ -130,7 +130,7 @@
     </section>
 
     <!-- ABOUT US -->
-    <section class="~py-16/24 ~px-4/8 bg-slate-100">
+    <section class="~py-16/24 ~px-4/8 bg-slate-100 dark:bg-slate-900">
         <div class="container m-auto flex flex-col-reverse 2xl:flex-row items-center ~gap-12/24">
             <!-- IMAGE -->
             <div class="relative">
@@ -159,10 +159,11 @@
                 </picture>
 
                 <!-- BANNER -->
-                <div class="absolute bottom-6 left-6 flex items-center gap-4 py-3 px-4 bg-white dark:bg-black rounded-2xl">
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 sm:bottom-6 sm:left-6 sm:translate-x-0 flex items-center ~gap-3/4 w-[calc(100%-2rem)] sm:w-auto py-3 px-4 bg-white dark:bg-black rounded-2xl">
                     <!-- ICON -->
                     <div class="p-2 bg-secondary-200 rounded-full">
-                        <img src="{{ about.banner.icon.url }}"
+                        <img class="~size-8/10"
+                            src="{{ about.banner.icon.url }}"
                             alt="{{ about.banner.icon.alt }}"
                             width="40"
                             height="40"
@@ -173,9 +174,9 @@
                     </div>
 
                     <!-- TITLE + TEXT -->
-                    <div class="flex flex-col gap-1.5">
-                        <span class="text-lg text-black font-bold leading-none">{{ about.banner.title }}</span>
-                        <span class="font-inter text-slate-800 dark:text-slate-200 leading-none">{{ about.banner.text }}</span>
+                    <div class="flex flex-col">
+                        <span class="~text-base/lg text-black dark:text-white font-bold leading-none">{{ about.banner.title }}</span>
+                        <span class="font-inter ~text-sm/base text-slate-800 dark:text-slate-200 leading-none">{{ about.banner.text }}</span>
                     </div>
                 </div>
             </div>
@@ -195,27 +196,21 @@
                     <p class="max-w-2xl font-inter ~text-base/lg text-slate-800 dark:text-slate-200">{{ about.text }}</p>
 
                     <!-- SEPARATOR -->
-                    <div class="h-px bg-slate-300"></div>
+                    <div class="h-px bg-slate-300 dark:bg-slate-700"></div>
 
                     <!-- ITEMS -->
-                    <ul class="flex flex-col gap-2">
+                    <ul class="flex flex-col gap-4 md:gap-2">
                         {% for item in about.items %}
-                            <li class="flex items-center gap-3">
-                                <img src="/assets/svgs/about-us/check_circle.svg"
-                                alt="Ikona fajfky v kroužku"
-                                width="24"
-                                height="24"
-                                loading="lazy"
-                                decoding="async"
-                                aria-hidden="true"
-                                draggable="false">
+                            <li class="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3 text-primary dark:text-secondary [&>svg]:size-6">
+                                {% include "src/assets/svgs/about-us/check_circle.svg" %}
 
-                                <p class="font-inter ~text-base/lg text-primary font-medium">{{ item.text }}</p>
+                                <p class="font-inter ~text-base/lg font-medium">{{ item.text }}</p>
                             </li>
                         {% endfor %}
                     </ul>
                 </div>
 
+                <!-- CTA -->
                 <a href="{{ about.cta.url }}" class="btn">
                     <span>
                         <img src="/assets/svgs/header/calendar_month.svg"
@@ -235,9 +230,73 @@
     </section>
 
     <!-- OUR VALUES -->
-    <section class="~py-16/24 ~px-4/8 bg-white">
-        <div class="container m-auto flex items-start gap-24"></div>
+    <section class="~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
+        <div class="container m-auto flex flex-col xl:flex-row items-center xl:items-start ~gap-8/24">
+            <!-- HEADING + CTA -->
+            <div class="flex flex-col items-start gap-8 w-full ~max-w-xs/sm">
+                <!-- TOPPER + HEADING -->
+                <div class="flex flex-col items-center xl:items-start ~gap-3/4">
+                    <span class="topper text-center xl:text-left">{{ values.topper }}</span>
+                    <h2 class="text-center xl:text-left ~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
+                        {{ values.heading }}
+                    </h2>
+                </div>
+
+                <!-- CTA -->
+                <a href="{{ values.cta.url }}" class="hidden xl:flex btn">
+                    <span>
+                        <img src="/assets/svgs/header/calendar_month.svg"
+                            alt="Ikona kalendáře"
+                            width="16"
+                            height="16"
+                            loading="eager"
+                            decoding="async"
+                            aria-hidden="true"
+                            draggable="false">
+                    </span>
+
+                    <span>{{ values.cta.text }}</span>
+                </a>
+            </div>
+
+            <!-- ITEMS -->
+            <ul class="grid grid-cols-1 md:grid-cols-2">
+                {% for item in values.items %}
+                    <li class="group relative flex flex-col items-center gap-10 ~p-6/12 border-b last:border-b-0 md:odd:border-r md:first:border-b md:&:nth-child(2)]:border-b border-slate-200 dark:border-slate-800 z-10 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-transform before:duration-500 before:ease-in-out before:scale-0 hover:before:scale-100">
+                        <!-- ICON -->
+                        <div class="~p-3/4 bg-secondary-200 rounded-full transition-colors duration-300 group-hover:bg-white">
+                            <img class="~size-10/12"
+                                src="{{ item.icon.url }}"
+                                alt="{{ item.icon.alt }}"
+                                width="48"
+                                height="48"
+                                loading="lazy"
+                                decoding="async"
+                                aria-hidden="true"
+                                draggable="false">
+                        </div>
+
+                        <!-- TITLE + TEXT -->
+                        <div class="flex flex-col ~gap-2/3">
+                            <h3 class="text-center ~text-xl/2xl text-black dark:text-white font-semibold transition-colors duration-300 group-hover:text-white">{{ item.title }}</h3>
+                            <p class="font-inter text-center ~text-sm/base text-slate-800 dark:text-slate-200 transition-colors duration-300 group-hover:text-slate-200">{{ item.text | safe }}</p>
+                        </div>
+
+                        <!-- HOVER DOTS -->
+                        <div class="absolute inset-0 -z-10 transition-[transform,opacity] duration-500 ease-in-out scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100">
+                            <!-- TOP DOTS -->
+                            <div class="before:absolute before:top-0 before:left-0 before:size-5 before:bg-secondary before:-translate-x-1/2 before:-translate-y-1/2 after:absolute after:top-0 after:right-0 after:size-5 after:bg-secondary after:translate-x-1/2 after:-translate-y-1/2"></div>
+
+                            <!-- BOTTOM DOTS -->
+                            <div class="before:absolute before:bottom-0 before:left-0 before:size-5 before:bg-secondary before:-translate-x-1/2 before:translate-y-1/2 after:absolute after:bottom-0 after:right-0 after:size-5 after:bg-secondary after:translate-x-1/2 after:translate-y-1/2"></div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </section>
+
+    {% include "sections/locations.njk" %}
 
     {% include "sections/cta.njk" %}
 {% endblock body %}

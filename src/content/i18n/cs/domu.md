@@ -88,4 +88,51 @@ about:
 
     title: 5 pracovišť
     text: napříč Pardubickým krajem
+
+
+values:
+  topper: Naše hodnoty
+  heading: Proč se obrátit právě na nás
+
+  cta:
+    url: /objednat-se
+    text: Objednat se
+
+  items:
+    - icon:
+        url: /assets/svgs/our-values/child_care.svg
+        alt: Ikona hlavy dítěte
+
+      title: Podpora dětí od 3 do 19 let
+      text: Pomáháme dětem, dospívajícím i jejich rodinám v klíčových vývojových etapách.
+
+    - icon:
+        url: /assets/svgs/our-values/groups.svg
+        alt: Ikona skupiny lidí
+
+      title: Spolupráce s rodiči i školami
+      text: Pomáháme dětem zvládat vývojové, vzdělávací i osobní obtíže v každém věku, od předškoláků po dospívající.
+
+    - icon:
+        url: /assets/svgs/our-values/favorite.svg
+        alt: Ikona srdce
+
+      title: Individuální a citlivý přístup
+      text: Každý klient je jedinečný. Hledáme řešení na míru konkrétní situaci..
+
+    - icon:
+        url: /assets/svgs/our-values/verified_user.svg
+        alt: Ikona štítu s fajfkou
+
+      title: Stabilní veřejná instituce
+      text: Jsme příspěvková organizace zřizovaná Pardubickým krajem s dlouhodobou tradicí.
+
+
+blog:
+  topper: Novinky
+  heading: Nejnovější příspěvky
+
+  cta:
+    url: /novinky
+    text: Více novinek
 ---

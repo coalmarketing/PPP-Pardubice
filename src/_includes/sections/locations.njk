@@ -1,0 +1,136 @@
+<!-- LOCATIONS -->
+<section class="~py-16/24 ~px-4/8 bg-slate-100 dark:bg-slate-900">
+    <div class="container m-auto flex flex-col items-center ~gap-8/16">
+        <!-- TOPPER + HEADING -->
+        <div class="flex flex-col items-center ~gap-3/4">
+            <span class="topper text-center">{{ locations.topper }}</span>
+            <h2 class="text-center ~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
+                {{ locations.heading }}
+            </h2>
+        </div>
+
+        <!-- ITEMS -->
+        <ul class="grid grid-cols-4 ~gap-4/6 w-full">
+            <!-- MAIN LOCATIONS -->
+            {% for item in locations.mainItems %}
+                <li class="col-span-4 xl:col-span-2 flex flex-col p-4 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl">
+                    <!-- HEADER -->
+                    <div class="flex flex-col p-8 bg-secondary-100 dark:bg-primary border border-secondary-200 dark:border-slate-800 rounded-2xl">
+                        <h3 class="text-2xl text-black dark:text-white font-semibold">{{ item.title }}</h3>
+                        <span class="text-lg text-slate-800 dark:text-slate-200">{{ item.description }}</span>
+                    </div>
+
+                    <!-- CONTENT -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 pb-2 px-4">
+                        <!-- CONTACT INFO -->
+                        <ul class="flex flex-col items-start gap-5">
+                            {% for item in item.contacts %}
+                                <li class="flex items-start gap-3">
+                                    <!-- ICON -->
+                                    <div class="p-1 bg-secondary-100 rounded-full">
+                                        <img src="{{ item.icon.url }}"
+                                            alt="{{ item.icon.alt }}"
+                                            width="20"
+                                            height="20"
+                                            loading="lazy"
+                                            decoding="async"
+                                            aria-hidden="true"
+                                            draggable="false">
+                                    </div>
+
+                                    <!-- TITLE + LINK -->
+                                    <div class="flex flex-col gap-0.5 pt-px">
+                                        <span class="font-inter text-slate-800 dark:text-slate-200 font-medium">{{ item.title }}</span>
+                                        <a href="{{ item.link.url }}" target="{{ item.link.target }}" class="relative text-black dark:text-white font-semibold before:absolute before:-bottom-0.5 before:left-0 before:h-0.5 before:w-full before:bg-black dark:before:bg-white before:transition-transform before:duration-500 before:ease-in-out before:scale-x-0 hover:before:scale-x-100">
+                                            {{ item.link.text | safe }}
+                                        </a>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                        <!-- OPENING HOURS -->
+                        <div class="flex flex-col gap-4">
+                            <!-- ICON + TITLE -->
+                            <div class="flex items-center gap-2.5">
+                                <!-- ICON -->
+                                <div class="p-1 bg-secondary-100 rounded-full">
+                                    <img src="/assets/svgs/locations/schedule.svg"
+                                        alt="Ikona hodin"
+                                        width="20"
+                                        height="20"
+                                        loading="lazy"
+                                        decoding="async"
+                                        aria-hidden="true"
+                                        draggable="false">
+                                </div>
+
+                                <span class="text-lg text-black dark:text-white font-semibold">Provozní doba</span>
+                            </div>
+
+                            <!-- OPENING HOURS -->
+                            <ul class="flex flex-col gap-2">
+                                {% for subitem in item.hours %}
+                                    <li class="flex justify-between items-center">
+                                        <span class="font-inter text-slate-800 dark:text-slate-200">{{ subitem.day }}</span>
+
+                                        <!-- HOURS -->
+                                        <span class="inline-flex justify-between w-[11.25rem]">
+                                            {% for time in subitem.time %}
+                                                <span class="text-sm text-black dark:text-white font-semibold">{{ time }}</span>
+                                            {% endfor %}
+                                        </span>
+                                    </li>
+
+                                    {% if loop.index < item.hours.length %}
+                                        <li class="h-px bg-slate-200 dark:bg-slate-800"></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+
+            <!-- SECONDARY LOCATIONS -->
+            {% for item in locations.secondaryItems %}
+                <li class="col-span-4 md:col-span-2 xl:col-span-1 flex flex-col justify-between gap-6 p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl">
+                    <!-- TITLE + ADDRESS -->
+                    <div class="flex flex-col">
+                        <h3 class="text-lg text-black dark:text-white font-semibold">{{ item.title }}</h3>
+                        <span class="text-slate-800 dark:text-slate-200">{{ item.address }}</span>
+                    </div>
+
+                    <!-- PHONE + NOTE -->
+                    <div class="flex flex-col gap-3">
+                        <!-- PHONE -->
+                        <div class="flex items-center gap-2.5">
+                            <!-- ICON -->
+                            <div class="p-1 bg-secondary-100 rounded-full">
+                                <img src="/assets/svgs/locations/call.svg"
+                                    alt="Ikona telefonu"
+                                    width="16"
+                                    height="16"
+                                    loading="lazy"
+                                    decoding="async"
+                                    aria-hidden="true"
+                                    draggable="false">
+                            </div>
+
+                            <!-- TITLE + LINK -->
+                            <a href="tel:{{ item.phone.replace(" ", "") }}" class="relative text-black dark:text-white font-semibold before:absolute before:-bottom-0.5 before:left-0 before:h-0.5 before:w-full before:bg-black dark:before:bg-white before:transition-transform before:duration-500 before:ease-in-out before:scale-x-0 hover:before:scale-x-100">
+                                {{ item.phone }}
+                            </a>
+                        </div>
+
+                        <!-- NOTE -->
+                        <div class="flex flex-col gap-2 p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl">
+                            <span class="text-sm text-slate-800 dark:text-slate-200 font-medium">Poznámka</span>
+                            <p class="font-inter text-sm text-slate-800 dark:text-slate-200">{{ item.note }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
