@@ -1,4 +1,74 @@
 <!-- FOOTER -->
-<footer class="~py-16/24 ~px-4/8">
-    <div class="container m-auto"></div>
+<footer class="~py-16/24 ~px-4/8 bg-slate-950">
+    <div class="container m-auto flex flex-col gap-16">
+        <!-- LOGO + CONTACT -->
+        <div class="flex justify-between items-start">
+            <!-- LOGO + NAVIGATION -->
+            <div class="flex flex-col items-start gap-20">
+                <!-- LOGO + DESCRIPTION -->
+                <div class="flex flex-col items-start gap-8">
+                    <!-- LOGO -->
+                    <div class="flex items-center gap-7">
+                        <img
+                            class="h-24 w-auto"
+                            src="/assets/svgs/logo-symbol-white.svg"
+                            alt="{{ client.name }} - světlé logo"
+                            width="64"
+                            height="64"
+                            loading="lazy"
+                            decoding="async"
+                            aria-hidden="true"
+                            draggable="false">
+
+                        <span class="max-w-72 text-white text-[1.75rem] font-bold leading-[2rem]">{{ client.name }}</span>
+                    </div>
+
+                    <p class="max-w-md font-inter text-lg text-slate-200">{{ footer.description | safe }}</p>
+                </div>
+
+                <!-- NAVIGATION -->
+                <nav>
+                    <ul class="flex gap-8">
+                        {% for item in footer.navigation %}
+                            <li>
+                                <a href="{{ item.url }}" class="font-inter text-slate-200 aria-[current=page]:text-white aria-[current=page]:font-medium" {% if item.url == page.url -%} aria-current="page" {% endif -%}>
+                                    {{ item.text }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- CONTACT -->
+            <ul class="grid grid-cols-2 gap-y-24 gap-x-32">
+                {% for item in footer.contacts %}
+                    <li class="flex flex-col gap-2">
+                        <span class="text-xl text-slate-300 font-medium">{{ item.title }}</span>
+
+                        {% if item.url %}
+                            <a href="{{ item.url }}" class="text-2xl text-white font-semibold">{{ item.text }}</a>
+                        {% else %}
+                            <span class="text-2xl text-white font-semibold">{{ item.text }}</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- SEPARATOR + COPYRIGHT -->
+        <div class="flex flex-col gap-6">
+            <div class="h-px bg-slate-800"></div>
+
+            <!-- COPYRIGHT + GDPR -->
+            <div class="flex justify-between">
+                <p class="font-inter text-sm text-slate-400">
+                    {{ footer.copyright }}
+                    <a href="{{ footer.copyrightLink.url }}" target="_blank" class="underline hover:text-white">{{ footer.copyrightLink.text }}</a>
+                </p>
+
+                <a href="{{ footer.gdprLink.url }}" class="font-inter text-sm text-slate-400 hover:underline hover:text-white">{{ footer.gdprLink.text }}</a>
+            </div>
+        </div>
+    </div>
 </footer>

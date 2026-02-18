@@ -17,7 +17,7 @@
             <img
                 class="hidden dark:block ~h-12/16 w-auto"
                 src="/assets/svgs/logo-symbol-white.svg"
-                alt="{{ client.name }} - bílé logo"
+                alt="{{ client.name }} - světlé logo"
                 width="64"
                 height="64"
                 loading="eager"
@@ -29,7 +29,7 @@
         </a>
 
         <!-- NAVIGATION -->
-        <nav class="hidden xl:block p-1.5 bg-secondary-50 rounded-full">
+        <nav class="hidden xl:block p-1.5 bg-secondary-50 dark:bg-primary rounded-full">
             <ul class="flex gap-2">
                 {% set navPages = collections.all | eleventyNavigation %}
 
@@ -68,12 +68,12 @@
                                     {% for child in entry.children %}
                                         <li class="drop-li">
                                             <a
-                          href="{{ child.url }}"
-                          class="li-link inline-flex py-1.5 px-5 whitespace-nowrap
-                          {%- if child.url == page.url %} bg-secondary text-primary font-medium
-                          {%- else %} text-slate-800 hover:text-black {%- endif %}"
-                          {%- if child.url == page.url -%}aria-current="page"{%- endif -%}
-                        >
+                                              href="{{ child.url }}"
+                                              class="li-link inline-flex py-1.5 px-5 whitespace-nowrap
+                                              {%- if child.url == page.url %} bg-secondary text-primary font-medium
+                                              {%- else %} text-slate-800 hover:text-black {%- endif %}"
+                                              {%- if child.url == page.url -%}aria-current="page"{%- endif -%}
+                                            >
                                                 {{ child.key }}
                                             </a>
                                         </li>
@@ -84,8 +84,8 @@
                             {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
                             <a
                                 class="inline-flex py-1.5 px-5 whitespace-nowrap rounded-full
-                                {%- if entry.url == page.url %} bg-secondary-200 text-primary font-medium
-                                {%- else %} text-slate-800 hover:text-black {%- endif %}"
+                                {%- if entry.url == page.url %} bg-secondary-200 dark:bg-secondary-500 text-primary font-medium
+                                {%- else %} text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-white {%- endif %}"
                                 href="{{ entry.url }}"
                                 {%- if entry.url == page.url -%}aria-current="page"{%- endif -%}>
                                 {{ entry.key }}

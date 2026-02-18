@@ -42,7 +42,7 @@
 
   /* === TOPPER === */
   .topper {
-    @apply py-1 ~px-4/5 bg-secondary-200 ~text-sm/base text-slate-800 uppercase tracking-wider rounded-full;
+    @apply py-1 ~px-4/5 bg-secondary-200 dark:bg-primary ~text-sm/base text-slate-800 dark:text-white uppercase tracking-wider rounded-full;
   }
 }
 
