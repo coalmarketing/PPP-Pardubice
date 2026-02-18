@@ -40,20 +40,23 @@
                 </nav>
             </div>
 
-            <!-- CONTACT -->
-            <ul class="grid grid-cols-2 gap-y-24 gap-x-32">
-                {% for item in footer.contacts %}
-                    <li class="flex flex-col gap-2">
-                        <span class="text-xl text-slate-300 font-medium">{{ item.title }}</span>
+            <!-- CONTACTS -->
+            <div class="flex gap-32">
+                <!-- COLUMN -->
+                <ul class="flex flex-col gap-24">
+                    {% for item in footer.contacts %}
+                        <li class="flex flex-col gap-2">
+                            <span class="text-xl text-slate-300 font-medium">{{ item.title }}</span>
 
-                        {% if item.url %}
-                            <a href="{{ item.url }}" class="text-2xl text-white font-semibold">{{ item.text }}</a>
-                        {% else %}
-                            <span class="text-2xl text-white font-semibold">{{ item.text }}</span>
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
+                            {% if item.url %}
+                                <a href="{{ item.url }}" class="text-2xl text-white font-semibold">{{ item.text }}</a>
+                            {% else %}
+                                <span class="text-2xl text-white font-semibold">{{ item.text }}</span>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
 
         <!-- SEPARATOR + COPYRIGHT -->

@@ -1,10 +1,10 @@
 <!-- CTA -->
 <section class="~py-16/24 ~px-4/8 bg-slate-100 dark:bg-slate-900">
-    <div class="container m-auto relative flex flex-col item-start gap-12 p-24 bg-slate-950 rounded-3xl overflow-hidden">
+    <div class="container m-auto relative flex flex-col item-start gap-12 ~p-8/24 bg-slate-950 rounded-3xl overflow-hidden">
         <!-- TOPPER + HEADING -->
         <div class="flex flex-col items-start ~gap-3/4">
             <span class="topper">{{ cta.topper }}</span>
-            <h2 class="max-w-4xl ~text-3xl/6xl text-white font-bold !leading-[1.1] tracking-wide">
+            <h2 class="~max-w-xl/4xl ~text-3xl/6xl text-white font-bold !leading-[1.1] tracking-wide">
                 {{ cta.heading }}
             </h2>
         </div>
@@ -14,26 +14,26 @@
             <a href="{{ cta.ctaPrimary.url }}" class="btn">
                 <span>
                     <img src="/assets/svgs/header/calendar_month.svg"
-                                alt="Ikona kalendáře"
-                                width="16"
-                                height="16"
-                                loading="eager"
-                                decoding="async"
-                                aria-hidden="true"
-                                draggable="false">
+                        alt="Ikona kalendáře"
+                        width="16"
+                        height="16"
+                        loading="eager"
+                        decoding="async"
+                        aria-hidden="true"
+                        draggable="false">
                 </span>
 
                 <span>{{ cta.ctaPrimary.text }}</span>
             </a>
 
-            <a href="{{ cta.ctaSecondary.url }}" class="btn">
+            <a href="{{ cta.ctaSecondary.url }}" class="py-2.5 px-6 bg-slate-100 text-slate-800 font-bold uppercase rounded-full">
                 <span>{{ cta.ctaSecondary.text }}</span>
             </a>
         </div>
 
         <!-- BACKGROUND LOGO -->
         <img
-            class="absolute top-1/2 -translate-y-1/2 -right-16 opacity-50 -rotate-[30deg]"
+            class="absolute top-1/2 -translate-y-1/2 -right-16 ~size-[16rem]/[28rem] opacity-50 -rotate-[30deg]"
             src="/assets/svgs/logo-symbol-white.svg"
             alt="{{ client.name }} - světlé logo"
             width="448"
