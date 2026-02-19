@@ -1,0 +1,45 @@
+<!-- NAVIGATION -->
+<section class="peer ~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
+    <div class="container m-auto flex flex-col gap-16">
+        <!-- TOPPER + HEADING -->
+        <div class="flex flex-col items-start ~gap-3/4">
+            <span class="topper">{{ navigation.topper }}</span>
+            <h2 class="~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
+                {{ navigation.heading }}
+            </h2>
+        </div>
+
+        <!-- ITEMS -->
+        <ul class="grid" style="grid-template-columns: repeat({{ navigation.columns }}, minmax(0, {{ navigation.columns }}fr))">
+            {% for item in navigation.items %}
+                <li class="group">
+                    <a href="{{ item.url }}" class="relative flex flex-col justify-center items-center gap-8 h-full p-8 border-r group-last:border-r-0 border-slate-200 dark:border-slate-800 z-0 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100">
+                        <!-- ICON -->
+                        <div class="p-3 bg-secondary-200 rounded-full transition-colors duration-300 group-hover:bg-white">
+                            <img src="{{ item.icon.url }}"
+                                alt="{{ item.icon.alt }}"
+                                width="32"
+                                height="32"
+                                loading="lazy"
+                                decoding="async"
+                                aria-hidden="true"
+                                draggable="false">
+                        </div>
+
+                        <!-- TITLE -->
+                        <span class="text-center text-xl text-black dark:text-white font-semibold transition-colors duration-300 group-hover:text-white">{{ item.title | safe }}</span>
+
+                        <!-- HOVER DOTS -->
+                        <div class="absolute inset-0 -z-10 transition-[transform,opacity] duration-500 ease-in-out scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100">
+                            <!-- TOP DOTS -->
+                            <div class="before:absolute before:top-0 before:left-0 before:size-5 before:bg-secondary before:-translate-x-1/2 before:-translate-y-1/2 after:absolute after:top-0 after:right-0 after:size-5 after:bg-secondary after:translate-x-1/2 after:-translate-y-1/2"></div>
+
+                            <!-- BOTTOM DOTS -->
+                            <div class="before:absolute before:bottom-0 before:left-0 before:size-5 before:bg-secondary before:-translate-x-1/2 before:translate-y-1/2 after:absolute after:bottom-0 after:right-0 after:size-5 after:bg-secondary after:translate-x-1/2 after:translate-y-1/2"></div>
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,70 @@
+{% for section in sections %}
+    <!-- SECTION -->
+    <section class="group/section peer ~py-16/24 ~px-4/8 even:bg-white dark:even:bg-slate-950 odd:bg-slate-100 dark:odd:bg-slate-900">
+        <div class="container m-auto flex items-start gap-24">
+            <!-- TEXT + CTA -->
+            <div class="flex flex-col items-start gap-8">
+                <!-- HEADING + TEXT -->
+                <div class="flex flex-col ~gap-4/6">
+                    <!-- TOPPER + HEADING -->
+                    <div class="flex flex-col items-start ~gap-3/4">
+                        <span class="topper">{{ section.topper }}</span>
+                        <h2 class="max-w-xl ~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
+                            {{ section.heading }}
+                        </h2>
+                    </div>
+
+                    <!-- TEXT -->
+                    <div class="flex flex-col gap-4">
+                        {% for text in section.text %}
+                            <p class="max-w-xl font-inter ~text-base/lg text-slate-800 dark:text-slate-200">{{ text.paragraph | safe }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <a href="{{ section.cta.url }}" class="btn">
+                    <span>
+                        <img src="/assets/svgs/header/calendar_month.svg"
+                            alt="Ikona kalendáře"
+                            width="16"
+                            height="16"
+                            loading="eager"
+                            decoding="async"
+                            aria-hidden="true"
+                            draggable="false">
+                    </span>
+
+                    <span>{{ section.cta.text }}</span>
+                </a>
+            </div>
+
+            <!-- ITEMS -->
+            <div class="flex-1 flex flex-col gap-3">
+                {% for item in section.items %}
+                    <details class="group/details w-full bg-white border border-slate-200 rounded-2xl transition-colors duration-300 open:bg-secondary-100 open:border-secondary-200">
+                        <summary class="flex items-start gap-16 w-full py-6 px-8 list-none [&::-webkit-details-marker]:hidden hover:cursor-pointer">
+                            <!-- TITLE + TEXT -->
+                            <div class="flex flex-col gap-3">
+                                <!-- ICON + TITLE -->
+                                <div class="flex items-center gap-2.5 text-black transition-colors duration-300 group-open/details:text-primary [&>svg]:size-6">
+                                    {% include item.icon %}
+                                    <span class="text-xl font-bold">{{ item.title }}</span>
+                                </div>
+
+                                <p class="font-inter text-slate-800 dark:text-slate-200">{{ item.text }}</p>
+                            </div>
+
+                            <!-- OPEN/CLOSE ICON -->
+                            <svg class="shrink-0 ml-auto fill-black dark:fill-white transition-[transform,fill] duration-300 group-open/details:rotate-[135deg] group-open:fill-primary" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+                        </summary>
+
+                        <p class="p-0 font-proxima-nova text-zinc-800 dark:text-zinc-200 select-none group-open/details:pb-5 group-open/details:px-8 group-open/details:select-auto">
+                            {{ item.text }}
+                        </p>
+                    </details>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endfor %}

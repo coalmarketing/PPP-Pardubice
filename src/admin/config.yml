@@ -170,3 +170,79 @@ collections:
           widget: "hidden",
           default: ["novinky"],
         }
+
+  # ===================== #
+  # ===== DOKUMENTY ===== #
+  # ===================== #
+  - label: "Dokumenty"
+    name: "dokumenty"
+    folder: "src/content/cms/dokumenty"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    summary: "{{ title }} [{{ date | date('DD. MM. YYYY') }}]"
+    editor:
+      preview: true
+
+    view_filters:
+      - label: "Pardubice"
+        field: "workplace"
+        pattern: "Pardubice"
+
+      - label: "Chrudim"
+        field: "workplace"
+        pattern: "Chrudim"
+
+      - label: "Přelouč"
+        field: "workplace"
+        pattern: "Přelouč"
+
+      - label: "Holice"
+        field: "workplace"
+        pattern: "Holice"
+
+      - label: "Hlinsko v Čechách"
+        field: "workplace"
+        pattern: "Hlinsko v Čechách"
+
+      - label: "Třemošnice"
+        field: "workplace"
+        pattern: "Třemošnice"
+
+    view_groups:
+      - label: "Pracoviště"
+        field: "workplace"
+
+    fields:
+      - { label: "Název", name: "title", widget: "string" }
+      - { label: "Popis", name: "description", widget: "text" }
+      - { label: "Datum", name: "date", widget: "datetime" }
+
+      - label: "Kategorie"
+        name: "category"
+        widget: "select"
+        multiple: false
+        required: true
+        options:
+          - { label: "Doporučené dokumenty", value: "Doporučené dokumenty" }
+          - { label: "Pro žáky a rodiče", value: "Pro žáky a rodiče" }
+          - { label: "Pro školy", value: "Pro školy" }
+          - {
+              label: "Interní předpisy a metodiky",
+              value: "Interní předpisy a metodiky",
+            }
+          - {
+              label: "Výroční zprávy a oficiální dokumenty",
+              value: "Výroční zprávy a oficiální dokumenty",
+            }
+          - {
+              label: "Archiv starších materiálů",
+              value: "Archiv starších materiálů",
+            }
+
+      - { label: "Soubor", name: "file", widget: "file" }
+      - {
+          label: "Štítky",
+          name: "tags",
+          widget: "hidden",
+          default: ["dokumenty"],
+        }

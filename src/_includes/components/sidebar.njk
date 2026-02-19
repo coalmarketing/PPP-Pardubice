@@ -1,0 +1,31 @@
+<!-- SIDEBAR -->
+<div class="sticky top-32 flex flex-col gap-6 w-full max-w-xs p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl">
+    <!-- TITLE -->
+    <span class="text-2xl text-black font-bold">{{ sidebar.title }}</span>
+
+    <!-- ITEMS -->
+    <ul class="flex flex-col gap-1">
+        {% for item in sidebar.items %}
+            <li>
+                <a href="{{ item.url }}" class="group flex items-center gap-3 p-1 rounded-full transition-colors duration-300 hover:bg-secondary-100">
+                    <!-- ICON -->
+                    <div class="p-1 bg-secondary-100 rounded-full transition-colors duration-300 group-hover:bg-secondary-200">
+                        <img src="{{ item.icon.url }}"
+                            alt="{{ item.icon.alt }}"
+                            width="14"
+                            height="14"
+                            loading="lazy"
+                            decoding="async"
+                            aria-hidden="true"
+                            draggable="false">
+                    </div>
+
+                    <!-- TITLE -->
+                    <span class="text-slate-800 dark:text-slate-200 line-clamp-1 break-all transition-colors duration-300 group-hover:text-black">
+                        {{ item.title | safe }}
+                    </span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
