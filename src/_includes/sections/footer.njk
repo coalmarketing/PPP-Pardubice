@@ -31,7 +31,10 @@
                     <ul class="flex gap-8">
                         {% for item in footer.navigation %}
                             <li>
-                                <a href="{{ item.url }}" class="font-inter text-slate-200 aria-[current=page]:text-white aria-[current=page]:font-medium" {% if item.url == page.url -%} aria-current="page" {% endif -%}>
+                                <a
+                                    href="{{ item.url }}"
+                                    class="relative font-inter text-slate-200 aria-[current=page]:text-white aria-[current=page]:font-medium before:absolute before:-bottom-1 before:left-0 before:h-px before:w-full before:bg-slate-200 before:transition-transform before:duration-300 before:scale-x-0 hover:before:scale-x-100"
+                                    {%- if item.url == page.url -%} aria-current="page" {% endif -%}>
                                     {{ item.text }}
                                 </a>
                             </li>
@@ -41,22 +44,19 @@
             </div>
 
             <!-- CONTACTS -->
-            <div class="flex gap-32">
-                <!-- COLUMN -->
-                <ul class="flex flex-col gap-24">
-                    {% for item in footer.contacts %}
-                        <li class="flex flex-col gap-2">
-                            <span class="text-xl text-slate-300 font-medium">{{ item.title }}</span>
+            <ul class="flex gap-32">
+                {% for item in footer.contacts %}
+                    <li class="flex flex-col gap-2">
+                        <span class="text-xl text-slate-300 font-medium">{{ item.title }}</span>
 
-                            {% if item.url %}
-                                <a href="{{ item.url }}" class="text-2xl text-white font-semibold">{{ item.text }}</a>
-                            {% else %}
-                                <span class="text-2xl text-white font-semibold">{{ item.text }}</span>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+                        {% if item.url %}
+                            <a href="{{ item.url }}" class="text-2xl text-white font-semibold">{{ item.text }}</a>
+                        {% else %}
+                            <span class="text-2xl text-white font-semibold">{{ item.text }}</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
 
         <!-- SEPARATOR + COPYRIGHT -->

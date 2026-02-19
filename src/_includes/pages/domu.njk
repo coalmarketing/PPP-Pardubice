@@ -59,7 +59,7 @@
     <!-- SERVICES -->
     <section class="~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
         <div class="container m-auto flex flex-col ~gap-12/16">
-            <!-- HEADING + TEXT -->
+            <!-- HEADING + CTA -->
             <div class="flex flex-col xl:flex-row justify-between items-start xl:items-end ~gap-4/6">
                 <!-- TOPPER + HEADING -->
                 <div class="flex flex-col items-start ~gap-3/4">
@@ -69,32 +69,28 @@
                     </h2>
                 </div>
 
-                <!-- TEXT + CTA -->
-                <div class="flex flex-col-reverse xl:flex-col items-start xl:items-end gap-6">
-                    <a href="{{ services.cta.url }}" class="btn">
-                        <span>
-                            <img src="/assets/svgs/header/calendar_month.svg"
-                                alt="Ikona kalendáře"
-                                width="16"
-                                height="16"
-                                loading="eager"
-                                decoding="async"
-                                aria-hidden="true"
-                                draggable="false">
-                        </span>
+                <!-- CTA -->
+                <a href="{{ services.cta.url }}" class="btn">
+                    <span>
+                        <img src="/assets/svgs/header/calendar_month.svg"
+                            alt="Ikona kalendáře"
+                            width="16"
+                            height="16"
+                            loading="eager"
+                            decoding="async"
+                            aria-hidden="true"
+                            draggable="false">
+                    </span>
 
-                        <span>{{ services.cta.text }}</span>
-                    </a>
-
-                    <p class="~max-w-lg/xl font-inter text-left xl:text-right ~text-base/lg text-slate-800 dark:text-slate-200">{{ services.text | safe }}</p>
-                </div>
+                    <span>{{ services.cta.text }}</span>
+                </a>
             </div>
 
             <!-- ITEMS -->
             <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
                 {% for item in services.items %}
                     <li class="group">
-                        <a href="#" class="relative flex flex-col items-center gap-10 ~p-6/12 border-b group-last:border-b-0 md:border-b-0 md:group-odd:border-r xl:group-even:border-r border-slate-200 dark:border-slate-800 z-10 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-transform before:duration-500 before:ease-in-out before:scale-0 hover:before:scale-100">
+                        <a href="#" class="relative flex flex-col items-center gap-10 ~p-6/12 border-b group-last:border-b-0 md:border-b-0 md:group-odd:border-r xl:group-even:border-r border-slate-200 dark:border-slate-800 z-10 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100">
                             <!-- ICON -->
                             <div class="~p-3/4 bg-secondary-200 rounded-full transition-colors duration-300 group-hover:bg-white">
                                 <img class="~size-10/12"
@@ -176,7 +172,7 @@
                     <!-- TITLE + TEXT -->
                     <div class="flex flex-col">
                         <span class="~text-base/lg text-black dark:text-white font-bold leading-none">{{ about.banner.title }}</span>
-                        <span class="font-inter ~text-sm/base text-slate-800 dark:text-slate-200 leading-none">{{ about.banner.text }}</span>
+                        <span class="font-inter ~text-sm/base text-slate-800 dark:text-slate-200 leading-none">{{ about.banner.text | safe }}</span>
                     </div>
                 </div>
             </div>
@@ -193,7 +189,7 @@
                         </h2>
                     </div>
 
-                    <p class="max-w-2xl font-inter ~text-base/lg text-slate-800 dark:text-slate-200">{{ about.text }}</p>
+                    <p class="max-w-2xl font-inter ~text-base/lg text-slate-800 dark:text-slate-200">{{ about.text | safe }}</p>
 
                     <!-- SEPARATOR -->
                     <div class="h-px bg-slate-300 dark:bg-slate-700"></div>
@@ -229,21 +225,23 @@
         </div>
     </section>
 
-    <!-- OUR VALUES -->
+    {% include "sections/locations.njk" %}
+
+    <!-- BLOG -->
     <section class="~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
-        <div class="container m-auto flex flex-col xl:flex-row items-center xl:items-start ~gap-8/24">
+        <div class="container m-auto flex flex-col ~gap-8/16">
             <!-- HEADING + CTA -->
-            <div class="flex flex-col items-start gap-8 w-full ~max-w-xs/sm">
+            <div class="flex justify-between items-end">
                 <!-- TOPPER + HEADING -->
-                <div class="flex flex-col items-center xl:items-start ~gap-3/4">
-                    <span class="topper text-center xl:text-left">{{ values.topper }}</span>
-                    <h2 class="text-center xl:text-left ~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
-                        {{ values.heading }}
+                <div class="flex flex-col items-start ~gap-3/4">
+                    <span class="topper">{{ blog.topper }}</span>
+                    <h2 class="~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
+                        {{ blog.heading }}
                     </h2>
                 </div>
 
                 <!-- CTA -->
-                <a href="{{ values.cta.url }}" class="hidden xl:flex btn">
+                <a href="{{ blog.cta.url }}" class="btn">
                     <span>
                         <img src="/assets/svgs/header/calendar_month.svg"
                             alt="Ikona kalendáře"
@@ -255,48 +253,73 @@
                             draggable="false">
                     </span>
 
-                    <span>{{ values.cta.text }}</span>
+                    <span>{{ blog.cta.text }}</span>
                 </a>
             </div>
 
-            <!-- ITEMS -->
-            <ul class="grid grid-cols-1 md:grid-cols-2">
-                {% for item in values.items %}
-                    <li class="group relative flex flex-col items-center gap-10 ~p-6/12 border-b last:border-b-0 md:odd:border-r md:first:border-b md:&:nth-child(2)]:border-b border-slate-200 dark:border-slate-800 z-10 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-transform before:duration-500 before:ease-in-out before:scale-0 hover:before:scale-100">
-                        <!-- ICON -->
-                        <div class="~p-3/4 bg-secondary-200 rounded-full transition-colors duration-300 group-hover:bg-white">
-                            <img class="~size-10/12"
-                                src="{{ item.icon.url }}"
-                                alt="{{ item.icon.alt }}"
-                                width="48"
-                                height="48"
-                                loading="lazy"
-                                decoding="async"
-                                aria-hidden="true"
-                                draggable="false">
-                        </div>
+            <!-- NOVINKY -->
+            <ul class="grid grid-cols-2 ~gap-4/6">
+                {% for item in collections.novinky | reverse | limit(2) %}
+                    <li>
+                        <a href="{{ item.url }}" class="group flex flex-col gap-4">
+                            <!-- IMAGE -->
+                            <div class="rounded-2xl overflow-hidden">
+                                <picture>
+                                    <!-- MOBILE IMAGE -->
+                                    <source media="(max-width: 600px)" srcset="{% getUrl item.data.image | avif %}" type="image/avif">
+                                    <source media="(max-width: 600px)" srcset="{% getUrl item.data.image | webp %}" type="image/webp">
+                                    <source media="(max-width: 600px)" srcset="{% getUrl item.data.image | jpeg %}" type="image/jpeg">
+                                    <!-- TABLET IMAGE -->
+                                    <source media="(max-width: 1024px)" srcset="{% getUrl item.data.image | avif %}" type="image/avif">
+                                    <source media="(max-width: 1024px)" srcset="{% getUrl item.data.image | webp %}" type="image/webp">
+                                    <source media="(max-width: 1024px)" srcset="{% getUrl item.data.image | jpeg %}" type="image/jpeg">
+                                    <!-- DESKTOP IMAGE -->
+                                    <source media="(min-width: 1024px)" srcset="{% getUrl item.data.image | resize({ width: 858, height: 572 }) | avif %}" type="image/avif">
+                                    <source media="(min-width: 1024px)" srcset="{% getUrl item.data.image | resize({ width: 858, height: 572 }) | webp %}" type="image/webp">
+                                    <source media="(min-width: 1024px)" srcset="{% getUrl item.data.image | resize({ width: 858, height: 572 }) | jpeg %}" type="image/jpeg">
+                                    <img
+                                        class="object-cover aspect-[3/2] w-full rounded-2xl transition-transform duration-500 ease-in-out group-hover:scale-110"
+                                        src="{% getUrl item.data.image | resize({ width: 858, height: 572 }) | jpeg %}"
+                                        alt="{{ item.data.imageAlt }}"
+                                        width="572"
+                                        height="381"
+                                        loading="lazy"
+                                        decoding="async"
+                                        aria-hidden="true"
+                                        draggable="false">
+                                </picture>
+                            </div>
 
-                        <!-- TITLE + TEXT -->
-                        <div class="flex flex-col ~gap-2/3">
-                            <h3 class="text-center ~text-xl/2xl text-black dark:text-white font-semibold transition-colors duration-300 group-hover:text-white">{{ item.title }}</h3>
-                            <p class="font-inter text-center ~text-sm/base text-slate-800 dark:text-slate-200 transition-colors duration-300 group-hover:text-slate-200">{{ item.text | safe }}</p>
-                        </div>
+                            <!-- METADATA + TITLE -->
+                            <div class="flex flex-col gap-1.5 px-4">
+                                <!-- METADATA -->
+                                <ul class="flex items-center gap-2 font-inter text-slate-800">
+                                    <!-- WORKPLACE -->
+                                    <li>
+                                        {% if item.data.workplace.length === 1 %}
+                                            {{ item.data.workplace[0] }}
+                                        {% elif item.data.workplace.length < 5 %}
+                                            {{ item.data.workplace.length }} pracoviště
+                                        {% elif item.data.workplace.length < 6 %}
+                                            {{ item.data.workplace.length }} pracovišť
+                                        {% elif item.data.workplace.length >= 6 %}
+                                            Všechna pracoviště
+                                        {% endif %}
+                                    </li>
 
-                        <!-- HOVER DOTS -->
-                        <div class="absolute inset-0 -z-10 transition-[transform,opacity] duration-500 ease-in-out scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100">
-                            <!-- TOP DOTS -->
-                            <div class="before:absolute before:top-0 before:left-0 before:size-5 before:bg-secondary before:-translate-x-1/2 before:-translate-y-1/2 after:absolute after:top-0 after:right-0 after:size-5 after:bg-secondary after:translate-x-1/2 after:-translate-y-1/2"></div>
+                                    <li class="text-slate-600">·</li>
+                                    <li>{{ item.data.date | postDate }}</li>
+                                </ul>
 
-                            <!-- BOTTOM DOTS -->
-                            <div class="before:absolute before:bottom-0 before:left-0 before:size-5 before:bg-secondary before:-translate-x-1/2 before:translate-y-1/2 after:absolute after:bottom-0 after:right-0 after:size-5 after:bg-secondary after:translate-x-1/2 after:translate-y-1/2"></div>
-                        </div>
+                                <!-- TITLE -->
+                                <h3 class="text-2xl font-bold">{{ item.data.title }}</h3>
+                            </div>
+                        </a>
                     </li>
                 {% endfor %}
             </ul>
         </div>
     </section>
-
-    {% include "sections/locations.njk" %}
 
     {% include "sections/cta.njk" %}
 {% endblock body %}

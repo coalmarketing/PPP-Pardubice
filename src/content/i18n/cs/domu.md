@@ -27,8 +27,6 @@ hero:
 services:
   topper: Služby
   heading: Odborné služby pro děti, rodiny a školy
-  
-  text: Poskytujeme odbornou podporu dětem, rodičům, pedagogům i&nbsp;lékařům při řešení vzdělávacích, vývojových a osobních obtíží.
 
   cta:
     url: /objednat-se
@@ -40,7 +38,7 @@ services:
         alt: Ikona hlavy dítěte
 
       title: Děti
-      text: Pomáháme dětem zvládat vývojové, vzdělávací i osobní obtíže v každém věku, od předškoláků po dospívající.
+      text: Pomáháme dětem a dospívajícím najít cestu k úspěšnému vzdělávání a osobní spokojenosti.
 
     - icon:
         url: /assets/svgs/services/school.svg
@@ -60,7 +58,7 @@ services:
         url: /assets/svgs/services/medical_information.svg
         alt: Ikona lékařské vizitky
 
-      title: Lékaři
+      title: Instituce a specialisté
       text: Odborná spolupráce s lékaři při&nbsp;diagnostice, terapii a péči o děti a&nbsp;dospívající.
 
 
@@ -68,7 +66,7 @@ about:
   topper: O nás
   heading: Kdo jsme a s čím vám pomáháme
 
-  text: Jsme Pedagogicko-psychologická poradna Pardubice, příspěvková organizace zřizovaná Pardubickým krajem. Poskytujeme psychologickou a speciálně-pedagogickou péči dětem a mladým lidem ve věku přibližně od 3 do 19 let, jejich rodičům a pedagogickým pracovníkům škol a školských zařízení.
+  text: Jsme příspěvková organizace zřizovaná Pardubickým krajem, zařazena v&nbsp;rejstříku škol a školských zařízení MŠMT jako školské poradenské zařízení. Poskytujeme bezplatné pedagogicko-psychologické služby klientům především v okrese Pardubice, Chrudim.
 
   items:
     - text: Odborná péče pro děti a mladé lidi ve věku 3–19 let, jejich rodiče i školy
@@ -88,44 +86,6 @@ about:
 
     title: 5 pracovišť
     text: napříč Pardubickým krajem
-
-
-values:
-  topper: Naše hodnoty
-  heading: Proč se obrátit právě na nás
-
-  cta:
-    url: /objednat-se
-    text: Objednat se
-
-  items:
-    - icon:
-        url: /assets/svgs/our-values/child_care.svg
-        alt: Ikona hlavy dítěte
-
-      title: Podpora dětí od 3 do 19 let
-      text: Pomáháme dětem, dospívajícím i jejich rodinám v klíčových vývojových etapách.
-
-    - icon:
-        url: /assets/svgs/our-values/groups.svg
-        alt: Ikona skupiny lidí
-
-      title: Spolupráce s rodiči i školami
-      text: Pomáháme dětem zvládat vývojové, vzdělávací i osobní obtíže v každém věku, od předškoláků po dospívající.
-
-    - icon:
-        url: /assets/svgs/our-values/favorite.svg
-        alt: Ikona srdce
-
-      title: Individuální a citlivý přístup
-      text: Každý klient je jedinečný. Hledáme řešení na míru konkrétní situaci..
-
-    - icon:
-        url: /assets/svgs/our-values/verified_user.svg
-        alt: Ikona štítu s fajfkou
-
-      title: Stabilní veřejná instituce
-      text: Jsme příspěvková organizace zřizovaná Pardubickým krajem s dlouhodobou tradicí.
 
 
 blog:

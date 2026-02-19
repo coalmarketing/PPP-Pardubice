@@ -19,14 +19,89 @@ media_folder: "src/assets/images/cms"
 # Where should media be served, relative to the base of the built site
 public_folder: "/assets/images/cms"
 
+# Slug function configuration
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
 # Decap CMS Collections
 collections:
-  # BLOG CONFIG
+  # ===================== #
+  # ===== AKTUALITY ===== #
+  # ===================== #
+  - label: "Aktuality"
+    name: "aktuality"
+    folder: "src/content/cms/aktuality"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    summary: "{{ title }} [{{ date | date('DD. MM. YYYY') }}]"
+    editor:
+      preview: true
+
+    view_filters:
+      - label: "Pardubice"
+        field: "workplace"
+        pattern: "Pardubice"
+
+      - label: "Chrudim"
+        field: "workplace"
+        pattern: "Chrudim"
+
+      - label: "Přelouč"
+        field: "workplace"
+        pattern: "Přelouč"
+
+      - label: "Holice"
+        field: "workplace"
+        pattern: "Holice"
+
+      - label: "Hlinsko v Čechách"
+        field: "workplace"
+        pattern: "Hlinsko v Čechách"
+
+      - label: "Třemošnice"
+        field: "workplace"
+        pattern: "Třemošnice"
+
+    view_groups:
+      - label: "Pracoviště"
+        field: "workplace"
+
+    fields:
+      - { label: "Název", name: "title", widget: "string" }
+      - { label: "Datum", name: "date", widget: "datetime" }
+
+      - label: "Pracoviště"
+        name: "workplace"
+        widget: "select"
+        multiple: true
+        required: true
+        options:
+          - { label: "Pardubice", value: "Pardubice" }
+          - { label: "Chrudim", value: "Chrudim" }
+          - { label: "Přelouč", value: "Přelouč" }
+          - { label: "Holice", value: "Holice" }
+          - { label: "Hlinsko v Čechách", value: "Hlinsko v Čechách" }
+          - { label: "Třemošnice", value: "Třemošnice" }
+
+      - { label: "Obsah", name: "body", widget: "markdown" }
+      - {
+          label: "Štítky",
+          name: "tags",
+          widget: "hidden",
+          default: ["aktuality"],
+        }
+
+  # =================== #
+  # ===== NOVINKY ===== #
+  # =================== #
   - label: "Novinky"
     name: "novinky"
     folder: "src/content/cms/novinky"
     create: true
     slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    summary: "{{ title }} [{{ date | date('DD. MM. YYYY') }}]"
     editor:
       preview: true
 
@@ -89,4 +164,9 @@ collections:
           hint: "Popište, co je na obrázku. Slouží k validnímu SEO příspěvku.",
         }
       - { label: "Obsah", name: "body", widget: "markdown" }
-      - { label: "Štítky", name: "tags", widget: "hidden", default: ["blog"] }
+      - {
+          label: "Štítky",
+          name: "tags",
+          widget: "hidden",
+          default: ["novinky"],
+        }

@@ -20,6 +20,16 @@ export default {
                 },
                 {
                     icon: {
+                        url: "/assets/svgs/locations/mail.svg",
+                        alt: "Ikona obálky"
+                    },
+                    title: "Datová schránka",
+                    link: {
+                        text: "m2wrqu9"
+                    }
+                },
+                {
+                    icon: {
                         url: "/assets/svgs/locations/call.svg",
                         alt: "Ikona telefonu"
                     },

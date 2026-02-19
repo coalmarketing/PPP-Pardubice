@@ -8,8 +8,6 @@ export default {
         { url: "/kontakty", text: "Kontakty" }
     ],
     contacts: [
-        { title: "Email", text: "poradna@ppp-pardubice.cz", url: "mailto:poradna@ppp-pardubice.cz" },
-        { title: "Telefon", text: "466 410 327", url: "tel:466410327" },
         { title: "IČO", text: "48160806" },
         { title: "Datová schránka", text: "m2wrqu9" }
     ],
