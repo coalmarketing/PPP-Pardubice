@@ -1,12 +1,38 @@
 <!-- FAQ -->
 <section class="~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
-    <div class="container m-auto flex flex-col gap-24">
-        <!-- TOPPER + HEADING -->
-        <div class="flex flex-col items-start ~gap-3/4">
-            <span class="topper">{{ faq.topper }}</span>
-            <h2 class="~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
-                {{ faq.heading }}
-            </h2>
+    <div class="container m-auto flex items-start gap-24">
+        <!-- HEADING + TEXT -->
+        <div class="flex flex-col ~gap-4/6 w-full max-w-xl">
+            <!-- TOPPER + HEADING -->
+            <div class="flex flex-col items-start ~gap-3/4">
+                <span class="topper">{{ faq.topper }}</span>
+                <h2 class="~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
+                    {{ faq.heading }}
+                </h2>
+            </div>
+
+            <!-- TEXT -->
+            <p class="font-inter ~text-base/lg text-slate-800 dark:text-slate-200">{{ faq.text | safe }}</p>
+        </div>
+
+        <!-- ITEMS -->
+        <div class="flex-1 flex flex-col gap-3">
+            {% for item in faq.items %}
+                <details class="group/details w-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl transition-colors duration-300 open:bg-secondary-100 open:border-secondary-200 dark:open:bg-primary dark:open:border-slate-600">
+                    <summary class="flex items-start gap-16 w-full py-5 px-7 list-none [&::-webkit-details-marker]:hidden hover:cursor-pointer">
+                        <!-- QUESTION -->
+                        <span class="text-xl text-black dark:text-white font-bold">{{ item.question }}</span>
+
+                        <!-- OPEN/CLOSE ICON -->
+                        <svg class="shrink-0 ml-auto fill-black dark:fill-white transition-[transform,fill] duration-300 group-open/details:rotate-[135deg] group-open:fill-primary" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+                    </summary>
+
+                    <!-- ANSWER -->
+                    <p class="p-0 font-proxima-nova text-zinc-800 dark:text-zinc-200 select-none group-open/details:pb-5 group-open/details:px-7 group-open/details:select-auto">
+                        {{ item.answer }}
+                    </p>
+                </details>
+            {% endfor %}
         </div>
     </div>
 </section>

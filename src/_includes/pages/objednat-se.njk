@@ -46,14 +46,14 @@
                         <div class="h-px bg-slate-300 dark:bg-slate-700"></div>
 
                         <!-- FIELDS -->
-
-                        {% for field in fieldset.fields %}
-                            <div class="grid gap-x-2.5 gap-y-5" style="grid-template-columns: repeat({{ field.columns }}, minmax(0, {{ field.columns }}fr))">
-                                {% if field.type === "radio" or field.type === "checkbox" %}
-                                    <!-- {{ field.name | upper }} -->
-                                    {% for option in field.options %}
-                                        <label class="group flex flex-col justify-center items-center gap-5 h-52 p-6 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-2xl hover:cursor-pointer transition-colors duration-300 has-[:checked]:border-2 has-[:checked]:border-primary dark:has-[:checked]:border-secondary">
-                                            <input
+                        <div class="grid gap-x-2.5 gap-y-5" {%- if fieldset.columns %} style="grid-template-columns: repeat({{ fieldset.columns }}, minmax(0, {{ fieldset.columns }}fr))" {%- endif %}>
+                            {% for field in fieldset.fields %}
+                                <div class="grid gap-2.5" style="grid-template-columns: repeat({{ field.columns }}, minmax(0, {{ field.columns }}fr))">
+                                    {% if field.type === "radio" or field.type === "checkbox" %}
+                                        <!-- {{ field.name | upper }} -->
+                                        {% for option in field.options %}
+                                            <label class="group flex flex-col justify-center items-center gap-5 h-52 p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl hover:cursor-pointer hover:border-black dark:hover:border-white transition-colors duration-300 has-[:checked]:border-2 has-[:checked]:border-primary dark:has-[:checked]:border-secondary">
+                                                <input
                                                 id="{{ field.name | slug }}-{{ option.value | slug }}"
                                                 type="{{ field.type }}"
                                                 name="{{ field.name }}"
@@ -61,24 +61,43 @@
                                                 class="sr-only"
                                                 {%- if field.required %} required {%- endif %}>
 
-                                            <!-- ICON -->
-                                            <div class="p-3 bg-secondary-200 text-primary rounded-full [&>svg]:size-8 transition-colors duration-300 group-has-[:checked]:bg-primary dark:group-has-[:checked]:bg-secondary group-has-[:checked]:text-white dark:group-has-[:checked]:text-black">
-                                                {% include option.icon %}
-                                            </div>
+                                                <!-- ICON -->
+                                                <div class="p-3 bg-secondary-200 text-primary rounded-full [&>svg]:size-8 transition-colors duration-300 group-has-[:checked]:bg-primary dark:group-has-[:checked]:bg-secondary group-has-[:checked]:text-white dark:group-has-[:checked]:text-black">
+                                                    {% include option.icon %}
+                                                </div>
 
-                                            <!-- VALUE -->
-                                            <span class="text-lg text-black dark:text-white font-bold">{{ option.value }}</span>
+                                                <!-- VALUE -->
+                                                <span class="text-lg text-black dark:text-white font-bold">{{ option.value }}</span>
+                                            </label>
+                                        {% endfor %}
+
+                                    {% elif field.type === "separator" %}
+                                        <!-- SEPARATOR -->
+                                        <div class="h-px bg-slate-300 dark:bg-slate-700"></div>
+
+                                    {% elif field.type === "textarea" %}
+                                        <!-- {{ field.name | upper }} -->
+                                        <label class="flex flex-col gap-2.5">
+                                            <span class="text-black dark:text-white font-bold">{{ field.name }}</span>
+                                            <textarea class="input min-h-[3lh] max-h-[30lh]" name="{{ field.name }}" rows="3" {%- if field.placeholder %} placeholder="{{ field.placeholder }}" {%- endif %} {%- if field.required %} required {%- endif %}></textarea>
                                         </label>
-                                    {% endfor %}
-                                {% else %}
-                                    <!-- {{ field.name | upper }} -->
-                                    <label class="flex flex-col gap-2.5">
-                                        <span class="text-black font-bold">{{ field.name }}</span>
-                                        <input class="input" type="{{ field.type }}" name="{{ field.name }}" autocomplete="{{ field.autocomplete }}" {%- if field.required %} required {%- endif %}>
-                                    </label>
-                                {% endif %}
-                            </div>
-                        {% endfor %}
+
+                                    {% else %}
+                                        <!-- {{ field.name | upper }} -->
+                                        <label class="flex flex-col gap-2.5">
+                                            <span class="text-black dark:text-white font-bold">{{ field.name }}</span>
+                                            <input 
+                                            class="input"
+                                            type="{{ field.type }}"
+                                            name="{{ field.name }}"
+                                            autocomplete="{{ field.autocomplete }}"
+                                            {%- if field.placeholder %} placeholder="{{ field.placeholder }}" {%- endif %}
+                                            {%- if field.required %} required {%- endif %}>
+                                        </label>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
 
                     </fieldset>
                 {% endfor %}
@@ -87,45 +106,6 @@
     </section>
 
     {% include "sections/locations.njk" %}
-
-    <!-- FAQ -->
-    <section class="~py-16/24 ~px-4/8">
-        <div class="container m-auto flex items-start gap-24">
-            <!-- HEADING + TEXT -->
-            <div class="flex flex-col ~gap-4/6 w-full max-w-xl">
-                <!-- TOPPER + HEADING -->
-                <div class="flex flex-col items-start ~gap-3/4">
-                    <span class="topper">{{ faq.topper }}</span>
-                    <h2 class="~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
-                        {{ faq.heading }}
-                    </h2>
-                </div>
-
-                <!-- TEXT -->
-                <p class="font-inter ~text-base/lg text-slate-800 dark:text-slate-200">{{ faq.text | safe }}</p>
-            </div>
-
-            <!-- ITEMS -->
-            <div class="flex-1 flex flex-col gap-3">
-                {% for item in faq.items %}
-                    <details class="group/details w-full bg-slate-100 border border-slate-200 rounded-2xl transition-colors duration-300 open:bg-secondary-100 open:border-secondary-200">
-                        <summary class="flex items-start gap-16 w-full py-5 px-7 list-none [&::-webkit-details-marker]:hidden hover:cursor-pointer">
-                            <!-- QUESTION -->
-                            <span class="text-xl font-bold">{{ item.question }}</span>
-
-                            <!-- OPEN/CLOSE ICON -->
-                            <svg class="shrink-0 ml-auto fill-black dark:fill-white transition-[transform,fill] duration-300 group-open/details:rotate-[135deg] group-open:fill-primary" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
-                        </summary>
-
-                        <!-- ANSWER -->
-                        <p class="p-0 font-proxima-nova text-zinc-800 dark:text-zinc-200 select-none group-open/details:pb-5 group-open/details:px-7 group-open/details:select-auto">
-                            {{ item.answer }}
-                        </p>
-                    </details>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
+    {% include "sections/faq.njk" %}
     {% include "sections/cta.njk" %}
 {% endblock body %}
