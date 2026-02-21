@@ -26,15 +26,32 @@ form:
         alt: Ikona bodu na mapě
 
       legend: Výběr pobočky
-      text: Vyberte pobočku, kterou preferujete pro vyšetření nebo konzultaci.
+      text: Vyberte pobočku, kterou preferujete pro vyšetření nebo konzultaci. 
 
       fields:
-        - type: radio
+        - name: Pobočka
+          type: radio
           required: true
+
           columns: 2
 
           options:
-            - icon:
-                url: /assets/svgs/objednat-se/choices/location_city.svg
-                alt: Ikona budovy
+            - icon: src/assets/svgs/objednat-se/location_city.svg
+              value: Pardubice
+
+            - icon: src/assets/svgs/objednat-se/location_city.svg
+              value: Chrudim
+
+    - icon:
+        url: /assets/svgs/objednat-se/child_care.svg
+        alt: Ikona hlavy dítěte
+
+      legend: Údaje o dítěti
+      text: Základní informace o dítěti nebo zletilém studentovi, pro kterého žádáte péči.
+
+      fields:
+        - name: Jméno a příjmení
+          type: text
+          autocomplete: name
+          required: true
 ---

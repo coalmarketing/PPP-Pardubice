@@ -36,7 +36,7 @@
                             </div>
 
                             <!-- LEGEND + TEXT -->
-                            <div class="flex flex-col gap-1">
+                            <div class="flex flex-col">
                                 <legend class="text-2xl text-black dark:text-white font-bold">{{ fieldset.legend }}</legend>
                                 <p class="font-inter ~text-base/lg text-slate-800 dark:text-slate-200">{{ fieldset.text }}</p>
                             </div>
@@ -44,6 +44,42 @@
 
                         <!-- SEPARATOR -->
                         <div class="h-px bg-slate-300 dark:bg-slate-700"></div>
+
+                        <!-- FIELDS -->
+
+                        {% for field in fieldset.fields %}
+                            <div class="grid gap-x-2.5 gap-y-5" style="grid-template-columns: repeat({{ field.columns }}, minmax(0, {{ field.columns }}fr))">
+                                {% if field.type === "radio" or field.type === "checkbox" %}
+                                    <!-- {{ field.name | upper }} -->
+                                    {% for option in field.options %}
+                                        <label class="group flex flex-col justify-center items-center gap-5 h-52 p-6 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-2xl hover:cursor-pointer transition-colors duration-300 has-[:checked]:border-2 has-[:checked]:border-primary dark:has-[:checked]:border-secondary">
+                                            <input
+                                                id="{{ field.name | slug }}-{{ option.value | slug }}"
+                                                type="{{ field.type }}"
+                                                name="{{ field.name }}"
+                                                value="{{ option.value }}"
+                                                class="sr-only"
+                                                {%- if field.required %} required {%- endif %}>
+
+                                            <!-- ICON -->
+                                            <div class="p-3 bg-secondary-200 text-primary rounded-full [&>svg]:size-8 transition-colors duration-300 group-has-[:checked]:bg-primary dark:group-has-[:checked]:bg-secondary group-has-[:checked]:text-white dark:group-has-[:checked]:text-black">
+                                                {% include option.icon %}
+                                            </div>
+
+                                            <!-- VALUE -->
+                                            <span class="text-lg text-black dark:text-white font-bold">{{ option.value }}</span>
+                                        </label>
+                                    {% endfor %}
+                                {% else %}
+                                    <!-- {{ field.name | upper }} -->
+                                    <label class="flex flex-col gap-2.5">
+                                        <span class="text-black font-bold">{{ field.name }}</span>
+                                        <input class="input" type="{{ field.type }}" name="{{ field.name }}" autocomplete="{{ field.autocomplete }}" {%- if field.required %} required {%- endif %}>
+                                    </label>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+
                     </fieldset>
                 {% endfor %}
             </form>
