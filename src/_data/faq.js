@@ -1,7 +1,7 @@
 export default {
     topper: "FAQ",
     heading: "Často kladené otázky",
-    text: "Chápeme, že rozhodnutí obrátit se na poradnu často přichází v období nejistoty a otázek. V této sekci najdete odpovědi na nejčastější dotazy o službách pedagogicko-psychologické poradny.",
+    text: "Chápeme, že rozhodnutí obrátit se na poradnu často přichází v&nbsp;období nejistoty a otázek. V této sekci najdete odpovědi na nejčastější dotazy o službách pedagogicko-psychologické poradny.",
     items: [
         {
             question: "Jak se mohu do poradny objednat?",

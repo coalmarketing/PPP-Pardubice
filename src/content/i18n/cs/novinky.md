@@ -8,4 +8,14 @@ permalink: 'novinky/'
 eleventyNavigation:
   key: Novinky
   order: 600
+
+
+landing:
+  heading: Novinky a aktuality
+
+  breadcrumbs:
+    - url: /
+      title: Domů
+
+    - title: Novinky
 ---
