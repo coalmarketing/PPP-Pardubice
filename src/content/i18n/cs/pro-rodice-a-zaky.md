@@ -71,4 +71,31 @@ sections:
         title: Předškolní věk
 
         text: Pomáháme dětem v raném vývoji a při přípravě na vstup do školy. Zaměřujeme se na školní zralost, řečový vývoj, adaptaci na mateřskou školu a včasné zachycení obtíží.
+
+        content:
+          - type: list
+            title: S čím pomáháme
+
+            items:
+              - text: Diagnostika specifických poruch učení (dyslexie, dysgrafie aj.)
+              - text: Pomoc při výukových a adaptačních potížích
+              - text: Doporučení podpůrných opatření a metod učení
+              - text: Individuální a skupinová psychoterapie
+              - text: Spolupráce s rodinou a školou
+      
+      - icon: src/assets/svgs/pro-rodice-a-zaky/school.svg
+        title: Předškolní věk
+
+        text: Podporujeme děti při adaptaci na školní prostředí a při prvních výukových obtížích. Zaměřujeme se na diagnostiku, nápravu poruch učení i psychickou pohodu dítěte.
+
+        content:
+          - type: list
+            title: S čím pomáháme
+
+            items:
+              - text: Diagnostika specifických poruch učení (dyslexie, dysgrafie aj.)
+              - text: Pomoc při výukových a adaptačních potížích
+              - text: Doporučení podpůrných opatření a metod učení
+              - text: Individuální a skupinová psychoterapie
+              - text: Spolupráce s rodinou a školou
 ---

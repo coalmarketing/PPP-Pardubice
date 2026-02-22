@@ -52,14 +52,14 @@
                                     {% if field.type === "radio" or field.type === "checkbox" %}
                                         <!-- {{ field.name | upper }} -->
                                         {% for option in field.options %}
-                                            <label class="group flex flex-col justify-center items-center gap-5 h-52 p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl hover:cursor-pointer hover:border-black dark:hover:border-white transition-colors duration-300 has-[:checked]:border-2 has-[:checked]:border-primary dark:has-[:checked]:border-secondary">
+                                            <label class="group flex flex-col justify-center items-center gap-5 h-52 p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl hover:cursor-pointer hover:border-black dark:hover:border-white has-[:checked]:hover:border-primary dark:has-[:checked]:hover:border-secondary transition-colors duration-300 has-[:checked]:border-2 has-[:checked]:border-primary dark:has-[:checked]:border-secondary">
                                                 <input
-                                                id="{{ field.name | slug }}-{{ option.value | slug }}"
-                                                type="{{ field.type }}"
-                                                name="{{ field.name }}"
-                                                value="{{ option.value }}"
-                                                class="sr-only"
-                                                {%- if field.required %} required {%- endif %}>
+                                                    id="{{ field.name | slug }}-{{ option.value | slug }}"
+                                                    type="{{ field.type }}"
+                                                    name="{{ field.name }}"
+                                                    value="{{ option.value }}"
+                                                    class="sr-only"
+                                                    {%- if field.required %} required {%- endif %}>
 
                                                 <!-- ICON -->
                                                 <div class="p-3 bg-secondary-200 text-primary rounded-full [&>svg]:size-8 transition-colors duration-300 group-has-[:checked]:bg-primary dark:group-has-[:checked]:bg-secondary group-has-[:checked]:text-white dark:group-has-[:checked]:text-black">
@@ -70,6 +70,17 @@
                                                 <span class="text-lg text-black dark:text-white font-bold">{{ option.value }}</span>
                                             </label>
                                         {% endfor %}
+
+                                    {% elif field.type === "inline-checkbox" %}
+                                        <!-- {{ field.name | upper }} -->
+                                        <label class="flex items-center gap-2.5">
+                                            <input 
+                                                class="checkbox"
+                                                type="checkbox"
+                                                name="{{ field.name }}"
+                                                {%- if field.required %} required {%- endif %}>
+                                            <span class="text-black dark:text-white font-bold select-none">{{ field.value | safe }}</span>
+                                        </label>
 
                                     {% elif field.type === "separator" %}
                                         <!-- SEPARATOR -->
@@ -84,15 +95,15 @@
 
                                     {% else %}
                                         <!-- {{ field.name | upper }} -->
-                                        <label class="flex flex-col gap-2.5">
+                                        <label class="flex flex-col gap-2">
                                             <span class="text-black dark:text-white font-bold">{{ field.name }}</span>
                                             <input 
-                                            class="input"
-                                            type="{{ field.type }}"
-                                            name="{{ field.name }}"
-                                            autocomplete="{{ field.autocomplete }}"
-                                            {%- if field.placeholder %} placeholder="{{ field.placeholder }}" {%- endif %}
-                                            {%- if field.required %} required {%- endif %}>
+                                                class="input"
+                                                type="{{ field.type }}"
+                                                name="{{ field.name }}"
+                                                autocomplete="{{ field.autocomplete }}"
+                                                {%- if field.placeholder %} placeholder="{{ field.placeholder }}" {%- endif %}
+                                                {%- if field.required %} required {%- endif %}>
                                         </label>
                                     {% endif %}
                                 </div>

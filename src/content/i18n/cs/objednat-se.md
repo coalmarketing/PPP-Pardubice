@@ -145,10 +145,30 @@ form:
       text: Vyberte oblast, se kterou potřebujete pomoci. Můžete označit i více možností.
 
       fields:
-        - name: Jméno a příjmení
-          type: text
-          autocomplete: off
+        - name: Důvody žádosti
+          type: checkbox
           required: true
+
+          columns: 3
+
+          options:
+            - icon: src/assets/svgs/objednat-se/choices/family_restroom.svg
+              value: Výchovné problémy v rodině
+
+            - icon: src/assets/svgs/objednat-se/choices/school.svg
+              value: Výchovné problémy ve škole
+
+            - icon: src/assets/svgs/objednat-se/choices/menu_book.svg
+              value: Prospěchové problémy
+
+            - icon: src/assets/svgs/objednat-se/choices/explore.svg
+              value: Profesní orientace
+
+            - icon: src/assets/svgs/objednat-se/choices/child_care.svg
+              value: Vstup do 1. ročníku ZŠ
+
+            - icon: src/assets/svgs/objednat-se/choices/more_horiz.svg
+              value: Jiný důvod
 
         - type: separator
 
@@ -177,5 +197,23 @@ form:
           type: text
           autocomplete: off
           placeholder: SVP, OSPOD, jiné
+          required: true
+
+    - icon:
+        url: /assets/svgs/objednat-se/task_alt.svg
+        alt: Ikona fajfky v kroužku
+
+      legend: Souhlas a odeslání
+      text: Zkontrolujte vyplněné údaje a odešlete žádost ke zpracování.
+
+      fields:
+        - name: Zpracování osobních údajů
+          type: inline-checkbox
+          value: Souhlasím se <a href="/ochrana-osobnich-udaju" class="text-primary underline">zpracováním osobních údajů</a>
+          required: true
+
+        - name: Potvrzení pravdivosti údajů
+          type: inline-checkbox
+          value: Potvrzuji, že uvedené údaje jsou pravdivé
           required: true
 ---
