@@ -77,11 +77,11 @@ sections:
             title: S čím pomáháme
 
             items:
-              - text: Diagnostika specifických poruch učení (dyslexie, dysgrafie aj.)
-              - text: Pomoc při výukových a adaptačních potížích
-              - text: Doporučení podpůrných opatření a metod učení
-              - text: Individuální a skupinová psychoterapie
-              - text: Spolupráce s rodinou a školou
+              - text: Konzultace k vývojovým zvláštnostem dítěte
+              - text: Posouzení školní zralosti a připravenosti na ZŠ
+              - text: Podpora při adaptaci na MŠ
+              - text: Logopedická péče a rozvoj grafomotoriky
+              - text: Spolupráce s mateřskými školami a speciálními zařízeními
       
       - icon: src/assets/svgs/pro-rodice-a-zaky/school.svg
         title: Předškolní věk
