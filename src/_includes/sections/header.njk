@@ -1,9 +1,14 @@
-<!-- HEADER -->
-<header class="~py-2/4 ~px-4/8 fixed top-0 flex w-full z-50 group-[.interior]/body:bg-white dark:group-[.interior]/body:bg-slate-950 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-950 before:shadow-md before:-z-10 before:transition-transform before:duration-300 before:ease-in-out before:scale-y-0 before:origin-top group-[.scroll]/body:before:scale-y-100">
-    <div class="container m-auto flex justify-between items-center ~gap-4/8">
-        <!-- LOGO -->
-        <a href="/" class="flex items-center ~gap-3/5">
-            <img
+<!-- OZNÁMENÍ + HEADER -->
+<div class="fixed top-0 flex flex-col w-full z-50">
+    {% for item in collections.oznameni | whereAll({"enabled": true}) %}
+        {% include "sections/notice.njk" %}
+    {% endfor %}
+
+    <header class="~py-2/4 ~px-4/8 flex w-full group-[.interior]/body:bg-white dark:group-[.interior]/body:bg-slate-950 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-950 before:shadow-md before:-z-10 before:transition-transform before:duration-300 before:ease-in-out before:scale-y-0 before:origin-top group-[.scroll]/body:before:scale-y-100">
+        <div class="container m-auto flex justify-between items-center ~gap-4/8">
+            <!-- LOGO -->
+            <a href="/" class="flex items-center ~gap-3/5">
+                <img
                 class="block dark:hidden ~h-12/16 w-auto"
                 src="/assets/svgs/logo-symbol-dark.svg"
                 alt="{{ client.name }} - tmavé logo"
@@ -14,7 +19,7 @@
                 aria-hidden="true"
                 draggable="false">
 
-            <img
+                <img
                 class="hidden dark:block ~h-12/16 w-auto"
                 src="/assets/svgs/logo-symbol-white.svg"
                 alt="{{ client.name }} - světlé logo"
@@ -25,86 +30,84 @@
                 aria-hidden="true"
                 draggable="false">
 
-            <span class="~max-w-40/48 text-black dark:text-white ~text-base/xl font-bold ~leading-[1.125rem]/[1.375rem]">{{ client.name }}</span>
-        </a>
+                <span class="~max-w-40/48 text-black dark:text-white ~text-base/xl font-bold ~leading-[1.125rem]/[1.375rem]">{{ client.name }}</span>
+            </a>
 
-        <!-- NAVIGATION -->
-        <nav class="hidden xl:block p-1.5 bg-secondary-50 dark:bg-primary rounded-full">
-            <ul class="flex gap-2">
-                {% set navPages = collections.all | eleventyNavigation %}
+            <!-- NAVIGATION -->
+            <nav class="hidden xl:block p-1.5 bg-secondary-50 dark:bg-primary rounded-full">
+                <ul class="flex gap-2">
+                    {% for entry in mainNavigation.items %}
+                        {# Define a hasChild variable to make it easier to test what navigation items are have child dropdown pages #}
+                        {% set hasChild = entry.subitems %}
 
-                {# Loop through all pages with a eleventyNavigation in the frontmatter #}
-                {% for entry in navPages %}
-
-                    {# Define a hasChild variable to make it easier to test what navigation items are have child dropdown pages #}
-                    {% set hasChild = entry.children.length %}
-
-                    <li
-                      class="group/li inline-flex {% if hasChild -%} dropdown {%- endif %}"
+                        <li
+                      class="group/li relative inline-flex {% if hasChild -%} dropdown {%- endif %}"
                       {%- if hasChild -%}tabindex="0"{%- endif -%}
                     >
-
-                        {# If the page has child dropdown pages, render it as a <button> tag with the appropriate dropdown HTML #}
-                        {% if hasChild %}
-                            {# Render the <button> with the active class, dropdown icon and child links #}
-                            <button
-                              class="dropdown-button"
+                            {# If the page has child dropdown pages, render it as a <button> tag with the appropriate dropdown HTML #}
+                            {% if hasChild %}
+                                {# Render the <button> with the active class, dropdown icon and child links #}
+                                <a
+                              href="{{ entry.url }}"
+                              class="dropdown-button relative flex item-center gap-1.5 py-1.5 px-5 whitespace-nowrap z-10
+                              {%- if entry.url == page.url %} 
+                              {%- else %} before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 group-hover/li:before:scale-100 group-hover/li:before:opacity-100 {%- endif %}"
                               aria-expanded="false"
                               aria-controls="dropdown-{{ entry.key | slug }}"
                               aria-label="dropdown-{{ entry.key | slug }}"
                               type="button"
                             >
-                                <span>{{ entry.key }}</span>
+                                    <span>{{ entry.key }}</span>
 
-                                <!-- ICON -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="mt-0.5" viewBox="0 0 16 16">
-                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                                </svg>
-                            </button>
+                                    <!-- ICON -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="mt-1.5" viewBox="0 0 16 16">
+                                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                    </svg>
+                                </a>
 
-                            {# Dropdowns have another ul/li set up within the parent li, which gets rendered in the same way as a normal link #}
-                            <div>
-                                <ul id="dropdown-{{ entry.key | slug }}">
-                                    {% for child in entry.children %}
-                                        <li class="drop-li">
-                                            <a
+                                {# Dropdowns have another ul/li set up within the parent li, which gets rendered in the same way as a normal link #}
+                                <div class="absolute top-full left-0 p-3">
+                                    <ul id="dropdown-{{ entry.key | slug }}" class="py-2 px-1 bg-secondary-50 dark:bg-primary rounded-2xl transition-[transform,opacity] duration-500 ease-in-out origin-top scale-y-0 opacity-0 group-hover/li:scale-y-100 group-hover/li:opacity-100">
+                                        {% for child in entry.subitems %}
+                                            <li class="drop-li">
+                                                <a
                                               href="{{ child.url }}"
-                                              class="li-link inline-flex py-1.5 px-5 whitespace-nowrap
+                                              class="li-link inline-flex py-1 px-3 text-sm whitespace-nowrap
                                               {%- if child.url == page.url %} bg-secondary text-primary font-medium
-                                              {%- else %} text-slate-800 hover:text-black {%- endif %}"
+                                              {%- else %} relative text-slate-800 hover:text-black z-10 before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100 {%- endif %}"
                                               {%- if child.url == page.url -%}aria-current="page"{%- endif -%}
                                             >
-                                                {{ child.key }}
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        {% else %}
-                            {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
-                            <a
+                                                    {{ child.key }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% else %}
+                                {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
+                                <a
                                 class="inline-flex py-1.5 px-5 whitespace-nowrap rounded-full
                                 {%- if entry.url == page.url %} bg-secondary-200 dark:bg-secondary-500 text-primary font-medium
                                 {%- else %} relative text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-black z-10 before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100 {%- endif %}"
                                 href="{{ entry.url }}"
                                 {%- if entry.url == page.url -%}aria-current="page"{%- endif -%}>
-                                {{ entry.key }}
-                            </a>
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
-        </nav>
+                                    {{ entry.key }}
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
 
-        <!-- DARKMODE + CTA -->
-        <div class="flex items-center gap-2">
-            <!-- DARKMODE SWITCH -->
-            <label class="darkmode-container relative h-8 w-8 select-none hover:cursor-pointer" for="dark-mode-toggle">
-                <span class="sr-only">Přepínač tmavého režimu</span>
-                <input id="dark-mode-toggle" type="checkbox" class="invisible">
+            <!-- DARKMODE + CTA -->
+            <div class="flex items-center gap-2">
+                <!-- DARKMODE SWITCH -->
+                <label class="darkmode-container relative h-8 w-8 select-none hover:cursor-pointer" for="dark-mode-toggle">
+                    <span class="sr-only">Přepínač tmavého režimu</span>
+                    <input id="dark-mode-toggle" type="checkbox" class="invisible">
 
-                <!-- LIGHTMODE -->
-                <img
+                    <!-- LIGHTMODE -->
+                    <img
                     class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-[transform,opacity] duration-300 opacity-100 dark:opacity-0 dark:-translate-y-6"
                     src="/assets/svgs/light_mode.svg"
                     alt="Ikona měsíce"
@@ -115,8 +118,8 @@
                     aria-hidden="true"
                     draggable="false">
 
-                <!-- LIGHTMODE -->
-                <img
+                    <!-- LIGHTMODE -->
+                    <img
                     class="absolute top-1/2 left-1/2 translate-y-6 -translate-x-1/2 transition-[transform,opacity] duration-300 opacity-0 dark:opacity-100 dark:-translate-y-1/2"
                     src="/assets/svgs/dark_mode.svg"
                     alt="Ikona měsíce"
@@ -126,12 +129,12 @@
                     decoding="async"
                     aria-hidden="true"
                     draggable="false">
-            </label>
+                </label>
 
-            <!-- CTA -->
-            <a href="/objednat-se" class="btn max-lg:hidden">
-                <span>
-                    <img src="/assets/svgs/header/calendar_month.svg"
+                <!-- CTA -->
+                <a href="/objednat-se" class="btn max-lg:hidden">
+                    <span>
+                        <img src="/assets/svgs/header/calendar_month.svg"
                         alt="Ikona kalendáře"
                         width="16"
                         height="16"
@@ -139,25 +142,26 @@
                         decoding="async"
                         aria-hidden="true"
                         draggable="false">
-                </span>
+                    </span>
 
-                <span>Objednat se</span>
-            </a>
+                    <span>Objednat se</span>
+                </a>
 
-            <!-- MOBILE MENU BUTTON -->
-            <button
+                <!-- MOBILE MENU BUTTON -->
+                <button
               id="mobile-menu-toggle"
               class="group lg:hidden flex justify-center items-center gap-1 h-11 w-11 bg-secondary rounded-xl transition-transform duration-300 [&.active]:rotate-90"
               type="button"
               aria-expanded="false"
             >
-                <span class="sr-only">Otevřít navigaci</span>
-                <span class="relative block h-3.5 w-5">
-                    <span class="absolute top-0 block h-0.5 w-full bg-white rounded-full transition-transform duration-300 group-[.active]:rotate-45 group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
-                    <span class="absolute top-1/2 -translate-y-1/2 block h-0.5 w-full bg-white rounded-full transition-opacity duration-300 group-[.active]:opacity-0"></span>
-                    <span class="absolute bottom-0 block h-0.5 w-full bg-white rounded-full transition-transform duration-300 group-[.active]:rotate-315 group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
-                </span>
-            </button>
+                    <span class="sr-only">Otevřít navigaci</span>
+                    <span class="relative block h-3.5 w-5">
+                        <span class="absolute top-0 block h-0.5 w-full bg-white rounded-full transition-transform duration-300 group-[.active]:rotate-45 group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
+                        <span class="absolute top-1/2 -translate-y-1/2 block h-0.5 w-full bg-white rounded-full transition-opacity duration-300 group-[.active]:opacity-0"></span>
+                        <span class="absolute bottom-0 block h-0.5 w-full bg-white rounded-full transition-transform duration-300 group-[.active]:rotate-315 group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
+                    </span>
+                </button>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
+</div>

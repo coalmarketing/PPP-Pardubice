@@ -53,6 +53,13 @@
   .checkbox {
     @apply form-checkbox border-slate-200 dark:border-slate-800 rounded checked:bg-primary focus:ring-primary checked:focus:bg-primary checked:hover:bg-primary;
   }
+
+  /* === BLOG POSTS === */
+  .prose {
+    p {
+      @apply font-inter;
+    }
+  }
 }
 
 

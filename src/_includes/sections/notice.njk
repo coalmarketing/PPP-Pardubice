@@ -1,0 +1,29 @@
+{% set icon = {
+    "warning": "src/assets/svgs/notice/warning.svg",
+    "danger": "src/assets/svgs/notice/danger.svg",
+    "info": "src/assets/svgs/notice/info.svg",
+    "success": "src/assets/svgs/notice/success.svg"
+} %}
+
+<div class="py-4 ~px-4/8
+    {%- if item.data.type === 'info' %} bg-blue-400
+    {%- elif item.data.type === 'warning' %} bg-amber-400
+    {%- elif item.data.type === 'danger' %} bg-red-400
+    {%- elif item.data.type === 'success' %} bg-green-400 {%- endif %}">
+    <div class="container m-auto flex justify-center items-center gap-4 text-black [&>svg]:size-5">
+        <!-- ICON -->
+        {% include icon[item.data.type] %}
+
+        <!-- TEXT + CTA -->
+        <div class="inline-flex gap-2">
+            <p class="font-semibold">{{ item.data.description }}</p>
+
+            {% if item.url %}
+                <!-- CTA -->
+                <a href="{{ item.url }}" class="relative text-primary font-semibold before:absolute before:-bottom-0.5 before:left-0 before:h-0.5 before:w-full before:bg-primary before:transition-transform before:duration-300 before:scale-x-0 before:origin-center hover:before:scale-x-100">
+                   Dozvědět se více
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>

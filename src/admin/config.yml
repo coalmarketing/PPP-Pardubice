@@ -246,3 +246,89 @@ collections:
           widget: "hidden",
           default: ["dokumenty"],
         }
+
+  # ============================= #
+  # ===== KRITICKÁ OZNÁMENÍ ===== #
+  # ============================= #
+  - label: "Kritická oznámení"
+    name: "oznameni"
+    folder: "src/content/cms/oznameni"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    summary: "{{ title }} [{{ date | date('DD. MM. YYYY') }}]"
+    editor:
+      preview: true
+
+    view_filters:
+      - label: "Aktivní oznámení"
+        field: "enabled"
+        pattern: true
+
+      - label: "Pardubice"
+        field: "workplace"
+        pattern: "Pardubice"
+
+      - label: "Chrudim"
+        field: "workplace"
+        pattern: "Chrudim"
+
+      - label: "Přelouč"
+        field: "workplace"
+        pattern: "Přelouč"
+
+      - label: "Holice"
+        field: "workplace"
+        pattern: "Holice"
+
+      - label: "Hlinsko v Čechách"
+        field: "workplace"
+        pattern: "Hlinsko v Čechách"
+
+      - label: "Třemošnice"
+        field: "workplace"
+        pattern: "Třemošnice"
+
+    view_groups:
+      - label: "Typ oznámení"
+        field: "type"
+
+    fields:
+      - {
+          label: "Název",
+          name: "title",
+          widget: "string",
+          hint: "Interní název oznámení sloužící k identifikaci položky v administraci. Tento název se na webu nezobrazuje.",
+        }
+      - {
+          label: "Text",
+          name: "description",
+          widget: "string",
+          hint: "Krátký text, který je zobrazen v horní častí webu, pokud je oznámení aktivní.",
+        }
+
+      - label: "Typ"
+        name: "type"
+        widget: "select"
+        multiple: false
+        required: true
+        hint: "Zvolený typ určuje barvu a vizuální zvýraznění banneru na webu."
+        options:
+          - { label: "Informace (modrá)", value: "info" }
+          - { label: "Upozornění (oranžová)", value: "warning" }
+          - { label: "Důležité oznámení (červená)", value: "danger" }
+          - { label: "Potvrzení (zelená)", value: "success" }
+
+      - {
+          label: "Zobrazit oznámení",
+          name: "enabled",
+          widget: "boolean",
+          required: false,
+          hint: "V případě zakliknutí tohoto pole se oznámení zobrazuje na webu.",
+        }
+      - { label: "Obsah", name: "body", widget: "markdown", required: false }
+      - {
+          label: "Štítky",
+          name: "tags",
+          widget: "hidden",
+          default: ["oznameni"],
+        }

@@ -1,0 +1,15 @@
+{% if item.data.workplace %}
+    {% set workplace = item.data.workplace %}
+{% endif %}
+
+{% if workplace %}
+    {% if workplace.length === 1 %}
+        {{ item.data.workplace[0] }}
+    {% elif workplace.length < 5 %}
+        {{ workplace.length }} pracoviště
+    {% elif workplace.length < 6 %}
+        {{ workplace.length }} pracovišť
+    {% elif workplace.length >= 6 %}
+        Všechna pracoviště
+    {% endif %}
+{% endif %}

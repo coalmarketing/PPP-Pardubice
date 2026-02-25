@@ -1,6 +1,6 @@
 {% for section in sections %}
     <!-- SECTION -->
-    <section class="group/section peer ~py-16/24 ~px-4/8 even:bg-white dark:even:bg-slate-950 odd:bg-slate-100 dark:odd:bg-slate-900">
+    <section {%- if section.id %} id="{{ section.id }}" {%- endif %} class="group/section peer ~py-16/24 ~px-4/8 even:bg-white dark:even:bg-slate-950 odd:bg-slate-100 dark:odd:bg-slate-900">
         <div class="container m-auto flex flex-col xl:flex-row items-start ~gap-12/24">
             <!-- TEXT + CTA -->
             <div class="xl:sticky xl:top-32 flex flex-col items-start gap-8">

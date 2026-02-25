@@ -33,21 +33,27 @@ services:
     text: Objednat se
 
   items:
-    - icon:
+    - url: /pro-rodice-a-zaky#deti-a-zaci
+    
+      icon:
         url: /assets/svgs/services/child_care.svg
         alt: Ikona hlavy dítěte
 
       title: Děti
       text: Pomáháme dětem a dospívajícím najít cestu k úspěšnému vzdělávání a osobní spokojenosti.
 
-    - icon:
+    - url: /pro-skoly
+    
+      icon:
         url: /assets/svgs/services/school.svg
         alt: Ikona školní čepice
 
       title: Učitelé
       text: Odborná podpora pedagogům, výchovným poradcům i školám při&nbsp;práci s dětmi a třídami.
 
-    - icon:
+    - url: /pro-rodice-a-zaky#rodice
+    
+      icon:
         url: /assets/svgs/services/family_restroom.svg
         alt: Ikona rodičů s dítětem
 

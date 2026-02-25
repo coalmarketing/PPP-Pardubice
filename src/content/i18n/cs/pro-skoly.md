@@ -1,13 +1,13 @@
 ---
-layout: "pages/pro-rodice-a-zaky.njk"
+layout: "pages/pro-skoly.njk"
 
-title: 'Pro rodiče a žáky'
+title: 'Pro školy'
 description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
-permalink: 'pro-rodice-a-zaky/'
+permalink: 'pro-skoly/'
 
 eleventyNavigation:
-  key: Pro rodiče a žáky
-  order: 300
+  key: Pro školy
+  order: 400
 
 
 landing:
@@ -30,21 +30,21 @@ navigation:
             url: /assets/svgs/pro-rodice-a-zaky/school.svg
             alt: Ikona školní čepice
           
-          url: "#deti-a-zaci"
+          url: "#pro-deti-a-zaky"
           title: Pro děti a žáky
 
         - icon:
             url: /assets/svgs/pro-rodice-a-zaky/family_restroom.svg
             alt: Ikona rodičů s dětmi
           
-          url: "#rodice"
+          url: "#pro-rodice"
           title: Pro rodiče
 
         - icon:
             url: /assets/svgs/pro-rodice-a-zaky/timeline.svg
             alt: Ikona časové osy
           
-          url: "#deti-a-zaci"
+          url: "#podle-veku-ditete"
           title: Podle věku dítěte
 
         - icon:
@@ -56,9 +56,7 @@ navigation:
 
 
 sections:
-  - id: deti-a-zaci
-  
-    topper: Pro děti a žáky
+  - topper: Pro děti a žáky
     heading: Služby pro děti a žáky
 
     text:
@@ -133,9 +131,7 @@ sections:
               - text: Pomoc při osobních, vztahových a krizových situacích
               - text: Besedy, preventivní programy a spolupráce se školami
 
-  - id: rodice
-
-    topper: Pro rodiče
+  - topper: Pro rodiče
     heading: Odborná poradenská pomoc pro rodiče
 
     text:

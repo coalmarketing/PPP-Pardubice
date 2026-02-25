@@ -1,0 +1,12 @@
+{% extends "layouts/base.njk" %}
+
+{% block body %}
+    {% include "sections/landing.njk" %}
+    {% include "sections/navigation.njk" %}
+    {% include "sections/inner-content.njk" %}
+
+    {% set items = collections.dokumenty | whereAll({"category": documents.category}) %}
+    {% include "sections/documents.njk" %}
+
+    {% include "sections/cta.njk" %}
+{% endblock body %}
