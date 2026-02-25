@@ -85,7 +85,7 @@
                             <a
                                 class="inline-flex py-1.5 px-5 whitespace-nowrap rounded-full
                                 {%- if entry.url == page.url %} bg-secondary-200 dark:bg-secondary-500 text-primary font-medium
-                                {%- else %} relative text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-white z-10 before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100 {%- endif %}"
+                                {%- else %} relative text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-black z-10 before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100 {%- endif %}"
                                 href="{{ entry.url }}"
                                 {%- if entry.url == page.url -%}aria-current="page"{%- endif -%}>
                                 {{ entry.key }}

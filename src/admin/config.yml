@@ -220,11 +220,11 @@ collections:
       - label: "Kategorie"
         name: "category"
         widget: "select"
-        multiple: false
+        multiple: true
         required: true
         options:
           - { label: "Doporučené dokumenty", value: "Doporučené dokumenty" }
-          - { label: "Pro žáky a rodiče", value: "Pro žáky a rodiče" }
+          - { label: "Pro rodiče a žáky", value: "Pro rodiče a žáky" }
           - { label: "Pro školy", value: "Pro školy" }
           - {
               label: "Interní předpisy a metodiky",
@@ -239,7 +239,7 @@ collections:
               value: "Archiv starších materiálů",
             }
 
-      - { label: "Soubor", name: "file", widget: "file" }
+      - { label: "Soubor", name: "url", widget: "file" }
       - {
           label: "Štítky",
           name: "tags",

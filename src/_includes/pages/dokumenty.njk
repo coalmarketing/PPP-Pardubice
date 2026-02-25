@@ -6,11 +6,36 @@
 
     <!-- DOCUMENTS -->
     <section class="peer ~py-16/24 ~px-4/8 bg-slate-100 dark:bg-slate-900">
-        <div class="container m-auto flex flex-col items-start gap-16">
+        <div class="container m-auto flex items-start gap-16">
             {% include "components/sidebar.njk" %}
 
             <!-- DOCUMENTS -->
-            <div class="flex flex-col gap-24"></div>
+            <div class="flex-1 flex flex-col gap-24">
+                {# Group the 'dokumenty' collection by the 'category' property in their data. #}
+                {% set groups = collections.dokumenty | groupBy("data.category") %}
+
+                {% for group in groups %}
+                    <div class="relative flex flex-col gap-8">
+                        {% if group.key !== "_ungrouped" %}
+                            <!-- ANCHOR -->
+                            <div id="{{ group.key | slug }}" class="absolute -top-32"></div>
+
+                            <!-- TOPPER + HEADING -->
+                            <div class="flex flex-col items-start ~gap-3/4">
+                                <span class="topper">Dokumenty</span>
+                                <h3 class="~text-2xl/4xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">{{ group.key }}</h3>
+                            </div>
+                        {% endif %}
+
+                        <!-- FILES -->
+                        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ~gap-4/6">
+                            {% for document in group.items %}
+                                {% include "components/document.njk" %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </section>
 

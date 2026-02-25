@@ -148,7 +148,6 @@ export default (eleventyConfig) => {
     eleventyConfig.addFilter("whereAll", function (collection, conditions = {}) {
         if (!Array.isArray(collection)) return [];
 
-        // Helper for nested props like "eleventyNavigation.parent"
         const getDeep = (obj, path) => {
             return path.split(".").reduce((acc, key) => acc && acc[key], obj);
         }
@@ -156,9 +155,115 @@ export default (eleventyConfig) => {
         return collection.filter((item) => {
             return Object.entries(conditions).every(([prop, expected]) => {
                 const actual = getDeep(item.data, prop);
+
+                // NEW LOGIC: If the value in the file is an array, check if it contains the expected value
+                if (Array.isArray(actual)) {
+                    return actual.includes(expected);
+                }
+
+                // Fallback to strict equality for strings/booleans
                 return actual === expected;
             });
         });
+    });
+
+    /**
+     * 🗂️ Group by Property Filter (with Custom Ordering)
+     * Groups an array of objects based on a specified key, with optional custom sorting for the groups.
+     *
+     * - Supports nested properties using dot notation (e.g., "data.section").
+     * - If the key's value is an ARRAY, the item will be added to a group for EACH value in the array.
+     * - Items where the key is not set, undefined, or an empty array will be in a group with the key "_ungrouped".
+     * - Accepts an optional third argument: an array of strings to define a custom sort order for the groups.
+     *   Groups not in the order array will be appended alphabetically.
+     *
+     * @param {Array} array The array to group.
+     * @param {string} key The property to group by.
+     * @param {Array<string>} [order=[]] Optional. An array defining the desired order of group keys.
+     *
+     * @returns {Array<{key: string, items: Array<Object>}>} An array of group objects.
+     *
+     * @example
+     * {# Basic usage #}
+     * {% set postsByTag = collections.posts | groupBy("data.tags") %}
+     *
+     * @example
+     * {# Usage with custom ordering #}
+     * {% set order = ["Pedagogové", "Nepedagogové"] %}
+     * {% set employeesByGroup = section.items | groupBy("data.group", order) %}
+     */
+    eleventyConfig.addFilter("groupBy", (array, key, order = []) => {
+        // Return an empty array if the input isn't a valid array
+        if (!Array.isArray(array)) {
+            return [];
+        }
+
+        const ungroupedKey = "_ungrouped";
+        const grouped = {};
+
+        array.forEach(item => {
+            // Resolve the value of the key, which could be a string, an array, or undefined.
+            const groupValue = key.split('.').reduce((obj, k) => (obj && obj[k] !== undefined) ? obj[k] : undefined, item);
+
+            // Logic for handling arrays
+            if (Array.isArray(groupValue)) {
+                // If the array is empty, treat the item as ungrouped.
+                if (groupValue.length === 0) {
+                    if (!grouped[ungroupedKey]) {
+                        grouped[ungroupedKey] = [];
+                    }
+                    grouped[ungroupedKey].push(item);
+                } else {
+                    // If the array has values, add the item to a group for EACH value.
+                    groupValue.forEach(keyInArray => {
+                        if (!grouped[keyInArray]) {
+                            grouped[keyInArray] = [];
+                        }
+                        grouped[keyInArray].push(item);
+                    });
+                }
+            }
+
+            // Fallback logic for single values
+            else {
+                let groupKey = groupValue;
+
+                if (groupKey === undefined) {
+                    groupKey = ungroupedKey;
+                }
+
+                if (!grouped[groupKey]) {
+                    grouped[groupKey] = [];
+                }
+                grouped[groupKey].push(item);
+            }
+        });
+
+        // Sorting and final transformation
+        const allKeys = Object.keys(grouped);
+        let sortedKeys;
+
+        // If a custom order array is provided, use it.
+        if (order && order.length > 0) {
+            // Get the keys that are in the custom order array, maintaining that order.
+            const orderedKeys = order.filter(k => allKeys.includes(k));
+            // Get the remaining keys that were not in the custom order array.
+            const remainingKeys = allKeys.filter(k => !order.includes(k));
+            // Sort the remaining keys alphabetically for predictable results.
+            remainingKeys.sort((a, b) => a.localeCompare(b, 'cs'));
+
+            // Combine them, with the custom-ordered keys first.
+            sortedKeys = [...orderedKeys, ...remainingKeys];
+        } else {
+            // Default behavior: if no order is provided, sort all keys alphabetically.
+            sortedKeys = allKeys.sort((a, b) => a.localeCompare(b, 'cs'));
+        }
+
+        // Map over the new sorted array of keys to create the final output.
+        return sortedKeys.map(groupKey => ({
+            key: groupKey,
+            items: grouped[groupKey]
+        }));
     });
 
     // ═════════════════════════════════════════════════════════════════════════

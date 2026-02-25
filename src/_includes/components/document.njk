@@ -1,0 +1,38 @@
+{# Check whether the document's url is a link #}
+{% set isExternal = document
+    .data
+    .url
+    .startsWith('http') %}
+
+{% set extension = document
+    .data
+    .url
+    .split('.') | last %}
+
+<li class="flex flex-col gap-6 p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl">
+    <!-- METADATA + TEXT -->
+    <div class="flex flex-col gap-5">
+        <!-- EXTENSION + DATE -->
+        <div class="flex items-center gap-4">
+            <!-- EXTENSION -->
+            <div class="py-1 px-3 bg-slate-100 data-[extension=pdf]:bg-red-100 data-[extension=doc]:bg-blue-100 data-[extension=docx]:bg-blue-100 text-sm text-slate-700 data-[extension=pdf]:text-red-700 data-[extension=doc]:text-blue-700 data-[extension=docx]:text-blue-700 font-bold rounded-lg" data-extension="{{ extension }}">
+                {{ extension | upper }}
+            </div>
+
+            <!-- DATE -->
+            <span class="font-inter text-sm text-slate-800 dark:text-slate-200">{{ document.data.date | postDate }}</span>
+        </div>
+
+        <!-- TITLE + TEXT -->
+        <div class="flex flex-col gap-1.5">
+            <span class="text-xl text-black dark:text-white font-semibold">{{ document.data.title }}</span>
+            <p class="font-inter text-slate-800 dark:text-slate-200">{{ document.data.description }}</p>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="{{ document.data.url }}" target="_blank" class="flex justify-center items-center gap-2 p-2 bg-secondary-100 text-primary font-bold rounded-full [&>svg]:size-5 transition-colors duration-300 hover:bg-primary hover:text-white">
+        {% include "src/assets/svgs/documents/download.svg" %}
+        <span>Zobrazit soubor</span>
+    </a>
+</li>
