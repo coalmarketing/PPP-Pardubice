@@ -10,7 +10,7 @@
 @layer components {
   /* === BUTTONS === */
   .btn {
-    @apply flex items-center bg-primary text-white font-bold uppercase rounded-full;
+    @apply flex items-center bg-primary text-white font-bold whitespace-nowrap uppercase rounded-full;
   }
 
   .btn {
