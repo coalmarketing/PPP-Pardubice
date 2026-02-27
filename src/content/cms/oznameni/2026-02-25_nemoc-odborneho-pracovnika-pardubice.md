@@ -1,7 +1,9 @@
 ---
-title: Nemoc odborného pracovníka - Pardubice
+title: Nemoc odborného pracovníka
 description: Z důvodu nemoci odborného pracovníka může dojít ke změně
   objednaných termínů na pracovišti Pardubice.
+workplace:
+  - Pardubice
 type: warning
 enabled: true
 tags:

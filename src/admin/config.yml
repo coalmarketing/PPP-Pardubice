@@ -183,35 +183,6 @@ collections:
     editor:
       preview: true
 
-    view_filters:
-      - label: "Pardubice"
-        field: "workplace"
-        pattern: "Pardubice"
-
-      - label: "Chrudim"
-        field: "workplace"
-        pattern: "Chrudim"
-
-      - label: "Přelouč"
-        field: "workplace"
-        pattern: "Přelouč"
-
-      - label: "Holice"
-        field: "workplace"
-        pattern: "Holice"
-
-      - label: "Hlinsko v Čechách"
-        field: "workplace"
-        pattern: "Hlinsko v Čechách"
-
-      - label: "Třemošnice"
-        field: "workplace"
-        pattern: "Třemošnice"
-
-    view_groups:
-      - label: "Pracoviště"
-        field: "workplace"
-
     fields:
       - { label: "Název", name: "title", widget: "string" }
       - { label: "Popis", name: "description", widget: "text" }
@@ -255,7 +226,7 @@ collections:
     folder: "src/content/cms/oznameni"
     create: true
     slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
-    summary: "{{ title }} [{{ date | date('DD. MM. YYYY') }}]"
+    summary: "{{ title }}"
     editor:
       preview: true
 
@@ -289,6 +260,9 @@ collections:
         pattern: "Třemošnice"
 
     view_groups:
+      - label: "Pracoviště"
+        field: "workplace"
+
       - label: "Typ oznámení"
         field: "type"
 
@@ -305,6 +279,19 @@ collections:
           widget: "string",
           hint: "Krátký text, který je zobrazen v horní častí webu, pokud je oznámení aktivní.",
         }
+
+      - label: "Pracoviště"
+        name: "workplace"
+        widget: "select"
+        multiple: true
+        required: true
+        options:
+          - { label: "Pardubice", value: "Pardubice" }
+          - { label: "Chrudim", value: "Chrudim" }
+          - { label: "Přelouč", value: "Přelouč" }
+          - { label: "Holice", value: "Holice" }
+          - { label: "Hlinsko v Čechách", value: "Hlinsko v Čechách" }
+          - { label: "Třemošnice", value: "Třemošnice" }
 
       - label: "Typ"
         name: "type"
@@ -331,4 +318,92 @@ collections:
           name: "tags",
           widget: "hidden",
           default: ["oznameni"],
+        }
+
+  # ====================== #
+  # ===== PRACOVNÍCI ===== #
+  # ====================== #
+  - label: "Pracovníci"
+    name: "pracovnici"
+    folder: "src/content/cms/pracovnici"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    summary: "{{ title }}"
+    editor:
+      preview: true
+
+    view_filters:
+      - label: "Pardubice"
+        field: "workplace"
+        pattern: "Pardubice"
+
+      - label: "Chrudim"
+        field: "workplace"
+        pattern: "Chrudim"
+
+      - label: "Přelouč"
+        field: "workplace"
+        pattern: "Přelouč"
+
+      - label: "Holice"
+        field: "workplace"
+        pattern: "Holice"
+
+      - label: "Hlinsko v Čechách"
+        field: "workplace"
+        pattern: "Hlinsko v Čechách"
+
+      - label: "Třemošnice"
+        field: "workplace"
+        pattern: "Třemošnice"
+
+    fields:
+      - {
+          label: "Celé jméno",
+          name: "title",
+          widget: "string",
+          hint: "Zadejte celé jméno včetně titulů. Slouží k zobrazení hodnoty v administraci.",
+        }
+      - {
+          label: "Titul před jménem",
+          name: "titleBefore",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Jméno", name: "firstName", widget: "string" }
+      - { label: "Příjmení", name: "lastName", widget: "string" }
+      - {
+          label: "Titul za jménem",
+          name: "titleAfter",
+          widget: "string",
+          required: false,
+        }
+
+      - label: "Pracoviště"
+        name: "workplace"
+        widget: "select"
+        multiple: true
+        required: true
+        options:
+          - { label: "Pardubice", value: "Pardubice" }
+          - { label: "Chrudim", value: "Chrudim" }
+          - { label: "Přelouč", value: "Přelouč" }
+          - { label: "Holice", value: "Holice" }
+          - { label: "Hlinsko v Čechách", value: "Hlinsko v Čechách" }
+          - { label: "Třemošnice", value: "Třemošnice" }
+
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Telefon", name: "phone", widget: "string", required: false }
+      - {
+          label: "Fotografie",
+          name: "image",
+          widget: "image",
+          choose_url: false, # Only allow local images - for image optimization reasons
+          required: false,
+        }
+      - {
+          label: "Štítky",
+          name: "tags",
+          widget: "hidden",
+          default: ["pracovnici"],
         }
