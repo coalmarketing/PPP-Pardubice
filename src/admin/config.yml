@@ -330,7 +330,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
     summary: "{{ title }}"
     editor:
-      preview: true
+      preview: false
 
     view_filters:
       - label: "Pardubice"
