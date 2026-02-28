@@ -2,6 +2,7 @@
 const bodyElement = document.querySelector("body");
 const navbarMenu = document.querySelector("header");
 const hamburgerMenu = document.querySelector("header #mobile-menu-toggle");
+const sidebarMenu = document.querySelector("#sidebar .toggle");
 
 // Function to toggle the aria-expanded attribute
 function toggleAriaExpanded(element) {
@@ -12,17 +13,38 @@ function toggleAriaExpanded(element) {
 // Function to toggle the menu open or closed
 function toggleMenu() {
     hamburgerMenu.classList.toggle("active");
+    sidebarMenu.classList.toggle("active");
     navbarMenu.classList.toggle("active");
-    bodyElement.classList.toggle("mobile-menu");
+    bodyElement.classList.toggle("menu");
     toggleAriaExpanded(hamburgerMenu);
 }
 
-// Add click event listener to the hamburger menu
+// Add click event listener to the hamburger and sidebar menu
 hamburgerMenu.addEventListener("click", toggleMenu);
+sidebarMenu.addEventListener("click", toggleMenu);
 
 // Add click event listener to the navbar menu to handle clicks on the pseudo-element
 navbarMenu.addEventListener("click", function (event) {
     if (event.target === navbarMenu && navbarMenu.classList.contains("active")) {
+        toggleMenu();
+    }
+});
+
+// Close sidebar when clicking outside
+document.addEventListener("click", function (event) {
+    const isMenuOpen = navbarMenu.classList.contains("active");
+
+    const clickedInsideNav = navbarMenu.contains(event.target);
+    const clickedInsideSidebar = document.querySelector("#sidebar").contains(event.target);
+    const clickedToggle = hamburgerMenu.contains(event.target) || sidebarMenu.contains(event.target);
+
+    // If menu is open and click is NOT in nav, sidebar, or toggles, close it
+    if (
+        isMenuOpen &&
+        !clickedInsideNav &&
+        !clickedInsideSidebar &&
+        !clickedToggle
+    ) {
         toggleMenu();
     }
 });

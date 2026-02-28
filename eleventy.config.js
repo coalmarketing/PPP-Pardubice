@@ -18,7 +18,7 @@ import css from "./src/config/processors/css.js";
 import javascript from "./src/config/processors/javascript.js";
 
 // 🛠️ Utilities
-import { isoDate, postDate } from "./src/config/filters.js";
+import { isoDate, postDate, stripMarkdown } from "./src/config/filters.js";
 
 const isProduction = process.env.ELEVENTY_ENV === "PROD";
 
@@ -147,6 +147,18 @@ export default (eleventyConfig) => {
     eleventyConfig.addFilter("pageLang", function (value) {
         return value.filter(item => item.page.lang === this.page.lang)
     });
+
+    /**
+     * 📝 Markdown Stripping Filter
+     * Removes common Markdown syntax such as headings, emphasis,
+     * links, images, code blocks, and inline code, returning clean plaintext.
+     *
+     * Ideal for excerpts, meta descriptions, search indexing, or anywhere
+     * Markdown formatting should be removed while keeping readable text.
+     * 
+     * Usage: {{ content | stripMarkdown }}
+     */
+    eleventyConfig.addFilter("stripMarkdown", stripMarkdown);
 
     /**
      * 🔍 Multi-Property Equality Filter

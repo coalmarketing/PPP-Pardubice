@@ -83,7 +83,8 @@ about:
     text: Více o nás
 
   image:
-    url: /assets/images/about-us/about-us.jpg
+    url: /assets/images/about-us/about-us.png
+    alt: Mapa s vyznačenými pracovišti poradny
 
   banner:
     icon:

@@ -46,7 +46,8 @@
     <title>{{ title }} | {{ client.name }}</title>
   </head>
 
-  <body class="group/body {%- if page.url == '/' %} home {%- else %} interior {%- endif %}">
+  {% set oznameni = collections.oznameni | whereAll({"enabled": true}) %}
+  <body class="group/body {%- if oznameni.length > 0 %} notice {%- endif %} {%- if page.url == '/' %} home {%- else %} interior {%- endif %}">
     <!-- Screen reader skip main nav -->
     <a class="sr-only" aria-label="Kliknutím přeskočíte na hlavní obsah" href="#main">Kliknutím přeskočíte na hlavní obsah</a>
 

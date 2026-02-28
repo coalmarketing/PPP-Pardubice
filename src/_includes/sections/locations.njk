@@ -1,5 +1,5 @@
 <!-- LOCATIONS -->
-<section class="~py-16/24 ~px-4/8 bg-slate-100 dark:bg-slate-900 peer-[.bg-slate-100]:bg-white dark:peer-[.bg-slate-100]:bg-slate-950">
+<section class="group ~py-16/24 ~px-4/8 bg-white dark:bg-slate-950 peer-[.bg-slate-100]:bg-slate-100 dark:peer-[.bg-slate-100]:bg-slate-900">
     <div class="container m-auto flex flex-col items-center ~gap-8/16">
         <!-- TOPPER + HEADING -->
         <div class="flex flex-col items-center ~gap-3/4">
@@ -13,7 +13,7 @@
         <ul class="grid grid-cols-4 ~gap-4/6 w-full">
             <!-- MAIN LOCATIONS -->
             {% for item in locations.mainItems %}
-                <li class="col-span-4 xl:col-span-2 flex flex-col p-4 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl">
+                <li class="col-span-4 xl:col-span-2 flex flex-col p-4 bg-slate-100 dark:bg-slate-900 peer-[.bg-slate-100]:bg-white dark:peer-[.bg-slate-100]:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl">
                     <!-- HEADER -->
                     <div class="flex flex-col p-8 bg-secondary-100 dark:bg-primary border border-secondary-200 dark:border-slate-800 rounded-2xl">
                         <h3 class="text-2xl text-black dark:text-white font-semibold">{{ item.title }}</h3>
@@ -99,7 +99,7 @@
 
             <!-- SECONDARY LOCATIONS -->
             {% for item in locations.secondaryItems %}
-                <li class="col-span-4 md:col-span-2 xl:col-span-1 flex flex-col justify-between gap-6 p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl">
+                <li class="col-span-4 md:col-span-2 xl:col-span-1 flex flex-col justify-between gap-6 p-6 bg-slate-100 dark:bg-slate-900 peer-[.bg-slate-100]:bg-white dark:peer-[.bg-slate-100]:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl">
                     <!-- TITLE + ADDRESS -->
                     <div class="flex flex-col">
                         <h3 class="text-lg text-black dark:text-white font-semibold">{{ item.title }}</h3>
@@ -129,7 +129,7 @@
                         </div>
 
                         <!-- NOTE -->
-                        <div class="flex flex-col gap-2 p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl">
+                        <div class="flex flex-col gap-2 p-4 bg-white dark:bg-slate-950 peer-[.bg-slate-100]:bg-slate-50 dark:peer-[.bg-slate-100]:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl">
                             <span class="text-sm text-slate-800 dark:text-slate-200 font-medium">Poznámka</span>
                             <p class="font-inter text-sm text-slate-800 dark:text-slate-200">{{ item.note }}</p>
                         </div>

@@ -18,4 +18,9 @@ landing:
       title: Domů
 
     - title: Novinky
+
+
+blog:
+  topper: Novinky
+  heading: Nejnovější příspěvky
 ---

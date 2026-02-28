@@ -219,12 +219,13 @@ collections:
         }
 
   # ============================= #
-  # ===== KRITICKÁ OZNÁMENÍ ===== #
+  # ===== KRITICKÉ OZNÁMENÍ ===== #
   # ============================= #
-  - label: "Kritická oznámení"
+  - label: "Kritické oznámení"
     name: "oznameni"
     folder: "src/content/cms/oznameni"
-    create: true
+    create: false
+    delete: false
     slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
     summary: "{{ title }}"
     editor:

@@ -10,6 +10,15 @@ eleventyNavigation:
   order: 700
 
 
+landing:
+  heading: Pracoviště a zaměstnanci
+
+  breadcrumbs:
+    - url: /
+      title: Domů
+
+    - title: Kontakty
+
 workers:
   topper: Pracovníci
   heading: Zaměstnanci poradny

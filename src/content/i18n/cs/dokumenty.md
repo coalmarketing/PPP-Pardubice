@@ -37,8 +37,8 @@ navigation:
             url: /assets/svgs/documents/school.svg
             alt: Ikona školní čepice
           
-          url: "#pro-zaky-a-rodice"
-          title: Pro žáky a rodiče
+          url: "#pro-rodice-a-zaky"
+          title: Pro rodiče a žáky
 
         - icon:
             url: /assets/svgs/documents/account_balance.svg
@@ -84,8 +84,8 @@ sidebar:
             url: /assets/svgs/documents/school.svg
             alt: Ikona školní čepice
           
-          url: "#pro-zaky-a-rodice"
-          title: Pro žáky a rodiče
+          url: "#pro-rodice-a-zaky"
+          title: Pro rodiče a žáky
 
         - icon:
             url: /assets/svgs/documents/account_balance.svg

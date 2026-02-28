@@ -8,4 +8,14 @@ permalink: 'o-nas/'
 eleventyNavigation:
   key: O nás
   order: 200
+
+
+landing:
+  heading: O nás
+
+  breadcrumbs:
+    - url: /
+      title: Domů
+
+    - title: O nás
 ---

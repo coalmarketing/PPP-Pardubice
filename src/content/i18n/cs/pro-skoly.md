@@ -11,13 +11,13 @@ eleventyNavigation:
 
 
 landing:
-    heading: Informace pro rodiče a žáky
+    heading: Informace pro školy a specialisty
 
     breadcrumbs:
         - url: /
           title: Domů
 
-        - title: Pro rodiče a žáky
+        - title: Pro školy
 
 
 navigation:
