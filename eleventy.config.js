@@ -103,6 +103,16 @@ export default (eleventyConfig) => {
     // Learn more: https://www.11ty.dev/docs/filters/
     // ═════════════════════════════════════════════════════════════════════════
 
+    /**
+     * 🔍 Debugging Logger Filter
+     * Logs the provided value to the terminal console during the build process.
+     * Usage: {{ myData | debug }}
+     * Powered by Node util: https://nodejs.org/api/util.html#utilinspectobject-options
+     */
+    eleventyConfig.addFilter("log", (value) => {
+        console.log(value);
+    });
+
     /*
      * 📅 Human-Readable Date Formatting Filter
      * Converts JavaScript dates to human-readable format
@@ -165,6 +175,64 @@ export default (eleventyConfig) => {
                 return actual === expected;
             });
         });
+    });
+
+    /**
+     * Sorting Filter
+     * Sorts an array of objects by a specified key.
+     *
+     * - Supports nested properties using dot notation (e.g., "data.order").
+     * - Handles numbers, strings, and dates (as strings).
+     * - Allows ascending ('asc') or descending ('desc') order.
+     * - Pushes items with missing/null keys to the end of the array.
+     *
+     * Usage:
+     *   {# Sort by title, ascending (default) #}
+     *   {% set sortedPosts = collections.posts | sortBy("data.title") %}
+     *
+     *   {# Sort by a custom order field, descending #}
+     *   {% set sortedProjects = collections.projects | sortBy("data.order", "desc") %}
+     */
+    eleventyConfig.addFilter("sortBy", function (array, key, order = 'asc') {
+        // Return the array as-is if it's not a valid array
+        if (!Array.isArray(array)) {
+            return array;
+        }
+
+        // Helper to safely access nested properties
+        function getDeep(obj, path) {
+            return path.split('.').reduce((acc, part) => acc && acc[part] !== undefined ? acc[part] : undefined, obj);
+        }
+
+        // Create a mutable copy to avoid side effects
+        const sortedArray = [...array];
+
+        // Determine the sort direction multiplier
+        const direction = order.toLowerCase() === 'desc' ? -1 : 1;
+
+        sortedArray.sort((a, b) => {
+            const valA = getDeep(a, key);
+            const valB = getDeep(b, key);
+
+            // --- Comparison Logic ---
+
+            // Push items with null or undefined values to the end
+            if (valA == null) return 1;
+            if (valB == null) return -1;
+
+            // A. Numeric sort (if both values are numbers)
+            if (typeof valA === 'number' && typeof valB === 'number') {
+                return (valA - valB) * direction;
+            }
+
+            // B. Default to locale-aware string sort for everything else
+            const stringA = String(valA);
+            const stringB = String(valB);
+
+            return stringA.localeCompare(stringB) * direction;
+        });
+
+        return sortedArray;
     });
 
     /**

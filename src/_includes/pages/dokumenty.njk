@@ -10,7 +10,7 @@
             {% include "components/sidebar.njk" %}
 
             <!-- DOCUMENTS -->
-            <div class="flex-1 flex flex-col gap-24">
+            <div class="flex-1 flex flex-col ~gap-16/24">
                 {# Group the 'dokumenty' collection by the 'category' property in their data. #}
                 {% set groups = collections.dokumenty | groupBy("data.category") %}
 
@@ -30,7 +30,7 @@
                         <!-- FILES -->
                         <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ~gap-4/6">
                             {% for document in group.items %}
-                                {% include "components/document.njk" %}
+                                {% include "components/document-item.njk" %}
                             {% endfor %}
                         </ul>
                     </div>

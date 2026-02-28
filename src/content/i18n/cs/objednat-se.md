@@ -216,4 +216,6 @@ form:
           type: inline-checkbox
           value: Potvrzuji, že uvedené údaje jsou pravdivé
           required: true
+
+        - type: submit
 ---

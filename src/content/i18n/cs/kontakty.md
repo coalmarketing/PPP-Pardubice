@@ -8,4 +8,9 @@ permalink: 'kontakty/'
 eleventyNavigation:
   key: Kontakty
   order: 700
+
+
+workers:
+  topper: Pracovníci
+  heading: Zaměstnanci poradny
 ---

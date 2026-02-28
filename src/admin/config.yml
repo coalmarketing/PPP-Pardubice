@@ -357,6 +357,13 @@ collections:
         field: "workplace"
         pattern: "Třemošnice"
 
+    view_groups:
+      - label: "Pracoviště"
+        field: "workplace"
+
+      - label: "Skupina"
+        field: "group"
+
     fields:
       - {
           label: "Celé jméno",
@@ -392,6 +399,19 @@ collections:
           - { label: "Hlinsko v Čechách", value: "Hlinsko v Čechách" }
           - { label: "Třemošnice", value: "Třemošnice" }
 
+      - {
+          label: "Skupina",
+          name: "group",
+          widget: "string",
+          required: false,
+          hint: "Volitelná skupina, do které pracovník patří. Pokud skupinu vyplníte, pracovníci z této skupiny se zobrazí v graficky oddělené sekci na webu.",
+        }
+      - {
+          label: "Pracovní pozice",
+          name: "position",
+          widget: "string",
+          required: false,
+        }
       - { label: "Email", name: "email", widget: "string", required: false }
       - { label: "Telefon", name: "phone", widget: "string", required: false }
       - {

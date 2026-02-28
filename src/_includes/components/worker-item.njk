@@ -1,0 +1,88 @@
+<li class="flex flex-col items-start gap-2">
+    {% if worker.data.image %}
+        <!-- IMAGE -->
+        <picture>
+            <source srcset="{% getUrl worker.data.image | resize({ height: 240, width: 240 }) | avif %}" type="image/avif">
+            <source srcset="{% getUrl worker.data.image | resize({ height: 240, width: 240 }) | webp %}" type="image/webp">
+            <source srcset="{% getUrl worker.data.image | resize({ height: 240, width: 240 }) | jpeg %}" type="image/jpeg">
+            <img
+                class="h-40 w-40 border border-slate-200 dark:border-slate-800 rounded-2xl"
+                src="{% getUrl worker.data.image | resize({ height: 240, width: 240 }) | jpeg %}"
+                alt="{{ worker.data.title }}"
+                width="160"
+                height="160"
+                loading="lazy"
+                decoding="async"
+                aria-hidden="true"
+                draggable="false">
+        </picture>
+    {% else %}
+        <!-- USER ICON -->
+        <div class="h-40 w-40 py-6 bg-white dark:bg-slate-950 text-slate-400 dark:text-slate-600 border border-slate-200 dark:border-slate-800 rounded-2xl">
+            <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 456.72 512" fill="currentColor">
+                <path d="M228.94,0h0c-1.76,0-3.54.04-5.31.11-69.04,2.89-122.67,61.19-119.78,130.23,2.81,67.26,58.22,119.89,124.91,119.89h0c1.76,0,3.54-.04,5.32-.11,69.04-2.89,122.67-61.19,119.78-130.23C351.05,52.63,295.64,0,228.94,0h0ZM321.31,266.41c-1.44,0-2.89.26-4.26.78l-89.41,33.85-89.68-33.54c-1.36-.51-2.79-.76-4.21-.76-1.67,0-3.34.35-4.9,1.04-27.32,12.18-57.24,25.38-78.26,45-22.07,20.59-33.4,47.19-40.58,92.6-3.92,24.78-6.68,55.85-8.93,89.55-.37,5.63-.74,11.33-1.08,17.08h456.7s0,0,0,0h.02c-.21-5.7-.43-11.4-.68-17.08h0c-1.51-35.68-3.77-70.83-9.58-100.31-7.4-37.59-20.81-67.4-43.2-87.99-21.97-20.21-51.54-30.32-78-39.54-1.28-.45-2.62-.67-3.96-.67h0ZM321.31,266.41"/>
+            </svg>
+        </div>
+    {% endif %}
+
+    <!-- CONTENT -->
+    <div class="flex-1 flex flex-col justify-between gap-6 w-full p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl">
+        <!-- NAME + POSITION -->
+        <div class="flex flex-col">
+            <h3 class="text-lg text-black dark:text-white font-semibold">{{ worker.data.title }}</h3>
+
+            {% if worker.data.position %}
+                <span class="font-inter text-sm text-slate-800 dark:text-slate-200">{{ worker.data.position }}</span>
+            {% endif %}
+        </div>
+
+        {% if worker.data.phone or worker.data.email %}
+            <!-- PHONE + EMAIL -->
+            <div class="flex flex-col gap-2">
+                {% if worker.data.phone %}
+                    <!-- PHONE -->
+                    <div class="flex items-center gap-2.5">
+                        <!-- ICON -->
+                        <div class="p-1 bg-secondary-100 rounded-full">
+                            <img src="/assets/svgs/locations/call.svg"
+                                alt="Ikona telefonu"
+                                width="16"
+                                height="16"
+                                loading="lazy"
+                                decoding="async"
+                                aria-hidden="true"
+                                draggable="false">
+                        </div>
+
+                        <!-- TITLE + LINK -->
+                        <a href="tel:{{ worker.data.phone.replace(" ", "") }}" title="{{ worker.data.phone }}" class="relative text-black dark:text-white font-semibold line-clamp-1 break-all hover:underline">
+                            {{ worker.data.phone }}
+                        </a>
+                    </div>
+                {% endif %}
+
+                {% if worker.data.email %}
+                    <!-- EMAIL -->
+                    <div class="flex items-center gap-2.5">
+                        <!-- ICON -->
+                        <div class="p-1 bg-secondary-100 rounded-full">
+                            <img src="/assets/svgs/locations/mail.svg"
+                                alt="Ikona telefonu"
+                                width="16"
+                                height="16"
+                                loading="lazy"
+                                decoding="async"
+                                aria-hidden="true"
+                                draggable="false">
+                        </div>
+
+                        <!-- TITLE + LINK -->
+                        <a href="mailto:{{ worker.data.email }}" title="{{ worker.data.email }}" class="relative text-black dark:text-white font-semibold line-clamp-1 break-all hover:underline">
+                            {{ worker.data.email }}
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</li>
