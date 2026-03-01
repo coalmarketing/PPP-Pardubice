@@ -3,7 +3,7 @@
     <section class="group/section peer relative ~py-16/24 ~px-4/8 even:bg-white dark:even:bg-slate-950 odd:bg-slate-100 dark:odd:bg-slate-900">
         {% if section.id %}
             <!-- ANCHOR -->
-            <div id="{{ group.key | slug }}" class="absolute -top-32 group-[.notice]/body:-top-52"></div>
+            <div id="{{ section.id }}" class="absolute top-0 group-[.notice]/body:-top-20"></div>
         {% endif %}
 
         <div class="container m-auto flex flex-col xl:flex-row items-start ~gap-12/24">
@@ -48,7 +48,7 @@
             <div class="flex-1 flex flex-col gap-3">
                 {% for item in section.items %}
                     {% if item.content %}
-                        <details class="group/details w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl transition-colors duration-300 open:bg-secondary-100 open:border-secondary-200 dark:open:bg-primary dark:open:border-slate-800">
+                        <details class="group/details w-full group-odd/section:bg-white group-even/section:bg-slate-100 dark:group-odd/section:bg-slate-950 dark:group-even/section:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl transition-colors duration-300 open:!bg-secondary-100 open:border-secondary-200 dark:open:!bg-primary dark:open:border-slate-800">
                             <summary class="flex items-start gap-16 w-full py-6 px-8 list-none [&::-webkit-details-marker]:hidden hover:cursor-pointer">
                                 <!-- TITLE + TEXT -->
                                 <div class="flex flex-col gap-3">

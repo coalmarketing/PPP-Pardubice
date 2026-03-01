@@ -11,26 +11,37 @@
 
     <article class="~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
         <div class="container m-auto flex flex-col items-center gap-8 w-full max-w-4xl">
-            <picture>
-                <img class="w-full aspect-2/1 object-cover border border-slate-400 dark:border-slate-600 rounded-3xl" src="{{ image }}" alt="{{ imageAlt }}" decoding="async" width="894" height="446" draggable="false">
-            </picture>
+            {% if image %}
+                <picture>
+                    <img class="w-full aspect-2/1 object-cover border border-slate-400 dark:border-slate-600 rounded-3xl" src="{{ image }}" alt="{{ imageAlt }}" decoding="async" width="894" height="446" draggable="false">
+                </picture>
+            {% endif %}
 
             <!-- BLOG POST -->
-            <section class="flex flex-col justify-center gap-8">
+            <section class="flex flex-col justify-center gap-12">
                 <div class="flex flex-col gap-2">
                     <!-- BLOG TITLE -->
-                    <h1 class="~text-2xl/4xl mb-0">{{ title }}</h1>
+                    <h1 class="~text-2xl/4xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">{{ title }}</h1>
 
-                    <!-- METADATA -->
-                    <ul class="flex items-center gap-2 font-inter text-sm text-slate-800">
-                        <!-- WORKPLACE -->
-                        <li>
-                            {% include "components/workplace-count.njk" %}
-                        </li>
+                    {% if workplace or date %}
+                        <!-- METADATA -->
+                        <ul class="flex items-center gap-2 font-inter text-sm text-slate-800">
+                            {% if workplace %}
+                                <!-- WORKPLACE -->
+                                <li>
+                                    {% include "components/workplace-count.njk" %}
+                                </li>
+                            {% endif %}
 
-                        <li class="text-slate-600">·</li>
-                        <li>{{ date | postDate }}</li>
-                    </ul>
+                            {% if date %}
+                                <!-- SEPARATOR -->
+                                <li class="text-slate-600">·</li>
+
+                                <!-- DATE -->
+                                <li>{{ date | postDate }}</li>
+                            {% endif %}
+                        </ul>
+                    {% endif %}
                 </div>
 
                 <!-- BLOG TEXT -->

@@ -181,7 +181,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
     summary: "{{ title }} [{{ date | date('DD. MM. YYYY') }}]"
     editor:
-      preview: true
+      preview: false
 
     fields:
       - { label: "Název", name: "title", widget: "string" }
@@ -229,7 +229,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
     summary: "{{ title }}"
     editor:
-      preview: true
+      preview: false
 
     view_filters:
       - label: "Aktivní oznámení"
@@ -280,6 +280,7 @@ collections:
           widget: "string",
           hint: "Krátký text, který je zobrazen v horní častí webu, pokud je oznámení aktivní.",
         }
+      - { label: "Datum", name: "date", widget: "datetime" }
 
       - label: "Pracoviště"
         name: "workplace"

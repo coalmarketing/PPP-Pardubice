@@ -2,6 +2,7 @@
 title: Nemoc odborného pracovníka
 description: Z důvodu nemoci odborného pracovníka může dojít ke změně
   objednaných termínů na pracovišti Pardubice.
+date: 2026-03-01T19:34:00.000+01:00
 workplace:
   - Pardubice
 type: warning

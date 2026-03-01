@@ -4,16 +4,16 @@
         <!-- TOPPER + HEADING -->
         <div class="flex flex-col items-start ~gap-3/4">
             <span class="topper">{{ navigation.topper }}</span>
-            <h2 class="~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
+            <h2 class="text-balance ~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
                 {{ navigation.heading }}
             </h2>
         </div>
 
         <!-- ITEMS -->
-        <ul class="grid" style="grid-template-columns: repeat({{ navigation.columns }}, minmax(0, {{ navigation.columns }}fr))">
+        <ul class="grid max-xl:!grid-cols-2" style="grid-template-columns: repeat({{ navigation.columns }}, minmax(0, {{ navigation.columns }}fr))">
             {% for item in navigation.items %}
                 <li class="group">
-                    <a href="{{ item.url }}" class="relative flex flex-col justify-center items-center gap-8 h-full p-8 border-r group-last:border-r-0 border-slate-200 dark:border-slate-800 z-0 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100">
+                    <a href="{{ item.url }}" class="relative flex flex-col justify-center items-center gap-8 h-full py-12 px-8 border-r group-last:border-r-0 border-slate-200 dark:border-slate-800 z-0 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100">
                         <!-- ICON -->
                         <div class="p-3 bg-secondary-200 text-primary rounded-full transition-colors duration-300 group-hover:bg-white">
                             <img src="{{ item.icon.url }}"

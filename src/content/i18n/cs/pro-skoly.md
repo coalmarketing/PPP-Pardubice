@@ -30,7 +30,7 @@ navigation:
             url: /assets/svgs/pro-skoly/school.svg
             alt: Ikona školní čepice
           
-          url: "#pro-deti-a-zaky"
+          url: "#pro-ucitele"
           title: Pro učitele
 
         - icon:
@@ -56,7 +56,9 @@ navigation:
 
 
 sections:
-  - topper: Pro učitele
+  - id: pro-ucitele
+
+    topper: Pro učitele
     heading: Služby pro učitele
 
     text:
@@ -98,7 +100,9 @@ sections:
               - text: Tematické přednášky a odborné besedy
 
 
-  - topper: Pro rodiče
+  - id: pro-vychovne-poradce
+  
+    topper: Pro výchovné poradce
     heading: Odborná poradenská pomoc pro rodiče
 
     text:
@@ -110,39 +114,32 @@ sections:
 
     items:
       - icon: src/assets/svgs/pro-rodice-a-zaky/psychology.svg
-        title: Konzultace k vývoji a potřebám dítěte
+        title: Metodické vedení
 
         text: Pomáháme rodičům zorientovat se ve vývoji dítěte a zvolit vhodný další postup.
 
-      - icon: src/assets/svgs/pro-rodice-a-zaky/assignment_turned_in.svg
-        title: Výsledky vyšetření a další kroky
+        content:
+          - type: list
+            title: S čím pomáháme
 
-        text: Vysvětlíme závěry psychologického a speciálněpedagogického vyšetření srozumitelně a prakticky.
+            items:
+              - text: Pravidelné měsíční semináře pro výchovné poradce
+              - text: Metodická podpora při řešení konkrétních případů
+              - text: Konzultace k nastavení podpůrných opatření
 
-      - icon: src/assets/svgs/pro-rodice-a-zaky/menu_book.svg
-        title: Podpora při učení
+      - icon: src/assets/svgs/pro-rodice-a-zaky/psychology.svg
+        title: Pedagogická diagnostika
 
-        text: Doporučíme konkrétní metody a pomůcky pro efektivnější učení doma i ve škole.
+        text: Pomáháme rodičům zorientovat se ve vývoji dítěte a zvolit vhodný další postup.
 
-      - icon: src/assets/svgs/pro-rodice-a-zaky/family_restroom.svg
-        title: Výchovné poradenství
+        content:
+          - type: list
+            title: S čím pomáháme
 
-        text: Pomáháme hledat funkční výchovné postupy a řešit každodenní rodičovské situace.
-
-      - icon: src/assets/svgs/pro-rodice-a-zaky/diversity_3.svg
-        title: Rodinná terapie
-
-        text: Podpora vztahů v rodině a řešení náročných situací společně s odborníkem.
-
-      - icon: src/assets/svgs/pro-rodice-a-zaky/support_agent.svg
-        title: Pomoc v krizových situacích
-
-        text: Jsme oporou rodinám v náročných životních obdobích a při nečekaných problémech.
-
-      - icon: src/assets/svgs/pro-rodice-a-zaky/library_books.svg
-        title: Metodiky a doporučené pomůcky
-
-        text: Nabídka ověřených materiálů a nástrojů pro práci s dětmi se specifickými obtížemi.
+            items:
+              - text: Pomoc při pedagogické diagnostice žáků
+              - text: Konzultace k doporučením z vyšetření
+              - text: Spolupráce při tvorbě individuálních vzdělávacích plánů
 
 
 documents:

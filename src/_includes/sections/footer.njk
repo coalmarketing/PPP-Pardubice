@@ -6,11 +6,11 @@
             <!-- LOGO + NAVIGATION -->
             <div class="flex flex-col items-start ~gap-12/20">
                 <!-- LOGO + DESCRIPTION -->
-                <div class="flex flex-col items-start gap-8">
+                <div class="flex flex-col items-start ~gap-6/8">
                     <!-- LOGO -->
-                    <div class="flex items-center gap-7">
+                    <div class="flex items-center ~gap-4/7">
                         <img
-                            class="h-24 w-auto"
+                            class="~h-16/24 w-auto"
                             src="/assets/svgs/logo-symbol-white.svg"
                             alt="{{ client.name }} - světlé logo"
                             width="64"
@@ -20,14 +20,14 @@
                             aria-hidden="true"
                             draggable="false">
 
-                        <span class="max-w-72 text-white text-[1.75rem] font-bold leading-[2rem]">{{ client.name }}</span>
+                        <span class="~max-w-44/72 text-white ~text-[1.125rem]/[1.75rem] font-bold ~leading-[1.5rem]/[2rem]">{{ client.name }}</span>
                     </div>
 
-                    <p class="max-w-md font-inter text-lg text-slate-200">{{ footer.description | safe }}</p>
+                    <p class="~max-w-sm/md font-inter ~text-base/lg text-slate-200">{{ footer.description | safe }}</p>
                 </div>
 
                 <!-- NAVIGATION -->
-                <nav>
+                <nav class="hidden sm:block">
                     <ul class="flex flex-wrap gap-y-4 gap-x-8">
                         {% for item in footer.navigation %}
                             <li>
@@ -44,15 +44,15 @@
             </div>
 
             <!-- CONTACTS -->
-            <ul class="flex ~gap-16/32">
+            <ul class="flex ~gap-12/32">
                 {% for item in footer.contacts %}
-                    <li class="flex flex-col gap-2">
-                        <span class="text-xl text-slate-300 font-medium">{{ item.title }}</span>
+                    <li class="flex flex-col ~gap-1/2">
+                        <span class="~text-base/xl text-slate-300 font-medium">{{ item.title }}</span>
 
                         {% if item.url %}
-                            <a href="{{ item.url }}" class="text-2xl text-white font-semibold">{{ item.text }}</a>
+                            <a href="{{ item.url }}" class="~text-lg/2xl text-white font-semibold">{{ item.text }}</a>
                         {% else %}
-                            <span class="text-2xl text-white font-semibold">{{ item.text }}</span>
+                            <span class="~text-lg/2xl text-white font-semibold">{{ item.text }}</span>
                         {% endif %}
                     </li>
                 {% endfor %}
