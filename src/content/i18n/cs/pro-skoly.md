@@ -21,31 +21,31 @@ landing:
 
 
 navigation:
-    topper: Pro rodiče a žáky
-    heading: Najděte pomoc podle vaší situace
+    topper: Pro školy
+    heading: Podpora pro pedagogy a školy
 
     columns: 4
     items:
         - icon:
-            url: /assets/svgs/pro-rodice-a-zaky/school.svg
+            url: /assets/svgs/pro-skoly/school.svg
             alt: Ikona školní čepice
           
           url: "#pro-deti-a-zaky"
-          title: Pro děti a žáky
+          title: Pro učitele
 
         - icon:
-            url: /assets/svgs/pro-rodice-a-zaky/family_restroom.svg
-            alt: Ikona rodičů s dětmi
+            url: /assets/svgs/pro-skoly/explore.svg
+            alt: Ikona kompasu
           
           url: "#pro-rodice"
-          title: Pro rodiče
+          title: Pro výchovné poradce
 
         - icon:
-            url: /assets/svgs/pro-rodice-a-zaky/timeline.svg
-            alt: Ikona časové osy
+            url: /assets/svgs/pro-skoly/medical_services.svg
+            alt: Ikona zdravotnického kufříku
           
           url: "#podle-veku-ditete"
-          title: Podle věku dítěte
+          title: Pro lékaře a specialisty
 
         - icon:
             url: /assets/svgs/documents/description.svg
@@ -56,80 +56,47 @@ navigation:
 
 
 sections:
-  - topper: Pro děti a žáky
-    heading: Služby pro děti a žáky
+  - topper: Pro učitele
+    heading: Služby pro učitele
 
     text:
-      - paragraph: Poskytujeme odbornou psychologickou a speciálně pedagogickou péči dětem a žákům v různých vývojových obdobích. Pomáháme při potížích s učením, chováním, adaptací na školní prostředí i při volbě další vzdělávací cesty.
+      - paragraph: Poskytujeme pedagogům odbornou podporu při práci se žáky, se&nbsp;speciálními vzdělávacími potřebami i při řešení výukových a&nbsp;výchovných obtíží. Nabízíme konzultace k výsledkům vyšetření, metodické vedení a odborné semináře. Spolupracujeme se školami při nastavování podpůrných opatření a hledání vhodných postupů pro efektivní práci ve třídě.
 
     cta:
       url: /objednat-se
       text: Objednat se
 
     items:
-      - icon: src/assets/svgs/pro-rodice-a-zaky/child_care.svg
-        title: Předškolní věk
+      - icon: src/assets/svgs/pro-skoly/handshake.svg
+        title: Učitelé
 
-        text: Pomáháme dětem v raném vývoji a při přípravě na vstup do školy. Zaměřujeme se na školní zralost, řečový vývoj, adaptaci na mateřskou školu a včasné zachycení obtíží.
+        text: Podporujeme pedagogy při práci se žáky s výukovými i výchovnými obtížemi. Nabízíme konzultace k výsledkům vyšetření, doporučení podpůrných opatření a metodickou pomoc při&nbsp;nastavování vhodných vzdělávacích postupů.
 
         content:
           - type: list
             title: S čím pomáháme
 
             items:
-              - text: Konzultace k vývojovým zvláštnostem dítěte
-              - text: Posouzení školní zralosti a připravenosti na ZŠ
-              - text: Podpora při adaptaci na MŠ
-              - text: Logopedická péče a rozvoj grafomotoriky
-              - text: Spolupráce s mateřskými školami a speciálními zařízeními
+              - text: Konzultace k výsledkům vyšetření žáků
+              - text: Doporučení podpůrných opatření do výuky
+              - text: Společné konzultace s rodiči (dle potřeby)
+              - text: Metodická podpora při práci s žáky se speciálními vzdělávacími potřebami
       
-      - icon: src/assets/svgs/pro-rodice-a-zaky/school.svg
-        title: Předškolní věk
+      - icon: src/assets/svgs/pro-skoly/school.svg
+        title: Vzdělávání pedagogů
 
-        text: Podporujeme děti při adaptaci na školní prostředí a při prvních výukových obtížích. Zaměřujeme se na diagnostiku, nápravu poruch učení i psychickou pohodu dítěte.
-
-        content:
-          - type: list
-            title: S čím pomáháme
-
-            items:
-              - text: Diagnostika specifických poruch učení (dyslexie, dysgrafie aj.)
-              - text: Pomoc při výukových a adaptačních potížích
-              - text: Doporučení podpůrných opatření a metod učení
-              - text: Individuální a skupinová psychoterapie
-              - text: Spolupráce s rodinou a školou
-
-      - icon: src/assets/svgs/pro-rodice-a-zaky/psychology.svg
-        title: Starší školní věk
-
-        text: Podporujeme děti při adaptaci na školní prostředí a při prvních výukových obtížích. Zaměřujeme se na diagnostiku, nápravu poruch učení i psychickou pohodu dítěte.
+        text: Poskytujeme odborné semináře a kurzy zaměřené na práci se žáky se speciálními vzdělávacími potřebami i na profesní rozvoj pedagogů. Pomáháme rozšiřovat znalosti a&nbsp;posilovat jistotu při každodenní práci ve třídě.
 
         content:
           - type: list
             title: S čím pomáháme
 
             items:
-              - text: Diagnostika rozumových schopností a studijních předpokladů
-              - text: Průběžná kontrola a korekce poruch učení
-              - text: Pomoc při výchovných a osobních problémech
-              - text: Kariérové poradenství a profesní orientace
-              - text: Individuální i rodinná terapie
+              - text: Kurzy pro dyslektické asistentky
+              - text: Semináře zaměřené na práci se žáky se SPU
+              - text: Semináře podporující osobnostní růst pedagogů
+              - text: Tematické přednášky a odborné besedy
 
-      - icon: src/assets/svgs/pro-rodice-a-zaky/groups.svg
-        title: Adolescence (15–19 let)
-
-        text: Poskytujeme podporu dospívajícím při studijních, osobních i rodinných obtížích. Pomáháme zvládat přechod na střední školu i náročné životní situace.
-
-        content:
-          - type: list
-            title: S čím pomáháme
-
-            items:
-              - text: Podpora při adaptaci na SŠ a SOU
-              - text: Diagnostika schopností a studijních obtíží
-              - text: Individuální a rodinná psychoterapie
-              - text: Pomoc při osobních, vztahových a krizových situacích
-              - text: Besedy, preventivní programy a spolupráce se školami
 
   - topper: Pro rodiče
     heading: Odborná poradenská pomoc pro rodiče
@@ -182,5 +149,5 @@ documents:
   topper: Dokumenty
   heading: Dokumenty a materiály
 
-  category: Pro rodiče a žáky
+  category: Pro školy
 ---

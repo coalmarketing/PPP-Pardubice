@@ -1,9 +1,14 @@
 {% for section in sections %}
     <!-- SECTION -->
-    <section {%- if section.id %} id="{{ section.id }}" {%- endif %} class="group/section peer ~py-16/24 ~px-4/8 even:bg-white dark:even:bg-slate-950 odd:bg-slate-100 dark:odd:bg-slate-900">
+    <section class="group/section peer relative ~py-16/24 ~px-4/8 even:bg-white dark:even:bg-slate-950 odd:bg-slate-100 dark:odd:bg-slate-900">
+        {% if section.id %}
+            <!-- ANCHOR -->
+            <div id="{{ group.key | slug }}" class="absolute -top-32 group-[.notice]/body:-top-52"></div>
+        {% endif %}
+
         <div class="container m-auto flex flex-col xl:flex-row items-start ~gap-12/24">
             <!-- TEXT + CTA -->
-            <div class="xl:sticky xl:top-32 flex flex-col items-start gap-8">
+            <div class="xl:sticky xl:top-32 xl:group-[.notice]/body:top-52 flex flex-col items-start gap-8">
                 <!-- HEADING + TEXT -->
                 <div class="flex flex-col ~gap-4/6">
                     <!-- TOPPER + HEADING -->
@@ -53,7 +58,7 @@
                                         <h3 class="text-xl font-bold">{{ item.title }}</h3>
                                     </div>
 
-                                    <p class="font-inter text-slate-800 dark:text-slate-200">{{ item.text }}</p>
+                                    <p class="font-inter text-slate-800 dark:text-slate-200">{{ item.text | safe }}</p>
                                 </div>
 
                                 <!-- OPEN/CLOSE ICON -->

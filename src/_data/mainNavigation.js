@@ -13,7 +13,17 @@ export default {
                 { url: "/pro-rodice-a-zaky#dokumenty", key: "Dokumenty a materiály" }
             ]
         },
-        { url: "/pro-skoly/", key: "Pro školy", visibleOnTablet: true },
+        {
+            url: "/pro-skoly/",
+            key: "Pro školy",
+            visibleOnTablet: true,
+            subitems: [
+                { url: "/pro-skoly", key: "Učitelé" },
+                { url: "/pro-skoly", key: "Výchovní poradci" },
+                { url: "/pro-skoly", key: "Lékaři a specialisté" },
+                { url: "/pro-skoly#dokumenty", key: "Dokumenty a materiály" }
+            ]
+        },
         { url: "/dokumenty-ke-stazeni/", key: "Dokumenty", visibleOnTablet: false },
         { url: "/novinky/", key: "Novinky", visibleOnTablet: true },
         { url: "/kontakty/", key: "Kontakty", visibleOnTablet: true }

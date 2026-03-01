@@ -1,0 +1,142 @@
+<!-- SIDEBAR NAVIGATION -->
+<div id="sidebar" class="fixed top-0 right-0 h-full w-full max-w-lg flex flex-col justify-between gap-24 ~p-8/16 bg-stone-800 z-50 transition-transform duration-500 translate-x-full group-[.menu]/body:translate-x-0 overflow-y-auto scrollbar-thin scrollbar-stone-900 scrollbar-stone-800">
+    <!-- MENU BUTTON -->
+    <button
+        class="toggle group absolute top-6 right-6 flex justify-center items-center gap-1 h-11 w-11 transition-transform duration-300 [&.active]:rotate-90"
+        type="button"
+        aria-expanded="false">
+        <span class="sr-only">Přepnout zobrazení bočního menu</span>
+        <span class="relative block h-1.5 w-6">
+            <span class="absolute top-0 block h-px w-full bg-white rounded-full transition-transform duration-300 group-[.active]:rotate-45 group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
+            <span class="absolute bottom-0 block h-px w-full bg-white rounded-full transition-transform duration-300 group-[.active]:rotate-[315deg] group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
+        </span>
+    </button>
+
+    <!-- NAVIGATION -->
+    <nav class="flex flex-col gap-8">
+        <!-- NAVIGATION -->
+        <ul class="flex flex-col ~gap-4/5">
+            {# Loop through all pages with a eleventyNavigation in the frontmatter #}
+            {% for entry in navPages %}
+                {# Define a hasChild variable to make it easier to test what navigation items are have child dropdown pages #}
+                {% set hasChild = entry.children.length %}
+
+                <li
+                  class="group/li inline-flex {% if hasChild -%} dropdown {%- endif %}"
+                  {%- if hasChild -%}tabindex="0"{%- endif -%}
+                >
+                    {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
+                    <a
+                        class="group inline-flex ~test-sm/base uppercase whitespace-nowrap transition-colors duration-300"
+                        href="{{ entry.url }}"
+                        {%- if entry.url == page.url -%}aria-current="page"{%- endif -%}>
+                        <span
+                            class="transition-colors duration-300
+                            {%- if entry.url == page.url %} text-white font-semibold
+                            {%- else %} text-stone-200 font-medium hover:text-white {%- endif %}">
+                            {{ entry.key }}
+                        </span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- SEPARATOR -->
+        <div class="h-px bg-stone-600"></div>
+
+        <!-- LINKS -->
+        <ul class="flex flex-col ~gap-4/5">
+            {% for item in footer.links.items %}
+                <li>
+                    <a
+                        class="group inline-flex ~test-sm/base uppercase whitespace-nowrap transition-colors duration-300"
+                        href="{{ item.url }}"
+                        {%- if item.url == page.url -%}aria-current="page"{%- endif -%}>
+                        <span
+                            class="transition-colors duration-300
+                            {%- if entry.url == page.url %} text-white font-semibold
+                            {%- else %} text-stone-200 font-medium hover:text-white {%- endif %}">
+                            {{ item.text }}
+                        </span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- CTA -->
+        <a href="/kontakt" class="btn">Kontaktujte nás</a>
+    </nav>
+
+    <!-- COMPANY INFO + CONTACT INFO -->
+    <div class="flex flex-col gap-12">
+        <!-- COMPANY INFO -->
+        <div class="self-center flex flex-col items-center gap-8">
+            <!-- LOGO -->
+            <img
+                class="h-20 w-auto"
+                src="/assets/svgs/logo-light.svg"
+                alt="{{ client.name }} - světlé logo"
+                width="230"
+                height="80"
+                loading="lazy"
+                decoding="async"
+                aria-hidden="true"
+                draggable="false">
+
+            <!-- COMPANY NAME + INFO -->
+            <div class="flex flex-col gap-6">
+                <!-- COMPANY NAME + ADDRESS -->
+                <ul class="flex flex-col items-center gap-0.5">
+                    <li class="text-lg text-white font-medium">{{ client.name }}</li>
+                    <li class="text-stone-200">{{ client.address.lineOne }}</li>
+                    <li class="text-stone-200">
+                        {{ client.address.zip }}
+                        {{ client.address.city }}
+                    </li>
+                </ul>
+
+                <!-- IČO + DIČ -->
+                <ul class="flex flex-col items-center gap-0.5">
+                    <li class="text-stone-200">IČO: {{ client.ico }}</li>
+                    <li class="text-stone-200">DIČ: {{ client.dic }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <div class="flex flex-col gap-2">
+            <!-- PHONE -->
+            <a href="tel:{{ client.phoneForTel }}" class="btn btn-secondary flex justify-center items-center gap-2 p-2 font-normal normal-case">
+                <!-- ICON -->
+                <img src="/assets/svgs/sidebar/call.svg"
+                    alt="Ikona telefonu"
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden="true"
+                    draggable="false">
+
+                <span>{{ client.phoneFormatted }}</span>
+            </a>
+
+            <!-- EMAIL -->
+            <a href="mailto:{{ client.email }}" class="btn btn-secondary flex justify-center items-center gap-2 p-2 font-normal normal-case">
+                <!-- ICON -->
+                <img src="/assets/svgs/sidebar/mail.svg"
+                    alt="Ikona emailu"
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden="true"
+                    draggable="false">
+
+                <span>{{ client.email }}</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- SIDEBAR BACKGROUND -->
+<div class="fixed top-0 right-0 h-full w-full bg-black/50 z-40 scale-0 transition-opacity duration-500 opacity-0 group-[.menu]/body:scale-100 group-[.menu]/body:opacity-100"></div>
