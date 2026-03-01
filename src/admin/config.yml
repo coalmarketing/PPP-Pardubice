@@ -321,6 +321,57 @@ collections:
           default: ["oznameni"],
         }
 
+  # =========================== #
+  # ===== OBSAH POSTRÁNEK ===== #
+  # =========================== #
+  - label: "Obsah webu"
+    name: "pages"
+    folder: "src/content/cms/pages"
+    create: true
+    delete: false
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    summary: "[{{ description }}] {{ title }}"
+    editor:
+      preview: false
+
+    view_groups:
+      - label: "Název podstránky"
+        field: "description"
+
+    fields:
+      - { label: "Název sekce", name: "title", widget: "string" }
+      - { label: "Název podstránky", name: "description", widget: "string" }
+      - { label: "Identifikátor", name: "key", widget: "string" }
+
+      - label: "Obrázek"
+        name: "image"
+        widget: "object"
+        summary: "Obrázek - {{fields.alt}}"
+        fields:
+          - {
+              label: "Obrázek",
+              name: "url",
+              widget: "image",
+              choose_url: false, # Only allow local images - for image optimization reasons
+            }
+          - {
+              label: "Popis obrázku",
+              name: "alt",
+              widget: "string",
+              hint: "Popište, co je na obrázku. Slouží k validnímu SEO příspěvku.",
+            }
+
+      - {
+          label: "Předtitulek",
+          name: "topper",
+          widget: "string",
+          hint: "Krátký text, který je nad nadpisem",
+        }
+      - { label: "Nadpis", name: "heading", widget: "string" }
+      - { label: "Obsah", name: "body", widget: "markdown", required: false }
+
+      - { label: "Štítky", name: "tags", widget: "hidden", default: ["pages"] }
+
   # ====================== #
   # ===== PRACOVNÍCI ===== #
   # ====================== #

@@ -190,6 +190,54 @@ export default (eleventyConfig) => {
     });
 
     /**
+     * 🎯 Find a Single Item in a Collection
+     * Finds the first item in a collection that matches multiple property-value pairs.
+     * Supports nested properties like "eleventyNavigation.key".
+     * Returns the first matching item object, or undefined if no match is found.
+     *
+     * Usage:
+     *   {% set pageNav = collections.all | findWhere({ "eleventyNavigation.key": page.fileSlug }) %}
+     *   {% if pageNav %}
+     *     <h2>{{ pageNav.data.title }}</h2>
+     *   {% endif %}
+     */
+    eleventyConfig.addFilter("findWhere", function (collection, conditions = {}) {
+        if (!Array.isArray(collection)) return undefined;
+
+        function getDeep(obj, path) {
+            if (!obj) return undefined;
+            return path.split(".").reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : undefined), obj);
+        }
+
+        function normalize(v) {
+            if (v === undefined || v === null) return v;
+            if (typeof v === "string") return v.trim().toLowerCase();
+            return v;
+        }
+
+        return collection.find((item) => {
+            return Object.entries(conditions).every(([prop, expectedValue]) => {
+                // Try several places where Eleventy might store the value
+                const tries = [
+                    getDeep(item.data, prop),       // e.g. item.data.fileSlug
+                    getDeep(item, prop),            // e.g. item.fileSlug
+                    getDeep(item.data && item.data.page, prop), // e.g. item.data.page.fileSlug
+                ];
+
+                // first non-undefined
+                const actualRaw = tries.find(x => x !== undefined);
+
+                // Normalize for lenient comparison
+                const actual = normalize(actualRaw);
+                const expected = normalize(expectedValue);
+
+                // Strictly compare normalized values (works for strings and most primitives)
+                return actual === expected;
+            });
+        });
+    });
+
+    /**
      * Sorting Filter
      * Sorts an array of objects by a specified key.
      *
