@@ -5,7 +5,7 @@
     "success": "src/assets/svgs/notice/success.svg"
 } %}
 
-<div class="h-14 py-4 ~px-4/8 transition-[height,padding,opacity] duration-300 group-[.scroll]/body:h-0 group-[.scroll]/body:p-0 group-[.scroll]/body:opacity-0
+<div class="h-14 py-4 ~px-4/8 transition-[height,padding,opacity] duration-300 group-[.scroll]/body:h-0 group-[.scroll]/body:p-0 group-[.scroll]/body:opacity-0 group-[.scroll]/body:pointer-events-none
     {%- if item.data.type === 'info' %} bg-blue-400
     {%- elif item.data.type === 'warning' %} bg-amber-400
     {%- elif item.data.type === 'danger' %} bg-red-400

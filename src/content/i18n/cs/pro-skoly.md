@@ -103,10 +103,10 @@ sections:
   - id: pro-vychovne-poradce
   
     topper: Pro výchovné poradce
-    heading: Odborná poradenská pomoc pro rodiče
+    heading: Služby pro výchovné poradce
 
     text:
-      - paragraph: Pomáháme rodičům porozumět potřebám jejich dětí, vysvětlit výsledky vyšetření a navrhnout vhodné postupy při učení a výchově. Nabízíme konzultace, rodinnou terapii a doporučení další odborné péče podle individuálních potřeb dítěte i celé rodiny.
+      - paragraph: Poskytujeme metodickou a odbornou podporu výchovným poradcům při řešení vzdělávacích a výchovných obtíží žáků. Spolupracujeme při pedagogické diagnostice, nastavování podpůrných opatření a konzultujeme konkrétní případy. Nabízíme pravidelná odborná setkání a prostor pro sdílení zkušeností z praxe.
 
     cta:
       url: /objednat-se
@@ -116,7 +116,7 @@ sections:
       - icon: src/assets/svgs/pro-rodice-a-zaky/psychology.svg
         title: Metodické vedení
 
-        text: Pomáháme rodičům zorientovat se ve vývoji dítěte a zvolit vhodný další postup.
+        text: Poskytujeme pravidelnou metodickou podporu výchovným poradcům při řešení konkrétních situací ve škole. Nabízíme odborné konzultace, tematická setkání a prostor pro sdílení zkušeností z praxe. Pomáháme při nastavování podpůrných opatření i při orientaci v aktuální legislativě a doporučeních.
 
         content:
           - type: list
@@ -130,7 +130,7 @@ sections:
       - icon: src/assets/svgs/pro-rodice-a-zaky/psychology.svg
         title: Pedagogická diagnostika
 
-        text: Pomáháme rodičům zorientovat se ve vývoji dítěte a zvolit vhodný další postup.
+        text: Spolupracujeme při pedagogické diagnostice žáků a pomáháme interpretovat výsledky odborných vyšetření. Konzultujeme vhodná podpůrná opatření a podílíme se na tvorbě individuálních vzdělávacích plánů. Cílem je nastavit efektivní podporu odpovídající potřebám konkrétního žáka.
 
         content:
           - type: list

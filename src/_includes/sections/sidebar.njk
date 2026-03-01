@@ -45,41 +45,66 @@
                     {# Loop through all pages with a eleventyNavigation in the frontmatter #}
                     {% for entry in mainNavigation.items %}
                         {# Define a hasChild variable to make it easier to test what navigation items are have child dropdown pages #}
-                        {% set hasChild = entry.children.length %}
+                        {% set hasChild = entry.subitems.length %}
 
                         <li
-                      class="group/li relative inline-flex {% if hasChild -%} dropdown {%- endif %}"
-                      {%- if hasChild -%}tabindex="0"{%- endif -%}
-                    >
-                            {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
-                            <a
-                            href="{{ entry.url }}"
-                            class="relative flex items-center gap-1.5 w-full py-1.5 px-5 whitespace-nowrap rounded-full
-                            {%- if entry.url == page.url %} bg-secondary-200 dark:bg-secondary-500 text-primary font-medium
-                            {%- else %} text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-black z-10 before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:opacity-0 before:origin-left group-hover/li:before:scale-x-100 group-hover/li:before:opacity-100 {%- endif %}"
-                            {%- if entry.url == page.url -%} aria-current="page" {%- endif -%}
+                          class="group/li relative flex flex-col {% if hasChild -%} dropdown {%- endif %}"
+                          {%- if hasChild -%}tabindex="0"{%- endif -%}
                         >
-                                <span>{{ entry.key }}</span>
-                            </a>
+                            {% if not hasChild %}
+                                {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
+                                <a
+                                    href="{{ entry.url }}"
+                                    class="relative flex items-center gap-1.5 w-full py-1.5 px-5 whitespace-nowrap rounded-full
+                                    {%- if entry.url == page.url %} bg-secondary-200 dark:bg-secondary-500 text-primary font-medium
+                                    {%- else %} text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-black z-10 before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:opacity-0 before:origin-left group-hover/li:before:scale-x-100 group-hover/li:before:opacity-100 {%- endif %}"
+                                    {%- if entry.url == page.url -%} aria-current="page" {%- endif -%}
+                                >
+                                    <span>{{ entry.key }}</span>
+                                </a>
+
+                            {% else %}
+                                <a
+                                    href="{{ entry.url }}"
+                                    class="relative flex items-center gap-1.5 w-full py-1.5 px-5 whitespace-nowrap rounded-full
+                                    {%- if entry.url == page.url %} bg-secondary-200 dark:bg-secondary-500 text-primary font-medium
+                                    {%- else %} text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-black z-10 before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:opacity-0 before:origin-left group-hover/li:before:scale-x-100 group-hover/li:before:opacity-100 {%- endif %}"
+                                    {%- if entry.url == page.url -%} aria-current="page" {%- endif -%}
+                                >
+                                    <span>{{ entry.key }}</span>
+                                </a>
+
+                                <details class="group/details" {%- if entry.url == page.url %} open {%- endif %}>
+                                    <summary class="absolute top-2 right-4 p-1 list-none hover:cursor-pointer z-10" aria-controls="{{ entry.key | slug }}-submenu">
+                                        <!-- ICON -->
+                                        <svg class="text-stone-600 dark:text-stone-400 transition-transform duration-300 group-open/details:-rotate-90" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                        </svg>
+                                    </summary>
+
+                                    <ul id="{{ entry.key | slug }}-submenu" class="flex flex-col gap-0.5 py-2 pl-4 pr-2">
+                                        {% for subitem in entry.subitems %}
+                                            <li class="flex">
+                                                <a href="{{ subitem.url }}" 
+                                                  class="li-link inline-flex w-full py-1 px-3 text-sm whitespace-nowrap
+                                                  {%- if child.url == page.url %} bg-secondary text-primary font-medium
+                                                  {%- else %} relative text-slate-800 dark:text-slate-200 hover:text-black z-10 before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:origin-left before:opacity-0 hover:before:scale-x-100 hover:before:opacity-100 {%- endif %}"
+                                                    {%- if page.url.startsWith(subitem.url) -%} aria-current="page" {%- endif -%}>
+                                                    {{ subitem.key }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </details>
+                            {% endif %}
                         </li>
                     {% endfor %}
                 </ul>
             </nav>
 
             <!-- CTA -->
-            <a href="/objednat-se" class="btn after:h-0 after:w-7 after:transition-transform after:duration-300 hover:after:scale-x-0">
-                <span>
-                    <img src="/assets/svgs/header/calendar_month.svg"
-                    alt="Ikona kalendáře"
-                    width="16"
-                    height="16"
-                    loading="eager"
-                    decoding="async"
-                    aria-hidden="true"
-                    draggable="false">
-                </span>
-
-                <span class="mx-auto">Objednat se</span>
+            <a href="/objednat-se" class="btn justify-center h-12">
+                Objednat se
             </a>
         </div>
     </div>

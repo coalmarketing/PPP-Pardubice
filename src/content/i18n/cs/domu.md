@@ -42,15 +42,6 @@ services:
       title: Děti
       text: Pomáháme dětem a dospívajícím najít cestu k úspěšnému vzdělávání a osobní spokojenosti.
 
-    - url: /pro-skoly
-    
-      icon:
-        url: /assets/svgs/services/school.svg
-        alt: Ikona školní čepice
-
-      title: Učitelé
-      text: Odborná podpora pedagogům, výchovným poradcům i školám při&nbsp;práci s dětmi a třídami.
-
     - url: /pro-rodice-a-zaky#rodice
     
       icon:
@@ -59,6 +50,15 @@ services:
 
       title: Rodiče
       text: Podpora rodičů při výchově, učení i&nbsp;řešení náročných rodinných situací s dětmi.
+
+    - url: /pro-skoly
+    
+      icon:
+        url: /assets/svgs/services/school.svg
+        alt: Ikona školní čepice
+
+      title: Učitelé
+      text: Odborná podpora pedagogům, výchovným poradcům i školám při&nbsp;práci s dětmi a třídami.
 
     - icon:
         url: /assets/svgs/services/medical_information.svg

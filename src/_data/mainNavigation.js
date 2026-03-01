@@ -18,7 +18,7 @@ export default {
             key: "Pro školy",
             visibleOnTablet: true,
             subitems: [
-                { url: "/pro-skoly", key: "Učitelé" },
+                { url: "/pro-skoly#pro-ucitele", key: "Učitelé" },
                 { url: "/pro-skoly", key: "Výchovní poradci" },
                 { url: "/pro-skoly", key: "Lékaři a specialisté" },
                 { url: "/pro-skoly#dokumenty", key: "Dokumenty a materiály" }
