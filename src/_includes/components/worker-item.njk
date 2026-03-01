@@ -55,7 +55,7 @@
                         </div>
 
                         <!-- TITLE + LINK -->
-                        <a href="tel:{{ worker.data.phone.replace(" ", "") }}" title="{{ worker.data.phone }}" class="relative text-black dark:text-white font-semibold line-clamp-1 break-all hover:underline">
+                        <a href="tel:{{ worker.data.phone.replaceAll(" ", "") }}" title="{{ worker.data.phone }}" class="relative text-black dark:text-white font-semibold line-clamp-1 break-all hover:underline">
                             {{ worker.data.phone }}
                         </a>
                     </div>

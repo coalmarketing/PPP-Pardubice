@@ -1,12 +1,12 @@
 <!-- LANDING -->
-<section class="relative ~px-4/8 pt-60 group-[.notice]/body:pt-80 pb-16 bg-primary overflow-hidden z-10">
-    <div class="container m-auto flex flex-col items-start gap-8">
+<section class="relative ~px-4/8 ~pt-40/60 group-[.notice]/body:~pt-60/80 ~pb-8/16 bg-primary overflow-hidden z-10">
+    <div class="container m-auto flex flex-col items-start ~gap-4/8">
         <!-- BREADCRUMBS -->
-        <ul class="flex flex-wrap justify-center items-center ~gap-2/4">
+        <ul class="flex flex-wrap items-center gap-y-2 ~gap-x-0/4">
             {% for item in landing.breadcrumbs %}
                 {% if item.url %}
                     <li>
-                        <a href="{{ item.url }}" class="py-1.5 px-5 bg-slate-200 text-slate-800 uppercase tracking-wider rounded-full">{{ item.title }}</a>
+                        <a href="{{ item.url }}" class="~py-1/1.5 ~px-3/5 bg-slate-200 ~text-sm/base text-slate-800 uppercase tracking-wider rounded-full">{{ item.title }}</a>
                     </li>
 
                     {# Show the chevron icon if this is not the last item #}
@@ -21,7 +21,7 @@
                 {% else %}
                     {# Show the chevron icon if this is not the last item #}
                     {% if loop.index != landing.breadcrumbs.length %}
-                        <li class="py-1.5 px-5 bg-slate-200 text-slate-800 uppercase tracking-wider rounded-full">{{ item.title }}</li>
+                        <li class="~py-1/1.5 ~px-3/5 bg-slate-200 ~text-sm/base text-slate-800 uppercase tracking-wider rounded-full">{{ item.title }}</li>
 
                         <li class="text-slate-200">
                             <svg width="24" height="24" viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -29,18 +29,18 @@
                             </svg>
                         </li>
                     {% else %}
-                        <li class="py-1.5 px-5 bg-secondary-200 text-slate-950 uppercase tracking-wider rounded-full">{{ item.title }}</li>
+                        <li class="~py-1/1.5 ~px-3/5 bg-secondary-200 ~text-sm/base text-slate-950 uppercase tracking-wider rounded-full">{{ item.title }}</li>
                     {% endif %}
                 {% endif %}
             {% endfor %}
         </ul>
 
         <!-- HEADING -->
-        <h1 title="{{ landing.heading }}" class="max-w-4xl truncate text-5xl text-white font-bold tracking-wide">{{ landing.heading }}</h1>
+        <h1 title="{{ landing.heading }}" class="~text-4xl/5xl text-white font-bold tracking-wide">{{ landing.heading }}</h1>
     </div>
 
     <!-- BACKGROUND LOGO -->
-    <img class="absolute top-1/2 -translate-y-1/2 -right-16 ~size-[16rem]/[28rem] opacity-50 -rotate-[30deg]"
+    <img class="absolute top-1/2 -translate-y-1/2 -right-16 ~size-[16rem]/[28rem] -z-10 opacity-50 -rotate-[30deg]"
         src="/assets/svgs/landing/symbol-bw-white.svg"
         alt="{{ client.name }} - černobílé logo"
         width="320"

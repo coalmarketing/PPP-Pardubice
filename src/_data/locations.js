@@ -47,7 +47,7 @@ export default {
                     },
                     title: "Adresa",
                     link: {
-                        url: "tel:466410327",
+                        url: "https://maps.app.goo.gl/4QTaBf86od2B6qXJ7",
                         text: "Sukova třída 1260<br>530 02 Pardubice",
                         target: "_blank"
                     }
@@ -96,7 +96,7 @@ export default {
                     },
                     title: "Adresa",
                     link: {
-                        url: "tel:466410327",
+                        url: "https://maps.app.goo.gl/dzX3FMdxqa2b76ZP6",
                         text: "Poděbradova 842<br>537 01 Chrudim",
                         target: "_blank"
                     }

@@ -123,7 +123,7 @@
                             </div>
 
                             <!-- TITLE + LINK -->
-                            <a href="tel:{{ item.phone.replace(" ", "") }}" class="relative text-black dark:text-white font-semibold before:absolute before:-bottom-0.5 before:left-0 before:h-0.5 before:w-full before:bg-black dark:before:bg-white before:transition-transform before:duration-500 before:ease-in-out before:scale-x-0 hover:before:scale-x-100">
+                            <a href="tel:{{ item.phone.replaceAll(" ", "") }}" class="relative text-black dark:text-white font-semibold before:absolute before:-bottom-0.5 before:left-0 before:h-0.5 before:w-full before:bg-black dark:before:bg-white before:transition-transform before:duration-500 before:ease-in-out before:scale-x-0 hover:before:scale-x-100">
                                 {{ item.phone }}
                             </a>
                         </div>

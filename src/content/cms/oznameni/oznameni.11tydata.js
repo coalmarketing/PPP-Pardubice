@@ -1,5 +1,5 @@
 export default {
-    tags: "aktuality",
+    tags: "oznameni",
     eleventyComputed: {
         layout: data => !data.page.rawInput ? null : "layouts/post.njk",
         preloadImg: data => data.image ? data.image : null,

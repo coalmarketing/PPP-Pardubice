@@ -91,7 +91,7 @@ about:
       url: /assets/svgs/about-us/location_on.svg
       alt: Ikona bodu na mapě
 
-    title: 5 pracovišť
+    title: 6 pracovišť
     text: napříč Pardubickým krajem
 
 
