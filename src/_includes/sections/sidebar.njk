@@ -15,27 +15,31 @@
     <!-- LOGO + NAVIGATION -->
     <div class="flex flex-col gap-12">
         <!-- LOGO -->
-        <img
-            class="self-start block dark:hidden ~h-16/20 w-auto"
-            src="/assets/svgs/logo-symbol-dark.svg"
-            alt="{{ client.name }} - tmavé logo"
-            width="64"
-            height="64"
-            loading="eager"
-            decoding="async"
-            aria-hidden="true"
-            draggable="false">
+        <a href="/">
+            <span class="sr-only">Přejít na domovskou stránku</span>
 
-        <img
-            class="self-start hidden dark:block ~h-16/20 w-auto"
-            src="/assets/svgs/logo-symbol-white.svg"
-            alt="{{ client.name }} - světlé logo"
-            width="64"
-            height="64"
-            loading="eager"
-            decoding="async"
-            aria-hidden="true"
-            draggable="false">
+            <img
+                class="self-start block dark:hidden ~h-16/20 w-auto"
+                src="/assets/svgs/logo-symbol-dark.svg"
+                alt="{{ client.name }} - tmavé logo"
+                width="64"
+                height="64"
+                loading="eager"
+                decoding="async"
+                aria-hidden="true"
+                draggable="false">
+
+            <img
+                class="self-start hidden dark:block ~h-16/20 w-auto"
+                src="/assets/svgs/logo-symbol-white.svg"
+                alt="{{ client.name }} - světlé logo"
+                width="64"
+                height="64"
+                loading="eager"
+                decoding="async"
+                aria-hidden="true"
+                draggable="false">
+        </a>
 
         <!-- NAVIGATION + CTA -->
         <div class="flex flex-col gap-2">
