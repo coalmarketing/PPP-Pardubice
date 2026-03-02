@@ -1,7 +1,7 @@
 ---
 layout: "pages/domu.njk"
 
-description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
+description: 'Profesionální psychologická a speciálně pedagogická pomoc dětem a dospívajícím. Pedagogicko-psychologická poradna Pardubice.'
 permalink: '/'
 
 eleventyNavigation:
