@@ -2,7 +2,7 @@
 layout: "pages/objednat-se.njk"
 
 title: 'Objednat se'
-description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
+description: 'Objednejte se k vyšetření nebo konzultaci v Pedagogicko-psychologické poradně Pardubice. Informace o postupu a potřebných dokumentech.'
 permalink: 'objednat-se/'
 
 
@@ -206,16 +206,5 @@ form:
       legend: Souhlas a odeslání
       text: Zkontrolujte vyplněné údaje a odešlete žádost ke zpracování.
 
-      fields:
-        - name: Zpracování osobních údajů
-          type: inline-checkbox
-          value: Souhlasím se <a href="/ochrana-osobnich-udaju" class="text-primary dark:text-secondary underline">zpracováním osobních údajů</a>
-          required: true
-
-        - name: Potvrzení pravdivosti údajů
-          type: inline-checkbox
-          value: Potvrzuji, že uvedené údaje jsou pravdivé
-          required: true
-
-        - type: submit
+      submit: true
 ---

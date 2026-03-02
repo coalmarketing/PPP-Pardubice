@@ -2,7 +2,7 @@
 layout: "pages/pro-rodice-a-zaky.njk"
 
 title: 'Pro rodiče a žáky'
-description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
+description: 'Informace a odborná pomoc pro děti, žáky a rodiče. Podpora při potížích s učením, chováním i volbě další vzdělávací cesty.'
 permalink: 'pro-rodice-a-zaky/'
 
 eleventyNavigation:

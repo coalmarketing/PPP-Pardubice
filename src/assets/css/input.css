@@ -16,7 +16,7 @@
   .btn {
     /* ICON */
     span:first-child {
-      @apply p-1.5 bg-white text-primary rounded-full transition-transform duration-300 ease-in-out;
+      @apply shrink-0 p-1.5 bg-white text-primary rounded-full transition-transform duration-300 ease-in-out;
     }
 
     span:nth-child(2) {

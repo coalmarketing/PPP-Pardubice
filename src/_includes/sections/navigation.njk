@@ -1,6 +1,6 @@
 <!-- NAVIGATION -->
 <section class="peer ~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
-    <div class="container m-auto flex flex-col gap-16">
+    <div class="container m-auto flex flex-col ~gap-8/16">
         <!-- TOPPER + HEADING -->
         <div class="flex flex-col items-start ~gap-3/4">
             <span class="topper">{{ navigation.topper }}</span>
@@ -10,10 +10,10 @@
         </div>
 
         <!-- ITEMS -->
-        <ul class="grid max-xl:!grid-cols-2" style="grid-template-columns: repeat({{ navigation.columns }}, minmax(0, {{ navigation.columns }}fr))">
+        <ul class="grid max-md:!grid-cols-1 max-xl:!grid-cols-2" style="grid-template-columns: repeat({{ navigation.columns }}, minmax(0, {{ navigation.columns }}fr))">
             {% for item in navigation.items %}
                 <li class="group">
-                    <a href="{{ item.url }}" class="relative flex flex-col justify-center items-center gap-8 h-full py-12 px-8 border-r group-last:border-r-0 border-slate-200 dark:border-slate-800 z-0 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100">
+                    <a href="{{ item.url }}" class="relative flex flex-col justify-center items-center gap-8 h-full py-12 px-8 border-b group-last:border-b-0 md:border-0 md:group-first:border-b md:group-[&:nth-child(2)]:border-b md:group-odd:border-r xl:border-0 xl:group-first:border-b-0 xl:group-[&:nth-child(2)]:border-b-0 xl:border-r xl:group-last:border-r-0 border-slate-200 dark:border-slate-800 z-0 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100">
                         <!-- ICON -->
                         <div class="p-3 bg-secondary-200 text-primary rounded-full transition-colors duration-300 group-hover:bg-white">
                             <img src="{{ item.icon.url }}"

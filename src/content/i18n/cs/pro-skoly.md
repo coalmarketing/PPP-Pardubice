@@ -2,7 +2,7 @@
 layout: "pages/pro-skoly.njk"
 
 title: 'Pro školy'
-description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
+description: 'Odborná podpora pro učitele, výchovné poradce a školy. Konzultace, metodické vedení i spolupráce při diagnostice žáků.'
 permalink: 'pro-skoly/'
 
 eleventyNavigation:

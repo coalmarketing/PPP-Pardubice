@@ -6,7 +6,7 @@
 
     <!-- DOCUMENTS -->
     <section class="peer ~py-16/24 ~px-4/8 bg-slate-100 dark:bg-slate-900">
-        <div class="container m-auto flex items-start gap-16">
+        <div class="container m-auto flex flex-col lg:flex-row items-start gap-16">
             {% include "components/sidebar.njk" %}
 
             <!-- DOCUMENTS -->
@@ -28,7 +28,7 @@
                         {% endif %}
 
                         <!-- FILES -->
-                        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ~gap-4/6">
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 ~gap-4/6">
                             {% for document in group.items %}
                                 {% include "components/document-item.njk" %}
                             {% endfor %}

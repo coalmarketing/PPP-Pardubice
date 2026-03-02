@@ -5,12 +5,12 @@
         <div class="flex flex-col items-start ~gap-3/4">
             <span class="topper">{{ cta.topper }}</span>
             <h2 class="~max-w-lg/4xl ~text-3xl/6xl text-white font-bold !leading-[1.1] tracking-wide">
-                {{ cta.heading }}
+                {{ cta.heading | safe }}
             </h2>
         </div>
 
         <!-- CTA BUTTONS -->
-        <div class="flex gap-3">
+        <div class="flex flex-wrap gap-y-1.5 gap-x-3">
             <a href="{{ cta.ctaPrimary.url }}" class="btn">
                 <span>
                     <img src="/assets/svgs/header/calendar_month.svg"
@@ -33,7 +33,7 @@
 
         <!-- BACKGROUND LOGO -->
         <img
-            class="absolute top-1/2 -translate-y-1/2 ~-right-32/16 ~size-[16rem]/[28rem] -z-10 opacity-50 -rotate-[30deg]"
+            class="hidden sm:block absolute top-1/2 -translate-y-1/2 ~-right-24/16 ~size-[14rem]/[28rem] -z-10 opacity-40 -rotate-[30deg]"
             src="/assets/svgs/logo-symbol-white.svg"
             alt="{{ client.name }} - světlé logo"
             width="448"

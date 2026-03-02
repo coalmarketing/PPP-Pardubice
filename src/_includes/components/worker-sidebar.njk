@@ -4,7 +4,7 @@
     <span class="~text-xl/2xl text-black dark:text-white font-bold">Pracovníci</span>
 
     <!-- WORKPLACES -->
-    <ul class="flex flex-col gap-1">
+    <ul class="flex flex-col gap-2">
         {% for workplace in workplaces %}
             <li class="relative flex flex-col">
                 <a href="#{{ workplace.key | slug }}" class="group relative flex items-center gap-3 p-1 rounded-full before:absolute before:inset-0 before:bg-secondary-100 dark:before:bg-primary before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:origin-left before:opacity-0 hover:before:scale-x-100 hover:before:opacity-100">
@@ -21,7 +21,7 @@
                     </div>
 
                     <!-- TITLE -->
-                    <span title="{{ workplace.key }}" class="text-slate-800 dark:text-slate-200 line-clamp-1 break-all transition-colors duration-300 group-hover:text-black dark:group-hover:text-white">
+                    <span title="{{ workplace.key }}" class="text-slate-800 dark:text-slate-200 font-medium line-clamp-1 break-all transition-colors duration-300 group-hover:text-black dark:group-hover:text-white">
                         {{ workplace.key }}
                     </span>
                 </a>
@@ -38,11 +38,11 @@
                             </svg>
                         </summary>
 
-                        <ul id="{{ workplace.key | slug }}-submenu" class="flex flex-col gap-0.5 py-2 pl-4 pr-2">
+                        <ul id="{{ workplace.key | slug }}-submenu" class="relative flex flex-col gap-0.5 py-1.5 pl-8 pr-2 before:absolute before:top-0 before:left-4 before:h-full before:w-px before:bg-slate-200 dark:before:bg-slate-800">
                             {% for group in groups %}
                                 <li class="flex">
                                     <a href="#{{ workplace.key | slug }}-{{ group.key | slug }}" 
-                                        class="li-link inline-flex w-full py-1 px-3 text-sm whitespace-nowrap
+                                        class="li-link inline-flex w-full py-1 px-3 text-sm font-medium whitespace-nowrap
                                         {%- if child.url == page.url %} bg-secondary text-primary font-medium
                                         {%- else %} relative text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-white z-10 before:absolute before:inset-0 before:bg-secondary-100 dark:before:bg-primary before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:origin-left before:opacity-0 hover:before:scale-x-100 hover:before:opacity-100 {%- endif %}"
                                     >

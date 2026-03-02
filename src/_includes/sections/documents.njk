@@ -3,7 +3,7 @@
     <!-- ANCHOR -->
     <div id="dokumenty" class="absolute -top-32 group-[.notice]/body:-top-52"></div>
 
-    <div class="container m-auto flex flex-col ~gap-12/16">
+    <div class="container m-auto flex flex-col ~gap-8/16">
         <!-- TOPPER + HEADING -->
         <div class="flex flex-col items-start ~gap-3/4">
             <span class="topper">{{ documents.topper }}</span>
@@ -13,7 +13,7 @@
         </div>
 
         <!-- ITEMS -->
-        <ul class="grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 ~gap-4/6">
+        <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 ~gap-4/6">
             {% if items.length === 0 %}
                 <p class="font-inter text-slate-800 dark:text-slate-200">Zatím tu nic není.</p>
             {% else %}

@@ -2,13 +2,22 @@
 layout: "pages/gdpr.njk"
 
 title: 'GDPR'
-description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
-permalink: 'gdpr/'
+description: 'Informace o ochraně osobních údajů v Pedagogicko-psychologické poradně Pardubice. Zjistěte, jak zpracováváme a chráníme vaše data.'
+permalink: 'ochrana-osobnich-udaju/'
 
+
+landing:
+  heading: Ochrana osobních údajů
+
+  breadcrumbs:
+    - url: /
+      title: Domů
+
+    - title: GDPR
 
 contentOne:
     topper: GDPR
-    heading: Zásady ochrany osobních údajů
+    heading: Ochrana osobních údajů
 
     items:
         - text: S Vašimi údaji je nakládáno v souladu se zákonem 101/2000 Sb. o ochraně osobních údajů, a dále také dle rozšiřujícího a sjednocujícího nařízení GDPR v podobě směrnice (EU) 2016/679, která původní zákon 101/2000 Sb. a směrnici 95/46/ES nahrazuje.

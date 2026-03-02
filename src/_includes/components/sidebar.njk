@@ -1,15 +1,15 @@
 <!-- SIDEBAR -->
-<div class="sticky top-32 flex flex-col gap-4 w-full max-w-xs p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl">
+<div class="lg:sticky lg:top-32 flex flex-col gap-4 w-full lg:max-w-xs p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl">
     <!-- TITLE -->
     <span class="text-2xl text-black dark:text-white font-bold">{{ sidebar.title }}</span>
 
     <!-- ITEMS -->
-    <ul class="flex flex-col gap-1">
+    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:flex flex-col gap-2 lg:gap-1">
         {% for item in sidebar.items %}
             <li>
-                <a href="{{ item.url }}" class="group relative flex items-center gap-3 p-1 rounded-full transition-colors before:absolute before:inset-0 before:bg-secondary-200 dark:before:bg-primary before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:origin-left before:opacity-0 hover:before:scale-x-100 hover:before:opacity-100">
+                <a href="{{ item.url }}" class="group relative flex items-center gap-3 p-1 bg-secondary-100 lg:bg-transparent rounded-full transition-colors before:absolute before:inset-0 before:bg-secondary-200 dark:before:bg-primary before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:origin-left before:opacity-0 hover:before:scale-x-100 hover:before:opacity-100">
                     <!-- ICON -->
-                    <div class="p-1.5 bg-secondary-100 rounded-full transition-colors duration-300 group-hover:bg-white">
+                    <div class="p-1.5 bg-secondary-200 lg:bg-secondary-100 rounded-full transition-colors duration-300 group-hover:bg-white">
                         <img src="{{ item.icon.url }}"
                             alt="{{ item.icon.alt }}"
                             width="16"
@@ -21,7 +21,7 @@
                     </div>
 
                     <!-- TITLE -->
-                    <span title="{{ item.title | safe }}" class="text-slate-800 dark:text-slate-200 line-clamp-1 break-all transition-colors duration-300 group-hover:text-black dark:group-hover:text-white">
+                    <span title="{{ item.title | safe }}" class="text-slate-800 dark:text-slate-200 font-medium line-clamp-1 break-all transition-colors duration-300 group-hover:text-black dark:group-hover:text-white">
                         {{ item.title | safe }}
                     </span>
                 </a>

@@ -43,7 +43,12 @@
 
     {% block head %}{% endblock %}
 
-    <title>{{ title }} | {{ client.name }}</title>
+    <title>
+      {% if title %}
+        {{ title }} |
+      {% endif %}
+      {{ client.name }}
+    </title>
   </head>
 
   {% set oznameni = collections.oznameni | whereAll({"enabled": true}) %}

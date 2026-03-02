@@ -110,21 +110,6 @@
             </a>
         </div>
     </div>
-
-    <!-- IČO + DATOVÁ SCHRÁNKA -->
-    <ul class="flex justify-between gap-8">
-        {% for item in footer.contacts %}
-            <li class="flex flex-col gap-1">
-                <span class="~text-base/lg text-slate-700 dark:text-slate-300 font-medium">{{ item.title }}</span>
-
-                {% if item.url %}
-                    <a href="{{ item.url }}" class="~text-lg/2xl text-black dark:text-white font-semibold">{{ item.text }}</a>
-                {% else %}
-                    <span class="~text-lg/xl text-black dark:text-white font-semibold">{{ item.text }}</span>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
 </div>
 
 <!-- SIDEBAR BACKGROUND -->

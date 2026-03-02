@@ -14,7 +14,7 @@
                 {% include "components/worker-sidebar.njk" %}
 
                 <!-- WORKPLACES -->
-                <div class="flex-1 flex flex-col ~gap-16/24">
+                <div class="flex-1 flex flex-col ~gap-16/24 w-full">
                     {% for workplace in workplaces %}
                         <div class="relative flex flex-col gap-8">
                             {% if workplace.key !== "_ungrouped" %}
@@ -55,4 +55,6 @@
             </div>
         </section>
     </div>
+
+    {% include "sections/cta.njk" %}
 {% endblock body %}
