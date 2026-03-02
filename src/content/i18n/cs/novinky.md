@@ -20,7 +20,12 @@ landing:
     - title: Novinky
 
 
-blog:
+novinky:
   topper: Novinky
   heading: Nejnovější příspěvky
+
+
+aktuality:
+  topper: Aktuality
+  heading: Důležitá sdělení
 ---

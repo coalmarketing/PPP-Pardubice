@@ -5,25 +5,25 @@
     "success": "src/assets/svgs/notice/success.svg"
 } %}
 
-<div class="h-14 py-4 ~px-4/8 transition-[height,padding,opacity] duration-300 group-[.scroll]/body:h-0 group-[.scroll]/body:p-0 group-[.scroll]/body:opacity-0 group-[.scroll]/body:pointer-events-none
+<a href="{{ item.url }}" class="~h-12/14 py-4 ~px-4/8 transition-[height,padding,opacity] duration-300 group-[.scroll]/body:h-0 group-[.scroll]/body:p-0 group-[.scroll]/body:opacity-0 group-[.scroll]/body:pointer-events-none
     {%- if item.data.type === 'info' %} bg-blue-400
     {%- elif item.data.type === 'warning' %} bg-amber-400
     {%- elif item.data.type === 'danger' %} bg-red-400
     {%- elif item.data.type === 'success' %} bg-green-400 {%- endif %}">
-    <div class="container m-auto flex justify-center items-center gap-4 text-black [&>svg]:shrink-0 [&>svg]:size-5">
+    <div class="container m-auto flex justify-center items-center ~gap-2/4 text-black [&>svg]:shrink-0 [&>svg]:~size-4/5">
         <!-- ICON -->
         {% include icon[item.data.type] %}
 
         <!-- TEXT + CTA -->
-        <div class="inline-flex gap-2">
-            <p title="{{ item.data.description }}" class="font-semibold line-clamp-1 break-all">{{ item.data.description }}</p>
+        <div class="inline-flex ~gap-1/2">
+            <p title="{{ item.data.description }}" class="~text-sm/base font-semibold line-clamp-1 break-all">{{ item.data.description }}</p>
 
             {% if item.url %}
                 <!-- CTA -->
-                <a href="{{ item.url }}" class="relative text-primary font-semibold whitespace-nowrap before:absolute before:-bottom-0.5 before:left-0 before:h-0.5 before:w-full before:bg-primary before:transition-transform before:duration-300 before:scale-x-0 before:origin-center hover:before:scale-x-100">
+                <span class="hidden sm:inline relative ~text-sm/base text-primary font-semibold whitespace-nowrap before:absolute before:-bottom-0.5 before:left-0 before:h-0.5 before:w-full before:bg-primary before:transition-transform before:duration-300 before:scale-x-0 before:origin-center hover:before:scale-x-100">
                    Dozvědět se více
-                </a>
+                </span>
             {% endif %}
         </div>
     </div>
-</div>
+</a>
