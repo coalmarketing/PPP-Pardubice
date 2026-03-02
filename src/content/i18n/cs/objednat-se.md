@@ -63,8 +63,8 @@ form:
           required: true
 
     - icon:
-        url: /assets/svgs/objednat-se/child_care.svg
-        alt: Ikona hlavy dítěte
+        url: /assets/svgs/objednat-se/mail.svg
+        alt: Ikona emailu
 
       legend: Kontaktní údaje
       text: Údaje, na kterých vás budeme kontaktovat ohledně termínu a dalších informací.
@@ -209,7 +209,7 @@ form:
       fields:
         - name: Zpracování osobních údajů
           type: inline-checkbox
-          value: Souhlasím se <a href="/ochrana-osobnich-udaju" class="text-primary underline">zpracováním osobních údajů</a>
+          value: Souhlasím se <a href="/ochrana-osobnich-udaju" class="text-primary dark:text-secondary underline">zpracováním osobních údajů</a>
           required: true
 
         - name: Potvrzení pravdivosti údajů

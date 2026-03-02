@@ -20,12 +20,13 @@
                 <input class="sr-only" type="search" name="bot-field" tabindex="-1" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Leave this empty">
 
                 {% for fieldset in form.fieldsets %}
-                    <fieldset class="flex flex-col gap-5 p-8 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl">
+                    <fieldset class="flex flex-col gap-5 ~p-6/8 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl">
                         <!-- ICON + TITLE -->
-                        <div class="flex items-center gap-5">
+                        <div class="flex flex-col md:flex-row items-start lg:items-center gap-y-4 ~gap-x-3/5">
                             <!-- ICON -->
-                            <div class="p-3 bg-secondary-200 rounded-full">
-                                <img src="{{ fieldset.icon.url }}"
+                            <div class="shrink-0 ~p-2/3 bg-secondary-200 rounded-full">
+                                <img class="~size-7/8"
+                                    src="{{ fieldset.icon.url }}"
                                     alt="{{ fieldset.icon.url }}"
                                     width="32"
                                     height="32"
@@ -36,8 +37,8 @@
                             </div>
 
                             <!-- LEGEND + TEXT -->
-                            <div class="flex flex-col">
-                                <legend class="text-2xl text-black dark:text-white font-bold">{{ fieldset.legend }}</legend>
+                            <div class="flex flex-col ~gap-1/0">
+                                <legend class="~text-xl/2xl text-black dark:text-white font-bold">{{ fieldset.legend }}</legend>
                                 <p class="font-inter ~text-base/lg text-slate-800 dark:text-slate-200">{{ fieldset.text }}</p>
                             </div>
                         </div>
@@ -46,7 +47,7 @@
                         <div class="h-px bg-slate-300 dark:bg-slate-700"></div>
 
                         <!-- FIELDS -->
-                        <div class="grid sm:!grid-cols-1 gap-x-2.5 gap-y-5" {%- if fieldset.columns %} style="grid-template-columns: repeat({{ fieldset.columns }}, minmax(0, {{ fieldset.columns }}fr))" {%- endif %}>
+                        <div class="grid max-sm:!grid-cols-1 gap-x-2.5 gap-y-5" {%- if fieldset.columns %} style="grid-template-columns: repeat({{ fieldset.columns }}, minmax(0, {{ fieldset.columns }}fr))" {%- endif %}>
                             {% for field in fieldset.fields %}
                                 <div class="grid max-md:!grid-cols-1 max-lg:!grid-cols-2 gap-2.5" {%- if field.columns %} style="grid-template-columns: repeat({{ field.columns }}, minmax(0, {{ field.columns }}fr))" {%- endif %}>
                                     {% if field.type === "radio" or field.type === "checkbox" %}
@@ -135,5 +136,4 @@
 
     {% include "sections/locations.njk" %}
     {% include "sections/faq.njk" %}
-    {% include "sections/cta.njk" %}
 {% endblock body %}

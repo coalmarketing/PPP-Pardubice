@@ -1,0 +1,59 @@
+<!-- WORKER SIDEBAR -->
+<div class="lg:sticky lg:top-32 flex flex-col gap-4 w-full max-w-xs p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl">
+    <!-- TITLE -->
+    <span class="~text-xl/2xl text-black dark:text-white font-bold">Pracovníci</span>
+
+    <!-- WORKPLACES -->
+    <ul class="flex flex-col gap-1">
+        {% for workplace in workplaces %}
+            <li class="relative flex flex-col">
+                <a href="#{{ workplace.key | slug }}" class="group relative flex items-center gap-3 p-1 rounded-full before:absolute before:inset-0 before:bg-secondary-100 dark:before:bg-primary before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:origin-left before:opacity-0 hover:before:scale-x-100 hover:before:opacity-100">
+                    <!-- ICON -->
+                    <div class="p-1.5 bg-secondary-100 rounded-full transition-colors duration-300 group-hover:bg-white">
+                        <img src="/assets/svgs/locations/location_city.svg"
+                            alt="Ikona budovy"
+                            width="16"
+                            height="16"
+                            loading="lazy"
+                            decoding="async"
+                            aria-hidden="true"
+                            draggable="false">
+                    </div>
+
+                    <!-- TITLE -->
+                    <span title="{{ workplace.key }}" class="text-slate-800 dark:text-slate-200 line-clamp-1 break-all transition-colors duration-300 group-hover:text-black dark:group-hover:text-white">
+                        {{ workplace.key }}
+                    </span>
+                </a>
+
+                <!-- WORKER GROUPS -->
+                {% set groups = workplace.items | sortBy("data.lastName", "asc") | groupBy("data.group", ["Vedení poradny"]) %}
+
+                {% if groups.length > 0 %}
+                    <details class="group/details" open>
+                        <summary class="absolute top-2 right-3 p-1 list-none hover:cursor-pointer z-10" aria-controls="{{ workplace.key | slug }}-submenu">
+                            <!-- ICON -->
+                            <svg class="text-stone-600 dark:text-stone-400 transition-transform duration-300 group-open/details:-rotate-90" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                            </svg>
+                        </summary>
+
+                        <ul id="{{ workplace.key | slug }}-submenu" class="flex flex-col gap-0.5 py-2 pl-4 pr-2">
+                            {% for group in groups %}
+                                <li class="flex">
+                                    <a href="#{{ workplace.key | slug }}-{{ group.key | slug }}" 
+                                        class="li-link inline-flex w-full py-1 px-3 text-sm whitespace-nowrap
+                                        {%- if child.url == page.url %} bg-secondary text-primary font-medium
+                                        {%- else %} relative text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-white z-10 before:absolute before:inset-0 before:bg-secondary-100 dark:before:bg-primary before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:origin-left before:opacity-0 hover:before:scale-x-100 hover:before:opacity-100 {%- endif %}"
+                                    >
+                                        {{ group.key }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </details>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -5,7 +5,6 @@ firstName: Andrea
 lastName: Šmejdová
 workplace:
   - Pardubice
-  - Chrudim
 group: Vedení poradny
 position: zástupce ředitele, psycholog
 email: andrea.smejdova@ppp-pardubice.cz

@@ -26,6 +26,14 @@ export default {
         },
         { url: "/dokumenty-ke-stazeni/", key: "Dokumenty", visibleOnTablet: false },
         { url: "/novinky/", key: "Novinky", visibleOnTablet: true },
-        { url: "/kontakty/", key: "Kontakty", visibleOnTablet: true }
+        {
+            url: "/kontakty/",
+            key: "Kontakty",
+            visibleOnTablet: true,
+            subitems: [
+                { url: "/kontakty#pracoviste", key: "Pracoviště" },
+                { url: "/kontakty#pracovnici", key: "Pracovníci" }
+            ]
+        }
     ]
 }

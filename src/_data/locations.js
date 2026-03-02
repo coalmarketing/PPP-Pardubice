@@ -20,8 +20,8 @@ export default {
                 },
                 {
                     icon: {
-                        url: "/assets/svgs/locations/mail.svg",
-                        alt: "Ikona obálky"
+                        url: "/assets/svgs/locations/account_balance.svg",
+                        alt: "Ikona bankovnní budovy"
                     },
                     title: "Datová schránka",
                     link: {
@@ -48,7 +48,7 @@ export default {
                     title: "Adresa",
                     link: {
                         url: "https://maps.app.goo.gl/4QTaBf86od2B6qXJ7",
-                        text: "Sukova třída 1260<br>530 02 Pardubice",
+                        text: "Sukova třída 1260<br>530 02 Pardubice I<br>Zelené Předměstí",
                         target: "_blank"
                     }
                 }

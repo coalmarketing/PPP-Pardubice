@@ -7,7 +7,7 @@
     <ul class="flex flex-col gap-1">
         {% for item in sidebar.items %}
             <li>
-                <a href="{{ item.url }}" class="group flex items-center gap-3 p-1 rounded-full transition-colors duration-300 hover:bg-secondary-100 dark:hover:bg-primary">
+                <a href="{{ item.url }}" class="group relative flex items-center gap-3 p-1 rounded-full transition-colors before:absolute before:inset-0 before:bg-secondary-200 dark:before:bg-primary before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:origin-left before:opacity-0 hover:before:scale-x-100 hover:before:opacity-100">
                     <!-- ICON -->
                     <div class="p-1.5 bg-secondary-100 rounded-full transition-colors duration-300 group-hover:bg-white">
                         <img src="{{ item.icon.url }}"

@@ -72,7 +72,7 @@ sections:
       - icon: src/assets/svgs/pro-skoly/handshake.svg
         title: Učitelé
 
-        text: Podporujeme pedagogy při práci se žáky s výukovými i výchovnými obtížemi. Nabízíme konzultace k výsledkům vyšetření, doporučení podpůrných opatření a metodickou pomoc při&nbsp;nastavování vhodných vzdělávacích postupů.
+        text: Podporujeme pedagogy při práci se žáky s výukovými i výchovnými obtížemi. Nabízíme konzultace k výsledkům vyšetření a pomoc při nastavování vhodných podpůrných opatření.
 
         content:
           - type: list
@@ -87,7 +87,7 @@ sections:
       - icon: src/assets/svgs/pro-skoly/school.svg
         title: Vzdělávání pedagogů
 
-        text: Poskytujeme odborné semináře a kurzy zaměřené na práci se žáky se speciálními vzdělávacími potřebami i na profesní rozvoj pedagogů. Pomáháme rozšiřovat znalosti a&nbsp;posilovat jistotu při každodenní práci ve třídě.
+        text: Pořádáme odborné semináře a kurzy zaměřené na práci se žáky se speciálními vzdělávacími potřebami i na profesní rozvoj pedagogů.
 
         content:
           - type: list
@@ -113,10 +113,10 @@ sections:
       text: Objednat se
 
     items:
-      - icon: src/assets/svgs/pro-rodice-a-zaky/psychology.svg
+      - icon: src/assets/svgs/pro-skoly/explore.svg
         title: Metodické vedení
 
-        text: Poskytujeme pravidelnou metodickou podporu výchovným poradcům při řešení konkrétních situací ve škole. Nabízíme odborné konzultace, tematická setkání a prostor pro sdílení zkušeností z praxe. Pomáháme při nastavování podpůrných opatření i při orientaci v aktuální legislativě a doporučeních.
+        text: Pořádáme odborné semináře a kurzy zaměřené na práci se žáky se speciálními vzdělávacími potřebami i na profesní rozvoj pedagogů.
 
         content:
           - type: list
@@ -127,10 +127,10 @@ sections:
               - text: Metodická podpora při řešení konkrétních případů
               - text: Konzultace k nastavení podpůrných opatření
 
-      - icon: src/assets/svgs/pro-rodice-a-zaky/psychology.svg
+      - icon: src/assets/svgs/pro-skoly/analytics.svg
         title: Pedagogická diagnostika
 
-        text: Spolupracujeme při pedagogické diagnostice žáků a pomáháme interpretovat výsledky odborných vyšetření. Konzultujeme vhodná podpůrná opatření a podílíme se na tvorbě individuálních vzdělávacích plánů. Cílem je nastavit efektivní podporu odpovídající potřebám konkrétního žáka.
+        text: Spolupracujeme při pedagogické diagnostice žáků, interpretaci výsledků vyšetření a tvorbě individuálních vzdělávacích plánů.
 
         content:
           - type: list
