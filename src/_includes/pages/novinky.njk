@@ -7,16 +7,16 @@
 {% block body %}
     {% include "sections/landing.njk" %}
 
-    <!-- BLOG POSTS -->
-    <section class="~py-16/24 ~px-4/8">
-        <div class="container m-auto flex flex-col ~gap-8/16">
+    <!-- NOVINKY -->
+    <section class="~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
+        <div class="container m-auto flex flex-col gap-4 lg:~gap-8/16">
             <!-- HEADING + SEARCH BAR -->
-            <div class="flex justify-between items-end">
+            <div class="flex flex-col lg:flex-row justify-between lg:items-end gap-8">
                 <!-- TOPPER + HEADING -->
                 <div class="flex flex-col items-start ~gap-3/4">
-                    <span class="topper">{{ blog.topper }}</span>
+                    <span class="topper">{{ novinky.topper }}</span>
                     <h2 class="~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
-                        {{ blog.heading }}
+                        {{ novinky.heading }}
                     </h2>
                 </div>
 
@@ -29,14 +29,58 @@
                         name="q"
                         placeholder="Hledat příspěvky"
                         autocomplete="off"
-                        class="form-input w-full px-4 bg-white dark:bg-gray-950 text-sm text-gray-800 dark:text-gray-200 border-2 border-gray-200 dark:border-gray-800 rounded-full focus:border-gray-950/50 focus:ring-gray-950/25">
+                        class="input w-full">
                 </form>
             </div>
 
             <!-- NOVINKY -->
-            <ul id="posts" class="grid grid-cols-3 gap-y-8 ~gap-x-4/6">
+            <ul id="posts" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-8 ~gap-x-4/6">
                 {% for item in collections.novinky | reverse %}
                     {% include "components/novinky-item.njk" %}
+                {% endfor %}
+            </ul>
+
+            <!-- NO RESULTS MESSAGE -->
+            <div id="no-results-message">
+                <p class="text-slate-800 dark:text-slate-200">Nebyly nalezeny žádné příspěvky odpovídající vašemu hledání.</p>
+            </div>
+
+            <!-- PAGINATION CONTAINER -->
+            <div id="pagination-container" class="flex justify-center"></div>
+        </div>
+    </section>
+
+    <!-- AKTUALITY -->
+    <section id="aktuality" class="peer ~py-16/24 ~px-4/8 bg-slate-100 dark:bg-slate-900">
+        <div class="container m-auto flex flex-col ~gap-8/16">
+            <!-- TOPPER + HEADING -->
+            <div class="flex flex-col items-start ~gap-3/4">
+                <span class="topper">{{ aktuality.topper }}</span>
+                <h2 class="~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
+                    {{ aktuality.heading }}
+                </h2>
+            </div>
+
+            <!-- AKTUALITY -->
+            <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-8 ~gap-x-4/6">
+                {% for item in collections.aktuality | reverse %}
+                    <li>
+                        <a href="{{ item.url }}" class="flex flex-col gap-1">
+                            <!-- METADATA -->
+                            <ul class="flex items-center gap-2 font-inter text-sm text-slate-800 dark:text-slate-200">
+                                <!-- WORKPLACE -->
+                                <li>
+                                    {% include "components/workplace-count.njk" %}
+                                </li>
+
+                                <li class="text-slate-600 dark:text-slate-400">·</li>
+                                <li>{{ item.data.date | postDate }}</li>
+                            </ul>
+
+                            <!-- TITLE -->
+                            <span title="{{ item.data.title }}" class="text-black dark:text-white font-bold line-clamp-2">{{ item.data.title }}</span>
+                        </a>
+                    </li>
                 {% endfor %}
             </ul>
         </div>

@@ -43,11 +43,16 @@
 
     {% block head %}{% endblock %}
 
-    <title>{{ title }} | {{ client.name }}</title>
+    <title>
+      {% if title %}
+        {{ title }} |
+      {% endif %}
+      {{ client.name }}
+    </title>
   </head>
 
   {% set oznameni = collections.oznameni | whereAll({"enabled": true}) %}
-  <body class="group/body {%- if oznameni.length > 0 %} notice {%- endif %} {%- if page.url == '/' %} home {%- else %} interior {%- endif %}">
+  <body class="group/body [&.menu]:overflow-hidden {%- if oznameni.length > 0 %} notice {%- endif %} {%- if page.url == '/' %} home {%- else %} interior {%- endif %}">
     <!-- Screen reader skip main nav -->
     <a class="sr-only" aria-label="Kliknutím přeskočíte na hlavní obsah" href="#main">Kliknutím přeskočíte na hlavní obsah</a>
 

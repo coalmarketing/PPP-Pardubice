@@ -2,7 +2,7 @@
 layout: "pages/kontakty.njk"
 
 title: 'Kontakty'
-description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
+description: 'Kontaktní údaje pracovníků a přehled pracovišť Pedagogicko-psychologické poradny Pardubice včetně adres a úředních hodin.'
 permalink: 'kontakty/'
 
 eleventyNavigation:

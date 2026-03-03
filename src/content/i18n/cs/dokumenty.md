@@ -2,7 +2,7 @@
 layout: "pages/dokumenty.njk"
 
 title: 'Dokumenty ke stažení'
-description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
+description: 'Formuláře, žádosti a důležité dokumenty ke stažení. Přehled potřebných podkladů pro rodiče i školy.'
 permalink: 'dokumenty-ke-stazeni/'
 
 eleventyNavigation:

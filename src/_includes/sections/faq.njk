@@ -1,6 +1,6 @@
 <!-- FAQ -->
 <section class="~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
-    <div class="container m-auto flex items-start gap-24">
+    <div class="container m-auto flex flex-col xl:flex-row items-start ~gap-12/24">
         <!-- HEADING + TEXT -->
         <div class="flex flex-col ~gap-4/6 w-full max-w-xl">
             <!-- TOPPER + HEADING -->
@@ -16,7 +16,7 @@
         </div>
 
         <!-- ITEMS -->
-        <div class="flex-1 flex flex-col gap-3">
+        <div class="flex-1 flex flex-col gap-3 w-full">
             {% for item in faq.items %}
                 <details class="group/details w-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl transition-colors duration-300 open:bg-secondary-100 open:border-secondary-200 dark:open:bg-primary dark:open:border-slate-600">
                     <summary class="flex items-start gap-16 w-full py-5 px-7 list-none [&::-webkit-details-marker]:hidden hover:cursor-pointer">

@@ -64,7 +64,7 @@
                 <!-- TOPPER + HEADING -->
                 <div class="flex flex-col items-start ~gap-3/4">
                     <span class="topper">{{ services.topper }}</span>
-                    <h2 class="~max-w-sm/xl ~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
+                    <h2 class="~max-w-xs/xl ~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
                         {{ services.heading }}
                     </h2>
                 </div>
@@ -90,7 +90,7 @@
             <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
                 {% for item in services.items %}
                     <li class="group">
-                        <a href="{{ item.url }}" class="relative flex flex-col items-center gap-10 ~p-6/12 border-b group-last:border-b-0 md:border-b-0 md:group-odd:border-r xl:group-even:border-r border-slate-200 dark:border-slate-800 z-10 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100">
+                        <a href="{{ item.url }}" class="relative flex flex-col justify-center items-center gap-10 h-full ~p-6/12 border-b group-last:border-b-0 md:border-0 md:group-first:border-b md:group-[&:nth-child(2)]:border-b md:group-odd:border-r xl:border-0 xl:group-first:border-b-0 xl:group-[&:nth-child(2)]:border-b-0 xl:border-r xl:group-last:border-r-0 border-slate-200 dark:border-slate-800 z-10 before:absolute before:inset-0 before:bg-primary before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100">
                             <!-- ICON -->
                             <div class="~p-3/4 bg-secondary-200 rounded-full transition-colors duration-300 group-hover:bg-white">
                                 <img class="~size-10/12"
@@ -197,7 +197,7 @@
                     <!-- ITEMS -->
                     <ul class="flex flex-col gap-4 md:gap-2">
                         {% for item in about.items %}
-                            <li class="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3 text-primary dark:text-secondary [&>svg]:size-6">
+                            <li class="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3 text-primary dark:text-secondary [&>svg]:~size-5/6">
                                 {% include "src/assets/svgs/check_circle.svg" %}
 
                                 <p class="font-inter ~text-base/lg font-medium">{{ item.text }}</p>
@@ -241,7 +241,7 @@
                 </div>
 
                 <!-- CTA -->
-                <a href="{{ blog.cta.url }}" class="btn">
+                <a href="{{ blog.cta.url }}" class="btn hidden sm:flex">
                     <span>
                         <img src="/assets/svgs/header/calendar_month.svg"
                             alt="Ikona kalendáře"
@@ -258,16 +258,19 @@
             </div>
 
             <!-- NOVINKY + AKTUALITY -->
-            <div class="flex items-start gap-12">
+            <div class="flex flex-col lg:flex-row items-start gap-y-6 gap-x-12">
                 <!-- NOVINKY -->
-                <ul class="grid grid-cols-2 ~gap-4/6">
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-8 ~gap-x-4/6">
                     {% for item in collections.novinky | reverse | limit(2) %}
                         {% include "components/novinky-item.njk" %}
                     {% endfor %}
                 </ul>
 
+                <!-- SEPARATOR -->
+                <div class="block lg:hidden h-px w-full bg-slate-200 dark:bg-slate-800"></div>
+
                 <!-- AKTUALITY -->
-                <ul class="flex flex-col gap-5 w-full max-w-xs">
+                <ul class="flex flex-col gap-5 w-full lg:~max-w-[14rem]/[20rem]">
                     {% set aktuality = collections.aktuality | reverse | limit(5) %}
 
                     {% for item in aktuality %}

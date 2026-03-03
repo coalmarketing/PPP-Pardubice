@@ -2,7 +2,7 @@
 layout: "pages/pro-skoly.njk"
 
 title: 'Pro školy'
-description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
+description: 'Odborná podpora pro učitele, výchovné poradce a školy. Konzultace, metodické vedení i spolupráce při diagnostice žáků.'
 permalink: 'pro-skoly/'
 
 eleventyNavigation:
@@ -72,7 +72,7 @@ sections:
       - icon: src/assets/svgs/pro-skoly/handshake.svg
         title: Učitelé
 
-        text: Podporujeme pedagogy při práci se žáky s výukovými i výchovnými obtížemi. Nabízíme konzultace k výsledkům vyšetření, doporučení podpůrných opatření a metodickou pomoc při&nbsp;nastavování vhodných vzdělávacích postupů.
+        text: Podporujeme pedagogy při práci se žáky s výukovými i výchovnými obtížemi. Nabízíme konzultace k výsledkům vyšetření a pomoc při nastavování vhodných podpůrných opatření.
 
         content:
           - type: list
@@ -87,7 +87,7 @@ sections:
       - icon: src/assets/svgs/pro-skoly/school.svg
         title: Vzdělávání pedagogů
 
-        text: Poskytujeme odborné semináře a kurzy zaměřené na práci se žáky se speciálními vzdělávacími potřebami i na profesní rozvoj pedagogů. Pomáháme rozšiřovat znalosti a&nbsp;posilovat jistotu při každodenní práci ve třídě.
+        text: Pořádáme odborné semináře a kurzy zaměřené na práci se žáky se speciálními vzdělávacími potřebami i na profesní rozvoj pedagogů.
 
         content:
           - type: list
@@ -103,20 +103,20 @@ sections:
   - id: pro-vychovne-poradce
   
     topper: Pro výchovné poradce
-    heading: Odborná poradenská pomoc pro rodiče
+    heading: Služby pro výchovné poradce
 
     text:
-      - paragraph: Pomáháme rodičům porozumět potřebám jejich dětí, vysvětlit výsledky vyšetření a navrhnout vhodné postupy při učení a výchově. Nabízíme konzultace, rodinnou terapii a doporučení další odborné péče podle individuálních potřeb dítěte i celé rodiny.
+      - paragraph: Poskytujeme metodickou a odbornou podporu výchovným poradcům při řešení vzdělávacích a výchovných obtíží žáků. Spolupracujeme při pedagogické diagnostice, nastavování podpůrných opatření a konzultujeme konkrétní případy. Nabízíme pravidelná odborná setkání a prostor pro sdílení zkušeností z praxe.
 
     cta:
       url: /objednat-se
       text: Objednat se
 
     items:
-      - icon: src/assets/svgs/pro-rodice-a-zaky/psychology.svg
+      - icon: src/assets/svgs/pro-skoly/explore.svg
         title: Metodické vedení
 
-        text: Pomáháme rodičům zorientovat se ve vývoji dítěte a zvolit vhodný další postup.
+        text: Pořádáme odborné semináře a kurzy zaměřené na práci se žáky se speciálními vzdělávacími potřebami i na profesní rozvoj pedagogů.
 
         content:
           - type: list
@@ -127,10 +127,10 @@ sections:
               - text: Metodická podpora při řešení konkrétních případů
               - text: Konzultace k nastavení podpůrných opatření
 
-      - icon: src/assets/svgs/pro-rodice-a-zaky/psychology.svg
+      - icon: src/assets/svgs/pro-skoly/analytics.svg
         title: Pedagogická diagnostika
 
-        text: Pomáháme rodičům zorientovat se ve vývoji dítěte a zvolit vhodný další postup.
+        text: Spolupracujeme při pedagogické diagnostice žáků, interpretaci výsledků vyšetření a tvorbě individuálních vzdělávacích plánů.
 
         content:
           - type: list

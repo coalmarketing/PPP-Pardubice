@@ -1,8 +1,7 @@
 ---
 layout: "pages/domu.njk"
 
-title: 'Efektivní weby na míru'
-description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
+description: 'Profesionální psychologická a speciálně pedagogická pomoc dětem a dospívajícím. Pedagogicko-psychologická poradna Pardubice.'
 permalink: '/'
 
 eleventyNavigation:
@@ -42,15 +41,6 @@ services:
       title: Děti
       text: Pomáháme dětem a dospívajícím najít cestu k úspěšnému vzdělávání a osobní spokojenosti.
 
-    - url: /pro-skoly
-    
-      icon:
-        url: /assets/svgs/services/school.svg
-        alt: Ikona školní čepice
-
-      title: Učitelé
-      text: Odborná podpora pedagogům, výchovným poradcům i školám při&nbsp;práci s dětmi a třídami.
-
     - url: /pro-rodice-a-zaky#rodice
     
       icon:
@@ -59,6 +49,15 @@ services:
 
       title: Rodiče
       text: Podpora rodičů při výchově, učení i&nbsp;řešení náročných rodinných situací s dětmi.
+
+    - url: /pro-skoly
+    
+      icon:
+        url: /assets/svgs/services/school.svg
+        alt: Ikona školní čepice
+
+      title: Učitelé
+      text: Odborná podpora pedagogům, výchovným poradcům i školám při&nbsp;práci s dětmi a třídami.
 
     - icon:
         url: /assets/svgs/services/medical_information.svg

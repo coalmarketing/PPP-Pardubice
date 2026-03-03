@@ -1,5 +1,5 @@
 <!-- LOCATIONS -->
-<section class="group ~py-16/24 ~px-4/8 bg-white dark:bg-slate-950 peer-[.bg-slate-100]:bg-slate-100 dark:peer-[.bg-slate-100]:bg-slate-900">
+<section id="pracoviste" class="group ~py-16/24 ~px-4/8 bg-white dark:bg-slate-950 peer-[.bg-slate-100]:bg-slate-100 dark:peer-[.bg-slate-100]:bg-slate-900">
     <div class="container m-auto flex flex-col items-center ~gap-8/16">
         <!-- TOPPER + HEADING -->
         <div class="flex flex-col items-center ~gap-3/4">
@@ -15,9 +15,9 @@
             {% for item in locations.mainItems %}
                 <li class="col-span-4 xl:col-span-2 flex flex-col p-4 bg-slate-100 dark:bg-slate-900 peer-[.bg-slate-100]:bg-white dark:peer-[.bg-slate-100]:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl">
                     <!-- HEADER -->
-                    <div class="flex flex-col p-8 bg-secondary-100 dark:bg-primary border border-secondary-200 dark:border-slate-800 rounded-2xl">
-                        <h3 class="text-2xl text-black dark:text-white font-semibold">{{ item.title }}</h3>
-                        <span class="text-lg text-slate-800 dark:text-slate-200">{{ item.description }}</span>
+                    <div class="flex flex-col ~p-6/8 bg-secondary-100 dark:bg-primary border border-secondary-200 dark:border-slate-800 rounded-2xl">
+                        <h3 class="~text-xl/2xl text-black dark:text-white font-semibold">{{ item.title }}</h3>
+                        <span class="~text-base/lg text-slate-800 dark:text-slate-200">{{ item.description }}</span>
                     </div>
 
                     <!-- CONTENT -->
@@ -76,7 +76,7 @@
                             <!-- OPENING HOURS -->
                             <ul class="flex flex-col gap-2">
                                 {% for subitem in item.hours %}
-                                    <li class="flex justify-between items-center">
+                                    <li class="flex flex-col min-[22rem]:flex-row justify-between min-[22rem]:items-center gap-1">
                                         <span class="font-inter text-slate-800 dark:text-slate-200">{{ subitem.day }}</span>
 
                                         <!-- HOURS -->

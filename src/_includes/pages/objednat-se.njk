@@ -20,12 +20,13 @@
                 <input class="sr-only" type="search" name="bot-field" tabindex="-1" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Leave this empty">
 
                 {% for fieldset in form.fieldsets %}
-                    <fieldset class="flex flex-col gap-5 p-8 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl">
+                    <fieldset class="flex flex-col gap-5 ~p-6/8 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl">
                         <!-- ICON + TITLE -->
-                        <div class="flex items-center gap-5">
+                        <div class="flex flex-col md:flex-row items-start lg:items-center gap-y-4 ~gap-x-3/5">
                             <!-- ICON -->
-                            <div class="p-3 bg-secondary-200 rounded-full">
-                                <img src="{{ fieldset.icon.url }}"
+                            <div class="shrink-0 ~p-2/3 bg-secondary-200 rounded-full">
+                                <img class="~size-7/8"
+                                    src="{{ fieldset.icon.url }}"
                                     alt="{{ fieldset.icon.url }}"
                                     width="32"
                                     height="32"
@@ -36,8 +37,8 @@
                             </div>
 
                             <!-- LEGEND + TEXT -->
-                            <div class="flex flex-col">
-                                <legend class="text-2xl text-black dark:text-white font-bold">{{ fieldset.legend }}</legend>
+                            <div class="flex flex-col ~gap-1/0">
+                                <legend class="~text-xl/2xl text-black dark:text-white font-bold">{{ fieldset.legend }}</legend>
                                 <p class="font-inter ~text-base/lg text-slate-800 dark:text-slate-200">{{ fieldset.text }}</p>
                             </div>
                         </div>
@@ -45,87 +46,108 @@
                         <!-- SEPARATOR -->
                         <div class="h-px bg-slate-300 dark:bg-slate-700"></div>
 
-                        <!-- FIELDS -->
-                        <div class="grid sm:!grid-cols-1 gap-x-2.5 gap-y-5" {%- if fieldset.columns %} style="grid-template-columns: repeat({{ fieldset.columns }}, minmax(0, {{ fieldset.columns }}fr))" {%- endif %}>
-                            {% for field in fieldset.fields %}
-                                <div class="grid max-md:!grid-cols-1 max-lg:!grid-cols-2 gap-2.5" {%- if field.columns %} style="grid-template-columns: repeat({{ field.columns }}, minmax(0, {{ field.columns }}fr))" {%- endif %}>
-                                    {% if field.type === "radio" or field.type === "checkbox" %}
-                                        <!-- {{ field.name | upper }} -->
-                                        {% for option in field.options %}
-                                            <label class="group flex flex-col justify-center items-center gap-5 h-52 p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl hover:cursor-pointer hover:border-black dark:hover:border-white has-[:checked]:hover:border-primary dark:has-[:checked]:hover:border-secondary transition-colors duration-300 has-[:checked]:border-2 has-[:checked]:border-primary dark:has-[:checked]:border-secondary">
-                                                <input
-                                                    id="{{ field.name | slug }}-{{ option.value | slug }}"
-                                                    type="{{ field.type }}"
-                                                    name="{{ field.name }}"
-                                                    value="{{ option.value }}"
-                                                    class="sr-only"
-                                                    {%- if field.required %} required {%- endif %}>
+                        {% if not fieldset.submit %}
+                            <!-- FIELDS -->
+                            <div class="grid max-sm:!grid-cols-1 gap-x-2.5 gap-y-5" {%- if fieldset.columns %} style="grid-template-columns: repeat({{ fieldset.columns }}, minmax(0, {{ fieldset.columns }}fr))" {%- endif %}>
+                                {% for field in fieldset.fields %}
+                                    <div class="grid max-md:!grid-cols-1 max-lg:!grid-cols-2 gap-2.5" {%- if field.columns %} style="grid-template-columns: repeat({{ field.columns }}, minmax(0, {{ field.columns }}fr))" {%- endif %}>
+                                        {% if field.type === "radio" or field.type === "checkbox" %}
+                                            <!-- {{ field.name | upper }} -->
+                                            {% for option in field.options %}
+                                                <label class="group flex flex-col justify-center items-center gap-5 h-52 p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl hover:cursor-pointer hover:border-black dark:hover:border-white has-[:checked]:hover:border-primary dark:has-[:checked]:hover:border-secondary transition-colors duration-300 has-[:checked]:border-2 has-[:checked]:border-primary dark:has-[:checked]:border-secondary">
+                                                    <input
+                                                        id="{{ field.name | slug }}-{{ option.value | slug }}"
+                                                        type="{{ field.type }}"
+                                                        name="{{ field.name }}"
+                                                        value="{{ option.value }}"
+                                                        class="sr-only"
+                                                        {%- if field.required %} required {%- endif %}>
 
-                                                <!-- ICON -->
-                                                <div class="p-3 bg-secondary-200 text-primary rounded-full [&>svg]:size-8 transition-colors duration-300 group-has-[:checked]:bg-primary dark:group-has-[:checked]:bg-secondary group-has-[:checked]:text-white dark:group-has-[:checked]:text-black">
-                                                    {% include option.icon %}
-                                                </div>
+                                                    <!-- ICON -->
+                                                    <div class="p-3 bg-secondary-200 text-primary rounded-full [&>svg]:size-8 transition-colors duration-300 group-has-[:checked]:bg-primary dark:group-has-[:checked]:bg-secondary group-has-[:checked]:text-white dark:group-has-[:checked]:text-black">
+                                                        {% include option.icon %}
+                                                    </div>
 
-                                                <!-- VALUE -->
-                                                <span class="text-center text-lg text-black dark:text-white font-bold">{{ option.value }}</span>
+                                                    <!-- VALUE -->
+                                                    <span class="text-center text-lg text-black dark:text-white font-bold">{{ option.value }}</span>
+                                                </label>
+                                            {% endfor %}
+
+                                        {% elif field.type === "separator" %}
+                                            <!-- SEPARATOR -->
+                                            <div class="col-span-full h-px bg-slate-300 dark:bg-slate-700"></div>
+
+                                        {% elif field.type === "textarea" %}
+                                            <!-- {{ field.name | upper }} -->
+                                            <label class="col-span-full flex flex-col gap-2.5">
+                                                <span class="text-black dark:text-white font-bold">{{ field.name }}</span>
+                                                <textarea class="input min-h-[3lh] max-h-[30lh]" name="{{ field.name }}" rows="3" {%- if field.placeholder %} placeholder="{{ field.placeholder }}" {%- endif %} {%- if field.required %} required {%- endif %}></textarea>
                                             </label>
-                                        {% endfor %}
 
-                                    {% elif field.type === "inline-checkbox" %}
-                                        <!-- {{ field.name | upper }} -->
-                                        <label class="flex items-center gap-2.5">
-                                            <input 
-                                                class="checkbox"
-                                                type="checkbox"
-                                                name="{{ field.name }}"
-                                                {%- if field.required %} required {%- endif %}>
-                                            <span class="text-black dark:text-white font-bold select-none">{{ field.value | safe }}</span>
-                                        </label>
-
-                                    {% elif field.type === "separator" %}
-                                        <!-- SEPARATOR -->
-                                        <div class="col-span-full h-px bg-slate-300 dark:bg-slate-700"></div>
-
-                                    {% elif field.type === "textarea" %}
-                                        <!-- {{ field.name | upper }} -->
-                                        <label class="col-span-full flex flex-col gap-2.5">
-                                            <span class="text-black dark:text-white font-bold">{{ field.name }}</span>
-                                            <textarea class="input min-h-[3lh] max-h-[30lh]" name="{{ field.name }}" rows="3" {%- if field.placeholder %} placeholder="{{ field.placeholder }}" {%- endif %} {%- if field.required %} required {%- endif %}></textarea>
-                                        </label>
-
-                                    {% elif field.type === "submit" %}
-                                        <!-- {{ field.name | upper }} -->
-                                        <button type="submit" class="btn">
-                                            <span>
-                                                <img src="/assets/svgs/header/calendar_month.svg"
-                                                    alt="Ikona kalendáře"
-                                                    width="16"
-                                                    height="16"
-                                                    loading="eager"
-                                                    decoding="async"
-                                                    aria-hidden="true"
-                                                    draggable="false">
-                                            </span>
-
-                                            <span>Odeslat</span>
-                                        </button>
-
-                                    {% else %}
-                                        <!-- {{ field.name | upper }} -->
-                                        <label class="col-span-full flex flex-col gap-2">
-                                            <span class="text-black dark:text-white font-bold">{{ field.name }}</span>
-                                            <input 
+                                        {% else %}
+                                            <!-- {{ field.name | upper }} -->
+                                            <label class="col-span-full flex flex-col gap-2">
+                                                <span class="text-black dark:text-white font-bold">{{ field.name }}</span>
+                                                <input 
                                                 class="input"
                                                 type="{{ field.type }}"
                                                 name="{{ field.name }}"
                                                 autocomplete="{{ field.autocomplete }}"
                                                 {%- if field.placeholder %} placeholder="{{ field.placeholder }}" {%- endif %}
                                                 {%- if field.required %} required {%- endif %}>
-                                        </label>
-                                    {% endif %}
+                                            </label>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        {% else %}
+                            <!-- SUBMIT FIELDS -->
+                            <div class="flex flex-col items-start gap-8">
+                                <!-- ITEMS -->
+                                <div class="flex flex-col gap-3">
+                                    <!-- GDPR -->
+                                    <label class="flex items-center gap-2.5">
+                                        <input 
+                                            class="checkbox"
+                                            type="checkbox"
+                                            name="Zpracování osobních údajů"
+                                            required>
+                                        <span class="text-black dark:text-white font-bold select-none">
+                                            Souhlasím se <a href="/gdpr" target="_blank" class="underline text-primary dark:text-secondary">zpracováním osobních údajů</a>
+                                        </span>
+                                    </label>
+
+                                    <!-- GDPR -->
+                                    <label class="flex items-center gap-2.5">
+                                        <input 
+                                            class="checkbox"
+                                            type="checkbox"
+                                            name="Pravdivost údajů"
+                                            required>
+                                        <span class="text-black dark:text-white font-bold select-none">
+                                            Potvrzuji, že uvedené údaje jsou pravdivé
+                                        </span>
+                                    </label>
                                 </div>
-                            {% endfor %}
-                        </div>
+
+                                <!-- SUBMIT BUTTON -->
+                                <button type="submit" class="btn">
+                                    <span>
+                                        <img src="/assets/svgs/objednat-se/arrow_right_alt.svg"
+                                            alt="Ikona šipky vpravo"
+                                            width="16"
+                                            height="16"
+                                            loading="eager"
+                                            decoding="async"
+                                            aria-hidden="true"
+                                            draggable="false">
+                                    </span>
+
+                                    <span>Odeslat</span>
+                                </button>
+                            </div>
+                        {% endif %}
 
                     </fieldset>
                 {% endfor %}
@@ -135,5 +157,4 @@
 
     {% include "sections/locations.njk" %}
     {% include "sections/faq.njk" %}
-    {% include "sections/cta.njk" %}
 {% endblock body %}

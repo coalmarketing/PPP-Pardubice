@@ -2,7 +2,7 @@
 layout: "pages/novinky.njk"
 
 title: 'Novinky'
-description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
+description: 'Aktuální informace, oznámení a důležité zprávy z Pedagogicko-psychologické poradny Pardubice.'
 permalink: 'novinky/'
 
 eleventyNavigation:
@@ -20,7 +20,12 @@ landing:
     - title: Novinky
 
 
-blog:
+novinky:
   topper: Novinky
   heading: Nejnovější příspěvky
+
+
+aktuality:
+  topper: Aktuality
+  heading: Důležitá sdělení
 ---

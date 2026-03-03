@@ -18,7 +18,7 @@ export default {
             key: "Pro školy",
             visibleOnTablet: true,
             subitems: [
-                { url: "/pro-skoly", key: "Učitelé" },
+                { url: "/pro-skoly#pro-ucitele", key: "Učitelé" },
                 { url: "/pro-skoly", key: "Výchovní poradci" },
                 { url: "/pro-skoly", key: "Lékaři a specialisté" },
                 { url: "/pro-skoly#dokumenty", key: "Dokumenty a materiály" }
@@ -26,6 +26,14 @@ export default {
         },
         { url: "/dokumenty-ke-stazeni/", key: "Dokumenty", visibleOnTablet: false },
         { url: "/novinky/", key: "Novinky", visibleOnTablet: true },
-        { url: "/kontakty/", key: "Kontakty", visibleOnTablet: true }
+        {
+            url: "/kontakty/",
+            key: "Kontakty",
+            visibleOnTablet: true,
+            subitems: [
+                { url: "/kontakty#pracoviste", key: "Pracoviště" },
+                { url: "/kontakty#pracovnici", key: "Pracovníci" }
+            ]
+        }
     ]
 }
