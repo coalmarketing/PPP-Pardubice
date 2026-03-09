@@ -5,7 +5,7 @@
     {% include "sections/navigation.njk" %}
 
     <!-- DOCUMENTS -->
-    <section class="peer ~py-16/24 ~px-4/8 bg-slate-100 dark:bg-slate-900">
+    <section class="~py-16/24 ~px-4/8 bg-slate-100 dark:bg-slate-900">
         <div class="container m-auto flex flex-col lg:flex-row items-start gap-16">
             {% include "components/sidebar.njk" %}
 
@@ -18,7 +18,7 @@
                     <div class="relative flex flex-col gap-8">
                         {% if group.key !== "_ungrouped" %}
                             <!-- ANCHOR -->
-                            <div id="{{ group.key | slug }}" class="absolute -top-32 group-[.notice]/body:-top-56"></div>
+                            <div id="{{ group.key | slug }}" class="absolute -top-32"></div>
 
                             <!-- TOPPER + HEADING -->
                             <div class="flex flex-col items-start ~gap-3/4">

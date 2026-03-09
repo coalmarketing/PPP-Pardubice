@@ -2,7 +2,7 @@
 <section class="group relative ~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
     <div class="container m-auto flex flex-col xl:group-even:flex-row xl:group-odd:flex-row-reverse items-start ~gap-12/24">
         <!-- IMAGE -->
-        <picture class="basis-1/2 xl:sticky xl:top-32 xl:group-[.notice]/body:top-52">
+        <picture class="basis-1/2 xl:sticky xl:top-32">
             <!-- MOBILE IMAGE -->
             <source media="(max-width: 600px)" srcset="{% getUrl pageContent.data.image.url | resize({ width: 552, height: 414 }) | avif %}" type="image/avif">
             <source media="(max-width: 600px)" srcset="{% getUrl pageContent.data.image.url | resize({ width: 552, height: 414 }) | webp %}" type="image/webp">

@@ -50,7 +50,7 @@ services:
       title: Rodiče
       text: Podpora rodičů při výchově, učení i&nbsp;řešení náročných rodinných situací s dětmi.
 
-    - url: /pro-skoly
+    - url: /pro-skoly#ucitele
     
       icon:
         url: /assets/svgs/services/school.svg

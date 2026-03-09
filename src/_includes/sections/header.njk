@@ -1,111 +1,105 @@
-<!-- OZNÁMENÍ + HEADER -->
-<div class="fixed top-0 flex flex-col w-full z-30">
-    {% for item in collections.oznameni | whereAll({"enabled": true}) %}
-        {% include "sections/notice.njk" %}
-    {% endfor %}
+<header class="fixed top-0 ~py-2/4 ~px-4/8 flex w-full group-[.interior]/body:bg-white dark:group-[.interior]/body:bg-slate-950 z-30 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-950 before:shadow-md before:-z-10 before:transition-transform before:duration-300 before:ease-in-out before:scale-y-0 before:origin-top group-[.scroll]/body:before:scale-y-100">
+    <div class="container m-auto flex justify-between items-center ~gap-4/8">
+        <!-- LOGO -->
+        <a href="/" class="flex items-center ~gap-3/5">
+            <img
+                class="block dark:hidden ~h-[3rem]/[3.75rem] w-auto"
+                src="/assets/svgs/logo-symbol-dark.svg"
+                alt="{{ client.name }} - tmavé logo"
+                width="64"
+                height="64"
+                loading="eager"
+                decoding="async"
+                aria-hidden="true"
+                draggable="false">
 
-    <header class="~py-2/4 ~px-4/8 flex w-full group-[.interior]/body:bg-white dark:group-[.interior]/body:bg-slate-950 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-950 before:shadow-md before:-z-10 before:transition-transform before:duration-300 before:ease-in-out before:scale-y-0 before:origin-top group-[.scroll]/body:before:scale-y-100">
-        <div class="container m-auto flex justify-between items-center ~gap-4/8">
-            <!-- LOGO -->
-            <a href="/" class="flex items-center ~gap-3/5">
-                <img
-                    class="block dark:hidden ~h-[3rem]/[3.75rem] w-auto"
-                    src="/assets/svgs/logo-symbol-dark.svg"
-                    alt="{{ client.name }} - tmavé logo"
-                    width="64"
-                    height="64"
-                    loading="eager"
-                    decoding="async"
-                    aria-hidden="true"
-                    draggable="false">
+            <img
+                class="hidden dark:block ~h-[3rem]/[3.75rem] w-auto"
+                src="/assets/svgs/logo-symbol-white.svg"
+                alt="{{ client.name }} - světlé logo"
+                width="64"
+                height="64"
+                loading="eager"
+                decoding="async"
+                aria-hidden="true"
+                draggable="false">
 
-                <img
-                    class="hidden dark:block ~h-[3rem]/[3.75rem] w-auto"
-                    src="/assets/svgs/logo-symbol-white.svg"
-                    alt="{{ client.name }} - světlé logo"
-                    width="64"
-                    height="64"
-                    loading="eager"
-                    decoding="async"
-                    aria-hidden="true"
-                    draggable="false">
+            <span class="max-w-44 text-black dark:text-white ~text-base/lg font-bold ~leading-[1.125rem]/[1.375rem]">{{ client.name }}</span>
+        </a>
 
-                <span class="max-w-44 text-black dark:text-white ~text-base/lg font-bold ~leading-[1.125rem]/[1.375rem]">{{ client.name }}</span>
-            </a>
+        <!-- NAVIGATION -->
+        <nav class="hidden xl:block p-1.5 bg-secondary-50 dark:bg-slate-900 rounded-full">
+            <ul class="flex gap-2">
+                {% for entry in mainNavigation.items %}
+                    {# Define a hasChild variable to make it easier to test what navigation items are have child dropdown pages #}
+                    {% set hasChild = entry.subitems %}
 
-            <!-- NAVIGATION -->
-            <nav class="hidden xl:block p-1.5 bg-secondary-50 dark:bg-primary rounded-full">
-                <ul class="flex gap-2">
-                    {% for entry in mainNavigation.items %}
-                        {# Define a hasChild variable to make it easier to test what navigation items are have child dropdown pages #}
-                        {% set hasChild = entry.subitems %}
-
-                        <li
+                    <li
                           class="group/li relative {%- if entry.visibleOnTablet %} inline-flex {%- else %} hidden 2xl:inline-flex {%- endif %} {% if hasChild -%} dropdown {%- endif %}"
                           {%- if hasChild -%}tabindex="0"{%- endif -%}
                         >
-                            {# If the page has child dropdown pages, render it as a <button> tag with the appropriate dropdown HTML #}
-                            {% if hasChild %}
-                                {# Render the <button> with the active class, dropdown icon and child links #}
-                                <a
+                        {# If the page has child dropdown pages, render it as a <button> tag with the appropriate dropdown HTML #}
+                        {% if hasChild %}
+                            {# Render the <button> with the active class, dropdown icon and child links #}
+                            <a
                                   href="{{ entry.url }}"
                                   class="flex item-center gap-1.5 py-1.5 px-5 whitespace-nowrap rounded-full
-                                  {%- if entry.url == page.url %} bg-secondary-200 dark:bg-secondary-500 text-primary font-medium
-                                  {%- else %} relative text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-black z-10 before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 group-hover/li:before:scale-100 group-hover/li:before:opacity-100 {%- endif %}"
+                                  {%- if entry.url == page.url %} bg-secondary-200 dark:bg-secondary text-primary font-medium
+                                  {%- else %} relative text-slate-800 dark:text-slate-200 group-hover/li:text-primary z-10 before:absolute before:inset-0 before:bg-secondary-200 dark:before:bg-secondary before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 group-hover/li:before:scale-100 group-hover/li:before:opacity-100 {%- endif %}"
                                 >
-                                    <span>{{ entry.key }}</span>
+                                <span>{{ entry.key }}</span>
 
-                                    <!-- ICON -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="mt-1.5" viewBox="0 0 16 16">
-                                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                                    </svg>
-                                </a>
+                                <!-- ICON -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="mt-1.5" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                            </a>
 
-                                {# Dropdowns have another ul/li set up within the parent li, which gets rendered in the same way as a normal link #}
-                                <div class="absolute top-full left-0 p-3 pointer-events-none group-hover/li:pointer-events-auto">
-                                    <ul id="dropdown-{{ entry.key | slug }}" class="flex flex-col gap-1 p-1.5 bg-secondary-50 dark:bg-primary rounded-2xl transition-[transform,opacity] duration-500 ease-in-out origin-top scale-y-0 opacity-0 group-hover/li:scale-y-100 group-hover/li:opacity-100">
-                                        {% for child in entry.subitems %}
-                                            <li class="drop-li">
-                                                <a
+                            {# Dropdowns have another ul/li set up within the parent li, which gets rendered in the same way as a normal link #}
+                            <div class="absolute top-full left-0 p-3 pointer-events-none group-hover/li:pointer-events-auto">
+                                <ul id="dropdown-{{ entry.key | slug }}" class="flex flex-col gap-1 p-1.5 bg-secondary-50 dark:bg-slate-900 rounded-2xl transition-[transform,opacity] duration-500 ease-in-out origin-top scale-y-0 opacity-0 group-hover/li:scale-y-100 group-hover/li:opacity-100">
+                                    {% for child in entry.subitems %}
+                                        <li class="drop-li">
+                                            <a
                                                   href="{{ child.url }}"
                                                   class="li-link inline-flex w-full py-1 px-3 text-sm whitespace-nowrap
                                                   {%- if child.url == page.url %} bg-secondary text-primary font-medium
-                                                  {%- else %} relative text-slate-800 dark:text-slate-200 hover:text-black z-10 before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:origin-left before:opacity-0 hover:before:scale-x-100 hover:before:opacity-100 {%- endif %}"
+                                                  {%- else %} relative text-slate-800 dark:text-slate-200 hover:text-primary z-10 before:absolute before:inset-0 before:bg-secondary-200 dark:before:bg-secondary before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-x-0 before:origin-left before:opacity-0 hover:before:scale-x-100 hover:before:opacity-100 {%- endif %}"
                                                   {%- if child.url == page.url -%}aria-current="page"{%- endif -%}
                                                 >
-                                                    {{ child.key }}
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            {% else %}
-                                {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
-                                <a
-                                    class="inline-flex py-1.5 px-5 whitespace-nowrap rounded-full
-                                    {%- if entry.url == page.url %} bg-secondary-200 dark:bg-secondary-500 text-primary font-medium
-                                    {%- else %} relative text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-black z-10 before:absolute before:inset-0 before:bg-secondary-200 before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100 {%- endif %}"
-                                    href="{{ entry.url }}"
-                                    {%- if entry.url == page.url -%}aria-current="page"{%- endif -%}>
-                                    {{ entry.key }}
-                                </a>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </nav>
+                                                {{ child.key }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% else %}
+                            {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
+                            <a
+                                class="inline-flex py-1.5 px-5 whitespace-nowrap rounded-full
+                                {%- if entry.url == page.url %} bg-secondary-200 dark:bg-secondary-500 text-primary font-medium
+                                {%- else %} relative text-slate-800 dark:text-slate-200 hover:text-primary z-10 before:absolute before:inset-0 before:bg-secondary-200 dark:before:bg-secondary before:rounded-full before:-z-10 before:transition-[transform,opacity] before:duration-500 before:ease-in-out before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100 {%- endif %}"
+                                href="{{ entry.url }}"
+                                {%- if entry.url == page.url -%}aria-current="page"{%- endif -%}>
+                                {{ entry.key }}
+                            </a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
 
-            <!-- DARKMODE + CTA -->
-            <div class="flex items-center gap-4">
-                <!-- DARKMODE + SIDEBAR TOGGLE -->
-                <div class="flex gap-1">
-                    <!-- DARKMODE SWITCH -->
-                    <label class="darkmode-container relative h-8 w-8 select-none hover:cursor-pointer" for="dark-mode-toggle">
-                        <span class="sr-only">Přepínač tmavého režimu</span>
-                        <input id="dark-mode-toggle" type="checkbox" class="invisible">
+        <!-- DARKMODE + CTA -->
+        <div class="flex items-center gap-4">
+            <!-- DARKMODE + SIDEBAR TOGGLE -->
+            <div class="flex gap-1">
+                <!-- DARKMODE SWITCH -->
+                <label class="darkmode-container relative h-8 w-8 select-none hover:cursor-pointer" for="dark-mode-toggle">
+                    <span class="sr-only">Přepínač tmavého režimu</span>
+                    <input id="dark-mode-toggle" type="checkbox" class="invisible">
 
-                        <!-- LIGHTMODE -->
-                        <img
+                    <!-- LIGHTMODE -->
+                    <img
                             class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-[transform,opacity] duration-300 opacity-100 dark:opacity-0 dark:-translate-y-6"
                             src="/assets/svgs/light_mode.svg"
                             alt="Ikona měsíce"
@@ -116,8 +110,8 @@
                             aria-hidden="true"
                             draggable="false">
 
-                        <!-- LIGHTMODE -->
-                        <img
+                    <!-- LIGHTMODE -->
+                    <img
                             class="absolute top-1/2 left-1/2 translate-y-6 -translate-x-1/2 transition-[transform,opacity] duration-300 opacity-0 dark:opacity-100 dark:-translate-y-1/2"
                             src="/assets/svgs/dark_mode.svg"
                             alt="Ikona měsíce"
@@ -127,28 +121,28 @@
                             decoding="async"
                             aria-hidden="true"
                             draggable="false">
-                    </label>
+                </label>
 
-                    <!-- MOBILE MENU BUTTON -->
-                    <button
+                <!-- MOBILE MENU BUTTON -->
+                <button
                       id="mobile-menu-toggle"
                       class="group flex 2xl:hidden justify-center items-center gap-1 h-8 aspect-square"
                       type="button"
                       aria-expanded="false"
                     >
-                        <span class="sr-only">Otevřít navigaci</span>
-                        <span class="relative block h-3.5 w-5 *:bg-black dark:*:bg-white">
-                            <span class="absolute top-0 block h-px w-full rounded-full transition-transform duration-300 group-[.active]:rotate-45 group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
-                            <span class="absolute top-1/2 -translate-y-1/2 block h-px w-full rounded-full transition-opacity duration-300 group-[.active]:opacity-0"></span>
-                            <span class="absolute bottom-0 block h-px w-full rounded-full transition-transform duration-300 group-[.active]:rotate-[315deg] group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
-                        </span>
-                    </button>
-                </div>
+                    <span class="sr-only">Otevřít navigaci</span>
+                    <span class="relative block h-3.5 w-5 *:bg-black dark:*:bg-white">
+                        <span class="absolute top-0 block h-px w-full rounded-full transition-transform duration-300 group-[.active]:rotate-45 group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
+                        <span class="absolute top-1/2 -translate-y-1/2 block h-px w-full rounded-full transition-opacity duration-300 group-[.active]:opacity-0"></span>
+                        <span class="absolute bottom-0 block h-px w-full rounded-full transition-transform duration-300 group-[.active]:rotate-[315deg] group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
+                    </span>
+                </button>
+            </div>
 
-                <!-- CTA -->
-                <a href="/objednat-se" class="btn max-lg:hidden">
-                    <span>
-                        <img src="/assets/svgs/header/calendar_month.svg"
+            <!-- CTA -->
+            <a href="/objednat-se" class="btn max-lg:hidden">
+                <span>
+                    <img src="/assets/svgs/header/calendar_month.svg"
                         alt="Ikona kalendáře"
                         width="16"
                         height="16"
@@ -156,13 +150,12 @@
                         decoding="async"
                         aria-hidden="true"
                         draggable="false">
-                    </span>
+                </span>
 
-                    <span>Objednat se</span>
-                </a>
-            </div>
+                <span>Objednat se</span>
+            </a>
         </div>
-    </header>
-</div>
+    </div>
+</header>
 
 {% include "sections/sidebar.njk" %}

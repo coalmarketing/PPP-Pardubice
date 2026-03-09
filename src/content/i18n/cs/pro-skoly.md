@@ -30,21 +30,21 @@ navigation:
             url: /assets/svgs/pro-skoly/school.svg
             alt: Ikona školní čepice
           
-          url: "#pro-ucitele"
+          url: "#ucitele"
           title: Pro učitele
 
         - icon:
             url: /assets/svgs/pro-skoly/explore.svg
             alt: Ikona kompasu
           
-          url: "#pro-rodice"
+          url: "#vychovni-poradci"
           title: Pro výchovné poradce
 
         - icon:
             url: /assets/svgs/pro-skoly/medical_services.svg
             alt: Ikona zdravotnického kufříku
           
-          url: "#podle-veku-ditete"
+          url: "#lekari-a-specialiste"
           title: Pro lékaře a specialisty
 
         - icon:
@@ -56,7 +56,7 @@ navigation:
 
 
 sections:
-  - id: pro-ucitele
+  - id: ucitele
 
     topper: Pro učitele
     heading: Služby pro učitele
@@ -100,7 +100,7 @@ sections:
               - text: Tematické přednášky a odborné besedy
 
 
-  - id: pro-vychovne-poradce
+  - id: vychovni-poradci
   
     topper: Pro výchovné poradce
     heading: Služby pro výchovné poradce
@@ -140,6 +140,49 @@ sections:
               - text: Pomoc při pedagogické diagnostice žáků
               - text: Konzultace k doporučením z vyšetření
               - text: Spolupráce při tvorbě individuálních vzdělávacích plánů
+
+  - id: instituce-a-specialiste
+
+    topper: Instituce a specialisté
+    heading: Spolupracujeme s&nbsp;lékaři a&nbsp;specialisty
+
+    text:
+      - paragraph: Spolupracujeme s odbornými institucemi a specialisty při diagnostice, terapii a péči o děti a dospívající. Sdílíme odborné informace, konzultujeme výsledky vyšetření a koordinujeme další postup podpory s cílem zajistit komplexní péči o klienty.
+
+    cta:
+      url: /objednat-se
+      text: Objednat se
+
+    items:
+      - icon: src/assets/svgs/pro-skoly/medical_services.svg
+        title: Lékaři
+
+        text: Spolupracujeme s lékaři při diagnostice a péči o děti a dospívající. Zajišťujeme předávání odborných informací a koordinaci dalšího postupu podpory.
+
+        content:
+          - type: list
+            title: S čím pomáháme
+
+            items:
+              - text: Spolupráce s dětskými lékaři
+              - text: Spolupráce s dětskými psychiatry v ambulancích i nemocnicích
+              - text: Vzájemná komunikace o diagnostice a terapeutických postupech
+              - text: Spolupráce s neurology
+
+      - icon: src/assets/svgs/pro-skoly/psychology.svg
+        title: Odborní specialisté
+
+        text: Spolupracujeme s dalšími odborníky a institucemi při zajištění komplexní péče o děti se speciálními vzdělávacími nebo zdravotními potřebami.
+
+        content:
+          - type: list
+            title: S čím pomáháme
+
+            items:
+              - text: Předávání a konzultace výsledků odborných vyšetření
+              - text: Koordinace další péče mezi odborníky
+              - text: Spolupráce při nastavování podpůrných opatření
+              - text: Zajištění potřebné dokumentace a odborných zpráv
 
 
 documents:

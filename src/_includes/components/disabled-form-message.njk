@@ -1,0 +1,10 @@
+<div class="flex flex-col gap-5 w-full max-w-5xl ~p-6/8 bg-red-100 dark:bg-red-900 border border-red-200 dark:border-red-800 rounded-3xl">
+    <!-- ICON + TITLE -->
+    <div class="flex items-center gap-3 text-black dark:text-white [&>svg]:size-5">
+        {% include "src/assets/svgs/notice/warning.svg" %}
+        <span class="text-lg font-bold">{{ formSettings.data.disabled_title }}</span>
+    </div>
+    <div class="prose prose-slate dark:prose-invert max-w-none">
+        {{ formSettings.data.disabled_message | markdown | safe }}
+    </div>
+</div>

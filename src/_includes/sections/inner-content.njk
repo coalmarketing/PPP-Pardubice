@@ -1,21 +1,21 @@
 {% for section in sections %}
     <!-- SECTION -->
-    <section class="group/section peer relative ~py-16/24 ~px-4/8 even:bg-white dark:even:bg-slate-950 odd:bg-slate-100 dark:odd:bg-slate-900">
+    <section class="group/section relative ~py-16/24 ~px-4/8 even:bg-white dark:even:bg-slate-950 odd:bg-slate-100 dark:odd:bg-slate-900">
         {% if section.id %}
             <!-- ANCHOR -->
-            <div id="{{ section.id }}" class="absolute top-0 group-[.notice]/body:-top-20"></div>
+            <div id="{{ section.id }}" class="absolute top-0"></div>
         {% endif %}
 
         <div class="container m-auto flex flex-col xl:flex-row items-start ~gap-12/24">
             <!-- TEXT + CTA -->
-            <div class="xl:sticky xl:top-32 xl:group-[.notice]/body:top-52 flex flex-col items-start gap-8">
+            <div class="xl:sticky xl:top-32 flex flex-col items-start gap-8">
                 <!-- HEADING + TEXT -->
                 <div class="flex flex-col ~gap-4/6">
                     <!-- TOPPER + HEADING -->
                     <div class="flex flex-col items-start ~gap-3/4">
                         <span class="topper">{{ section.topper }}</span>
                         <h2 class="max-w-xl ~text-3xl/5xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">
-                            {{ section.heading }}
+                            {{ section.heading | safe }}
                         </h2>
                     </div>
 

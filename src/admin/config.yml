@@ -231,42 +231,6 @@ collections:
     editor:
       preview: false
 
-    view_filters:
-      - label: "Aktivní oznámení"
-        field: "enabled"
-        pattern: true
-
-      - label: "Pardubice"
-        field: "workplace"
-        pattern: "Pardubice"
-
-      - label: "Chrudim"
-        field: "workplace"
-        pattern: "Chrudim"
-
-      - label: "Přelouč"
-        field: "workplace"
-        pattern: "Přelouč"
-
-      - label: "Holice"
-        field: "workplace"
-        pattern: "Holice"
-
-      - label: "Hlinsko v Čechách"
-        field: "workplace"
-        pattern: "Hlinsko v Čechách"
-
-      - label: "Třemošnice"
-        field: "workplace"
-        pattern: "Třemošnice"
-
-    view_groups:
-      - label: "Pracoviště"
-        field: "workplace"
-
-      - label: "Typ oznámení"
-        field: "type"
-
     fields:
       - {
           label: "Název",
@@ -459,4 +423,51 @@ collections:
           name: "tags",
           widget: "hidden",
           default: ["pracovnici"],
+        }
+
+  # ====================== #
+  # ===== PŘÍJEM ŽÁDOSTÍ ===== #
+  # ====================== #
+  - label: "Příjem žádostí"
+    name: "zadosti"
+    folder: "src/content/cms/zadosti"
+    create: false
+    delete: false
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    summary: "{{ title }}"
+    editor:
+      preview: false
+
+    fields:
+      - { label: "Název", name: "title", widget: "hidden" }
+      - { label: "Klíč", name: "key", widget: "hidden" }
+      - {
+          label: "Přijímání žádostí aktivní",
+          name: "enabled",
+          widget: "boolean",
+          required: false,
+          hint: "Pokud je vypnuto, formulář pro objednání se na webu nezobrazí.",
+        }
+      - {
+          label: "Nadpis při aktivním formuláři",
+          name: "enabled_title",
+          widget: "string",
+          hint: "Tento text se zobrazí návštěvníkům, pokud je přijímání žádostí aktivní.",
+        }
+      - {
+          label: "Nadpis při pozastavení",
+          name: "disabled_title",
+          widget: "string",
+        }
+      - {
+          label: "Text při pozastavení",
+          name: "disabled_message",
+          widget: "markdown",
+          hint: "Tento text se zobrazí návštěvníkům, pokud je přijímání žádostí dočasně pozastaveno.",
+        }
+      - {
+          label: "Štítky",
+          name: "tags",
+          widget: "hidden",
+          default: ["zadosti"],
         }

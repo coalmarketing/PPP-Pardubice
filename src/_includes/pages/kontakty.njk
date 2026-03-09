@@ -2,59 +2,56 @@
 
 {% block body %}
     {% include "sections/landing.njk" %}
+    {% include "sections/locations.njk" %}
 
-    <div class="[&>section:first-child]:bg-white dark:[&>section:first-child]:bg-slate-950">
-        {% include "sections/locations.njk" %}
+    <!-- WORKERS -->
+    <section id="pracovnici" class="~py-16/24 ~px-4/8 bg-slate-100 dark:bg-slate-900">
+        <div class="container m-auto flex flex-col lg:flex-row items-start ~gap-8/16">
+            {% set workplaces = collections.pracovnici | groupBy("data.workplace", ["Pardubice", "Chrudim"]) %}
 
-        <!-- WORKERS -->
-        <section id="pracovnici" class="peer ~py-16/24 ~px-4/8 bg-slate-100 dark:bg-slate-900">
-            <div class="container m-auto flex flex-col lg:flex-row items-start ~gap-8/16">
-                {% set workplaces = collections.pracovnici | groupBy("data.workplace", ["Pardubice", "Chrudim"]) %}
+            {% include "components/worker-sidebar.njk" %}
 
-                {% include "components/worker-sidebar.njk" %}
+            <!-- WORKPLACES -->
+            <div class="flex-1 flex flex-col ~gap-16/24 w-full">
+                {% for workplace in workplaces %}
+                    <div class="relative flex flex-col gap-8">
+                        {% if workplace.key !== "_ungrouped" %}
+                            <!-- ANCHOR -->
+                            <div id="{{ workplace.key | slug }}" class="absolute -top-32"></div>
 
-                <!-- WORKPLACES -->
-                <div class="flex-1 flex flex-col ~gap-16/24 w-full">
-                    {% for workplace in workplaces %}
-                        <div class="relative flex flex-col gap-8">
-                            {% if workplace.key !== "_ungrouped" %}
-                                <!-- ANCHOR -->
-                                <div id="{{ workplace.key | slug }}" class="absolute -top-32"></div>
+                            <!-- TOPPER + HEADING -->
+                            <div class="flex flex-col items-start ~gap-3/4">
+                                <span class="topper">Pracovníci</span>
+                                <h3 class="~text-2xl/4xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">{{ workplace.key }}</h3>
+                            </div>
+                        {% endif %}
 
-                                <!-- TOPPER + HEADING -->
-                                <div class="flex flex-col items-start ~gap-3/4">
-                                    <span class="topper">Pracovníci</span>
-                                    <h3 class="~text-2xl/4xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">{{ workplace.key }}</h3>
-                                </div>
-                            {% endif %}
+                        <!-- WORKER GROUPS -->
+                        {% set groups = workplace.items | sortBy("data.lastName", "asc") | groupBy("data.group", ["Vedení poradny"]) %}
 
-                            <!-- WORKER GROUPS -->
-                            {% set groups = workplace.items | sortBy("data.lastName", "asc") | groupBy("data.group", ["Vedení poradny"]) %}
+                        {% for group in groups %}
+                            <div class="relative flex flex-col gap-6">
+                                {% if group.key !== "_ungrouped" %}
+                                    <!-- ANCHOR -->
+                                    <div id="{{ workplace.key | slug }}-{{ group.key | slug }}" class="absolute -top-32"></div>
 
-                            {% for group in groups %}
-                                <div class="relative flex flex-col gap-6">
-                                    {% if group.key !== "_ungrouped" %}
-                                        <!-- ANCHOR -->
-                                        <div id="{{ workplace.key | slug }}-{{ group.key | slug }}" class="absolute -top-32"></div>
+                                    <!-- TOPPER + HEADING -->
+                                    <span class="~text-xl/2xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">{{ group.key }}</span>
+                                {% endif %}
 
-                                        <!-- TOPPER + HEADING -->
-                                        <span class="~text-xl/2xl text-black dark:text-white font-bold !leading-[1.1] tracking-wide">{{ group.key }}</span>
-                                    {% endif %}
-
-                                    <!-- WORKERS -->
-                                    <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 ~gap-4/6">
-                                        {% for worker in group.items %}
-                                            {% include "components/worker-item.njk" %}
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% endfor %}
-                </div>
+                                <!-- WORKERS -->
+                                <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 ~gap-4/6">
+                                    {% for worker in group.items %}
+                                        {% include "components/worker-item.njk" %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     {% include "sections/cta.njk" %}
 {% endblock body %}

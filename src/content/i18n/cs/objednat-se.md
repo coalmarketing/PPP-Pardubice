@@ -26,7 +26,7 @@ form:
         alt: Ikona bodu na mapě
 
       legend: Výběr pobočky
-      text: Vyberte pobočku, kterou preferujete pro vyšetření nebo konzultaci. 
+      text: Vyberte pobočku, která odpovídá vaší spádové oblasti. 
 
       fields:
         - name: Pobočka
