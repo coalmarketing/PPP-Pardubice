@@ -147,7 +147,7 @@ form:
       fields:
         - name: Důvody žádosti
           type: checkbox
-          required: true
+          required: false
 
           columns: 3
 
@@ -191,13 +191,13 @@ form:
           type: text
           autocomplete: off
           placeholder: Například DPA, neurologie
-          required: true
+          required: false
 
         - name: Spolupracující zařízení
           type: text
           autocomplete: off
           placeholder: SVP, OSPOD, jiné
-          required: true
+          required: false
 
     - icon:
         url: /assets/svgs/objednat-se/task_alt.svg

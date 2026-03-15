@@ -1,7 +1,7 @@
 <!-- APPOINTMENT FORM -->
-<form class="flex flex-col gap-6 w-full max-w-5xl" method="POST" action="https://usebasin.com/f/b32b363086c9" name="Objednávkový formulář" netlify netlify-honeypot="bot-field">
+<form class="flex flex-col gap-6 w-full max-w-5xl" method="POST" action="/api/submit" name="Objednávkový formulář">
     <!-- HONEYPOT -->
-    <input class="sr-only" type="search" name="bot-field" tabindex="-1" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Leave this empty">
+    <input class="sr-only" type="search" name="_gotcha" tabindex="-1" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Leave this empty">
 
     {% for fieldset in form.fieldsets %}
         <fieldset class="flex flex-col gap-5 ~p-6/8 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl">
@@ -38,11 +38,11 @@
                             {% if field.type === "radio" or field.type === "checkbox" %}
                                 <!-- {{ field.name | upper }} -->
                                 {% for option in field.options %}
-                                    <label class="group flex flex-col justify-center items-center gap-5 h-52 p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl hover:cursor-pointer hover:border-black dark:hover:border-white has-[:checked]:hover:border-primary dark:has-[:checked]:hover:border-secondary transition-colors duration-300 has-[:checked]:border-2 has-[:checked]:border-primary dark:has-[:checked]:border-secondary">
+                                    <label class="group flex flex-col justify-center items-center gap-5 h-52 p-6 bg-white dark:bg-slate-950 border-2 border-slate-200 dark:border-slate-800 rounded-2xl hover:cursor-pointer hover:border-black dark:hover:border-white has-[:checked]:hover:border-primary dark:has-[:checked]:hover:border-secondary transition-colors duration-300 has-[:checked]:border-primary dark:has-[:checked]:border-secondary">
                                         <input
                                             id="{{ field.name | slug }}-{{ option.value | slug }}"
                                             type="{{ field.type }}"
-                                            name="{{ field.name }}"
+                                            name="{{ field.name }}{% if field.type === 'checkbox' %}[]{% endif %}"
                                             value="{{ option.value }}"
                                             class="sr-only"
                                             {%- if field.required %} required {%- endif %}>
@@ -96,7 +96,9 @@
                                 class="checkbox"
                                 type="checkbox"
                                 name="Zpracování osobních údajů"
+                                value="Ano"
                                 required>
+
                             <span class="text-black dark:text-white font-bold select-none">
                                 Souhlasím se <a href="/gdpr" target="_blank" class="underline text-primary dark:text-secondary">zpracováním osobních údajů</a>
                             </span>
@@ -108,7 +110,9 @@
                                 class="checkbox"
                                 type="checkbox"
                                 name="Pravdivost údajů"
+                                value="Ano"
                                 required>
+
                             <span class="text-black dark:text-white font-bold select-none">
                                 Potvrzuji, že uvedené údaje jsou pravdivé
                             </span>

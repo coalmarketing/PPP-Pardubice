@@ -11,7 +11,7 @@ import pluginNavigation from "@11ty/eleventy-navigation";
 import { I18nPlugin } from "@11ty/eleventy";
 
 // ⚙️ Configuration Files
-import { configI18n, configImages } from "./src/config/plugins.js";
+import { configI18n } from "./src/config/plugins.js";
 
 // 🔧 Processing Functions
 import css from "./src/config/processors/css.js";
@@ -65,6 +65,24 @@ export default (eleventyConfig) => {
      * Resize and optimize images for better performance using {% getUrl %}
      * Documentation: https://github.com/CodeStitchOfficial/eleventy-plugin-sharp-images
      */
+    let configImages = {
+        urlPath: "/assets/images",
+        outputDir: "public/assets/images"
+    }
+
+    if (isProduction) {
+        // On production set the output path to .cache folder which is preserved between builds
+        configImages = {
+            urlPath: "/assets/images",
+            outputDir: ".cache/images"
+        }
+
+        // After eleventy processing is done, copy the images to live website
+        eleventyConfig.on("eleventy.after", async () => {
+            await fs.copy(".cache/images", "public/assets/images", { overwrite: false });
+        });
+    }
+
     eleventyConfig.addPlugin(pluginImages, configImages);
 
     /*
